@@ -1,0 +1,41 @@
+.DS_Store
+
+# Dependencies and generated caches
+node_modules/
+__pycache__/
+*.py[cod]
+context-mode/
+
+# Local databases and journals
+*.db*
+*.sqlite*
+
+# Large binary and archive artifacts
+*.7z
+*.bin
+*.dmg
+*.iso
+*.onnx
+*.safetensors
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+
+# Credentials and account state
+.env
+.env.*
+!.env.example
+*accounts*.json
+*credentials*.json
+*secrets*.json
+
+# Local backups and runtime artifacts
+agents.bak/
+*.bak
+*.bak-*
+*.backup
+*.MOVED_READPLEASE
+*.log
+*.pid
+*.sock

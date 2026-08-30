@@ -1,0 +1,230 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "superpowers@git+https://github.com/obra/superpowers.git",
+    "@cortexkit/opencode-magic-context@0.37.0",
+    "context-mode",
+    "commandcode-go-opencode-provider/server"
+  ],
+  "lsp": true,
+  "mcp": {
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "enabled": true,
+      "headers": {
+        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+      }
+    },
+    "notionApi": {
+      "type": "local",
+      "command": ["npx", "-y", "@notionhq/notion-mcp-server"],
+      "enabled": true,
+      "environment": {
+        "NOTION_TOKEN": "{env:NOTION_TOKEN}"
+      }
+    },
+    "FigmaDesktop": {
+      "type": "remote",
+      "url": "http://127.0.0.1:3845/mcp",
+      "enabled": true
+    }
+  },
+  "provider": {
+    "commandcode": {
+      "npm": "commandcode-go-opencode-provider",
+      "name": "Command Code",
+      "env": ["COMMANDCODE_API_KEY"]
+    },
+    "opencodex": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "OpenCodex",
+      "options": {
+        "baseURL": "http://127.0.0.1:10100/v1",
+        "apiKey": "{env:OPENCODEX_API_KEY}"
+      },
+      "models": {
+        "anthropic/claude-fable-5": {
+          "name": "claude-fable-5 (anthropic)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "anthropic/claude-opus-5": {
+          "name": "claude-opus-5 (anthropic)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "anthropic/claude-sonnet-5": {
+          "name": "claude-sonnet-5 (anthropic)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "combo/sp-code-review": {
+          "name": "sp-code-review (combo)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "combo/sp-debug": {
+          "name": "sp-debug (combo)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "combo/sp-spec-review": {
+          "name": "sp-spec-review (combo)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "combo/sp-worker": {
+          "name": "sp-worker (combo)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "combo/sp-worker-pro": {
+          "name": "sp-worker-pro (combo)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "command-code/deepseek-deepseek-v4-flash": {
+          "name": "deepseek/deepseek-v4-flash (command-code)",
+          "limit": {
+            "context": 1000000,
+            "output": 32000
+          }
+        },
+        "command-code/deepseek-deepseek-v4-flash-vision-exp": {
+          "name": "deepseek/deepseek-v4-flash-vision-exp (command-code)",
+          "limit": {
+            "context": 1000000,
+            "output": 32000
+          }
+        },
+        "command-code/minimax-minimax-m2.7-free": {
+          "name": "minimax/minimax-m2.7-free (command-code)",
+          "limit": {
+            "context": 197000,
+            "output": 32000
+          }
+        },
+        "command-code/minimax-minimax-m3-free": {
+          "name": "minimax/minimax-m3-free (command-code)",
+          "limit": {
+            "context": 1000000,
+            "output": 32000
+          }
+        },
+        "command-code/stealth-ox-alpha": {
+          "name": "stealth/ox-alpha (command-code)",
+          "limit": {
+            "context": 1048576,
+            "output": 32000
+          }
+        },
+        "google-antigravity/claude-opus-4-6-thinking": {
+          "name": "claude-opus-4-6-thinking (google-antigravity)",
+          "limit": {
+            "context": 250000,
+            "output": 32000
+          }
+        },
+        "google-antigravity/claude-sonnet-4-6": {
+          "name": "claude-sonnet-4-6 (google-antigravity)",
+          "limit": {
+            "context": 250000,
+            "output": 32000
+          }
+        },
+        "google-antigravity/gemini-3.1-pro": {
+          "name": "gemini-3.1-pro (google-antigravity)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "google-antigravity/gemini-3.7-flash": {
+          "name": "gemini-3.7-flash (google-antigravity)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "gpt-5.3-codex-spark": {
+          "name": "gpt-5.3-codex-spark (native)",
+          "limit": {
+            "context": 100000,
+            "output": 32000
+          }
+        },
+        "gpt-5.6-luna": {
+          "name": "gpt-5.6-luna (native)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "gpt-5.6-sol": {
+          "name": "gpt-5.6-sol (native)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "opencode-zen/big-pickle": {
+          "name": "big-pickle (opencode-zen)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "opencode-zen/deepseek-v4-flash-free": {
+          "name": "deepseek-v4-flash-free (opencode-zen)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "opencode-zen/hy3-free": {
+          "name": "hy3-free (opencode-zen)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "opencode-zen/muse-spark-1.2-contributor-free": {
+          "name": "muse-spark-1.2-contributor-free (opencode-zen)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "opencode-zen/x-preview-f-free": {
+          "name": "x-preview-f-free (opencode-zen)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        }
+      }
+    }
+  },
+  "compaction": {
+    "auto": false,
+    "prune": false
+  },
+  "permission": "allow"
+}
