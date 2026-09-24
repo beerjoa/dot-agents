@@ -1,0 +1,18 @@
+[
+  {
+    "command": "composer.decreaseReasoningEffort",
+    "key": "Ctrl+Command+Shift+Down"
+  },
+  {
+    "command": "composer.increaseReasoningEffort",
+    "key": "Ctrl+Command+Shift+Up"
+  },
+  {
+    "command": "composer.toggleFastMode",
+    "key": "Ctrl+Command+Shift+F"
+  },
+  {
+    "command": "mcpSettings",
+    "key": "Command+Shift+M"
+  }
+]
