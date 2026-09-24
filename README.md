@@ -12,3 +12,15 @@ The sanitized `opencode.json` contains:
 - **Providers** — `commandcode` and `opencodex` configurations
 - **Models** — model limits and runtime preferences
 - **Credentials** — environment-variable references for sensitive values
+
+## [Codex config](./codex/config.toml)
+
+The `codex/` directory contains a public subset of user-level Codex settings:
+`config.toml`, `keybindings.json`, `AGENTS.md`, its `RTK.md` reference,
+the [custom agents](./codex/agents/), and the [Blastoise pet](./codex/pets/blastoise/).
+The custom agents use local `combo/...` model selectors; choose available models
+when using them on another machine. See the [plugin guide](./codex/PLUGINS.md)
+for the selected installation list.
+Copy selected files to `~/.codex/` after reviewing them for your environment.
+The original `config.toml` also contains machine paths, project trust entries,
+provider and MCP connections, and authorization settings; those are omitted.

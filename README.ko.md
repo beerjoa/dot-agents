@@ -12,3 +12,14 @@
 - **Provider** — `commandcode`와 `opencodex` 설정
 - **모델** — 모델 한도 및 런타임 환경설정
 - **인증정보** — 민감한 값을 위한 환경변수 참조
+
+## [Codex 설정](./codex/config.toml)
+
+`codex/`에는 공개 가능한 사용자 수준 설정 일부인 `config.toml`,
+`keybindings.json`, `AGENTS.md`, 참조 파일 `RTK.md`, [사용자 에이전트](./codex/agents/)와
+[Blastoise 펫](./codex/pets/blastoise/)을 담았습니다. 사용자 에이전트의 `combo/...` 모델 선택자는
+다른 기기에서 사용 가능한 모델로 조정해야 합니다. 플러그인 설치 대상은
+[가이드](./codex/PLUGINS.md)에 정리했습니다.
+사용 환경에 맞는 파일을 검토한 뒤 `~/.codex/`에 복사해 사용하세요.
+원본 `config.toml`의 기기 경로, 프로젝트 신뢰 설정, provider 및 MCP 연결,
+권한 설정은 제외했습니다.
