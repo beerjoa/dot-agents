@@ -1,0 +1,79 @@
+{
+  "port": 10100,
+  "managementUsageMaxReadBytes": 67108864,
+  "appOwnedMemoryBudgetMb": 256,
+  "defaultModelAliases": false,
+  "fastRows": true,
+  "subagentModels": [
+    "gpt-6-luna"
+  ],
+  "injectionModel": "gpt-5.6-luna",
+  "injectionEffort": "max",
+  "websockets": false,
+  "codexAutoStart": true,
+  "webSearchSidecar": {
+    "model": "gpt-5.6-luna"
+  },
+  "combos": {
+    "sp-explorer": {
+      "strategy": "failover",
+      "stickyLimit": 1,
+      "defaultEffort": "high",
+      "targets": [
+        { "provider": "openai", "model": "gpt-5.6-luna", "weight": 1 },
+        { "provider": "devin", "model": "swe-1-7", "weight": 1 }
+      ]
+    },
+    "sp-worker": {
+      "strategy": "failover",
+      "stickyLimit": 1,
+      "defaultEffort": "max",
+      "targets": [
+        { "provider": "openai", "model": "gpt-5.6-luna", "weight": 1 },
+        { "provider": "opencode-go", "model": "deepseek-v4.1-flash", "weight": 1 }
+      ]
+    },
+    "sp-worker-pro": {
+      "strategy": "failover",
+      "stickyLimit": 1,
+      "defaultEffort": "max",
+      "targets": [
+        { "provider": "opencode-go", "model": "deepseek-v4.1-flash", "weight": 1 },
+        { "provider": "openai", "model": "gpt-5.6-luna", "weight": 1 }
+      ]
+    },
+    "sp-spec-review": {
+      "strategy": "failover",
+      "stickyLimit": 1,
+      "defaultEffort": "max",
+      "targets": [
+        { "provider": "devin", "model": "swe-2", "weight": 1 },
+        { "provider": "opencode-go", "model": "deepseek-v4.1-flash", "weight": 1 }
+      ]
+    },
+    "sp-code-review": {
+      "strategy": "failover",
+      "stickyLimit": 1,
+      "defaultEffort": "max",
+      "targets": [
+        { "provider": "devin", "model": "swe-2", "weight": 1 },
+        { "provider": "openai", "model": "gpt-5.6-luna", "weight": 1 }
+      ]
+    },
+    "sp-debug": {
+      "strategy": "failover",
+      "stickyLimit": 1,
+      "defaultEffort": "high",
+      "targets": [
+        { "provider": "openai", "model": "gpt-5.6-sol", "weight": 1 },
+        { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1 }
+      ]
+    }
+  },
+  "multiAgentMode": "v1",
+  "visionSidecar": {
+    "model": "gpt-5.6-luna",
+    "backend": "openai",
+    "reasoning": "medium"
+  }
+}

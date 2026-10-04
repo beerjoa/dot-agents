@@ -39,3 +39,9 @@ agents.bak/
 *.log
 *.pid
 *.sock
+
+# OpenCodex: only explicitly reviewed public files are allowed
+/.opencodex/
+/opencodex/*
+!/opencodex/README.md
+!/opencodex/config.public.json
