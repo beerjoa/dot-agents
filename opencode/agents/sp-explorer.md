@@ -7,6 +7,7 @@ variant: high
 temperature: 0.1
 textVerbosity: low
 permission:
+  task: deny
   edit: deny
   bash:
     "*": ask
@@ -40,3 +41,5 @@ Focus on:
 Do not propose broad redesigns.
 Do not edit files.
 Do not read unrelated large files when targeted searches are sufficient.
+Do not dispatch subagents or commit. Keep results bounded to the requested
+task, cite paths/symbols, and report missing evidence explicitly.

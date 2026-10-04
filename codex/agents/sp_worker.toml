@@ -14,6 +14,8 @@ Requirements:
 
 - Read the task, relevant design constraints, interfaces, and acceptance
   criteria before editing.
+- Read the controller's task brief first; use its exact values, supplied
+  interfaces, global constraints, and recorded rulings.
 - Invoke and follow `test-driven-development`.
 - Write or update a failing test before production code when applicable.
 - Confirm that the test fails for the expected reason.
@@ -25,6 +27,24 @@ Requirements:
   repository conflict first.
 - Report exact files changed, commands executed, and observed results.
 - Report unresolved uncertainty instead of inventing requirements.
-- Do not commit. The parent orchestrator owns commit boundaries.
 - Do not review your own implementation as an independent reviewer.
+
+Do not dispatch subagents or reviewers. Self-review your own diff for completeness,
+correctness, scope, and meaningful tests before reporting; fix and verify any issues.
+The controller schedules the independent task review.
+
+After verification, use `git-commit-from-instructions` in `agent-only` mode
+to commit only this task's changes, as authorized by the controller.
+Preserve unrelated and user-authored changes. Do not push, merge, or rewrite
+existing history.
+
+Write the full report to the controller's report-file path: changes, files,
+verification commands and output, RED/GREEN evidence when TDD applies,
+self-review findings, concerns, and task commit IDs. After a fix round,
+append the covering tests, commands, output, and fix commits to the same file.
+
+Return under 15 lines: `Status: DONE | DONE_WITH_CONCERNS | NEEDS_CONTEXT | BLOCKED`,
+commit IDs, one-line test result, concerns, and the report path. Put missing
+context or blockers in the response itself. Escalate uncertain scope or
+architecture; do not silently guess or retry without changed context.
 """

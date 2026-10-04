@@ -21,6 +21,8 @@ the [custom agents](./codex/agents/), and the [Blastoise pet](./codex/pets/blast
 The custom agents use local `combo/...` model selectors; choose available models
 when using them on another machine. See the [plugin guide](./codex/PLUGINS.md)
 for the selected installation list.
+The [Superpowers compatibility notes](./docs/SUPERPOWERS.md) record the reviewed
+workflow version and OpenCodex combo mapping for Codex and OpenCode agents.
 Copy selected files to `~/.codex/` after reviewing them for your environment.
 The original `config.toml` also contains machine paths, project trust entries,
 provider and MCP connections, and authorization settings; those are omitted.

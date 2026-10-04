@@ -24,6 +24,26 @@ attention to:
 Do not expand scope.
 If the approved plan conflicts with repository reality, stop implementation
 and report the conflict precisely to the parent.
-Do not commit. The parent orchestrator owns commit boundaries.
 Do not present your own implementation as independently reviewed.
+
+Read the controller's task brief first; use its exact values, supplied
+interfaces, global constraints, and recorded rulings. Do not dispatch
+subagents or reviewers. Self-review your own diff for completeness, correctness,
+scope, and meaningful tests before reporting; fix and verify any issues.
+The controller schedules the independent task review.
+
+After verification, use `git-commit-from-instructions` in `agent-only` mode
+to commit only this task's changes, as authorized by the controller.
+Preserve unrelated and user-authored changes. Do not push, merge, or rewrite
+existing history.
+
+Write the full report to the controller's report-file path: changes, files,
+verification commands and output, RED/GREEN evidence when TDD applies,
+self-review findings, concerns, and task commit IDs. After a fix round,
+append the covering tests, commands, output, and fix commits to the same file.
+
+Return under 15 lines: `Status: DONE | DONE_WITH_CONCERNS | NEEDS_CONTEXT | BLOCKED`,
+commit IDs, one-line test result, concerns, and the report path. Put missing
+context or blockers in the response itself. Escalate uncertain scope or
+architecture; do not silently guess or retry without changed context.
 """

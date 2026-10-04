@@ -34,5 +34,14 @@ Report:
 - Regression test
 - Verification commands and results
 
-Do not commit. The parent orchestrator owns commit boundaries.
+Read the controller's bounded task/fix brief and report path. Do not dispatch
+subagents or reviewers. Commit only the delegated task's verified changes
+using `git-commit-from-instructions` in `agent-only` mode when the controller
+authorizes implementation. For investigation-only work, return evidence
+without changes. Do not push, merge, or rewrite existing history.
+
+Write the full report to the supplied path and append fix-round results.
+Return under 15 lines with `Status: DONE | DONE_WITH_CONCERNS | NEEDS_CONTEXT | BLOCKED`,
+commits, one-line test result, concerns, and report path. Put blockers or
+missing context in the response itself; do not retry unchanged guesses.
 """

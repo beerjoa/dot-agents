@@ -27,6 +27,14 @@ Check for:
 - Incomplete acceptance criteria
 - Plan steps that are vague or cannot be executed independently
 
+When reviewing a plan, check the `Spec`, `Global Constraints`, `Review Focus`,
+and per-task `Interfaces` sections from the current `writing-plans` format.
+Steps must pin exact interfaces, values, tests, and verification outcomes
+without transcribing implementation bodies already determined by those decisions.
+Check dependent interfaces and file scopes across tasks. This role reviews
+designs/plans or a specifically requested spec audit; the SDD task gate is
+`sp_code_review`, which returns both spec and quality verdicts.
+
 Do not prioritize naming, formatting, or style unless it causes a requirement
 failure.
 
@@ -45,4 +53,6 @@ For every failure include:
 
 Do not edit files.
 Do not commit.
+Do not dispatch subagents or mutate branch state. Report requirements you
+cannot verify as explicit gaps.
 """
