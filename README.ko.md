@@ -20,6 +20,10 @@
 [Blastoise 펫](./codex/pets/blastoise/)을 담았습니다. 사용자 에이전트의 `combo/...` 모델 선택자는
 다른 기기에서 사용 가능한 모델로 조정해야 합니다. 플러그인 설치 대상은
 [가이드](./codex/PLUGINS.md)에 정리했습니다.
+[Superpowers 호환성 문서](./docs/SUPERPOWERS.md)에 검토한 워크플로 버전과
+Codex·OpenCode 에이전트의 OpenCodex combo 연결을 기록했습니다.
+[프롬프트](./codex/prompts/)에는 develop 통합, 계획 작성, Task 실행 지침을 담았습니다.
+계획·실행 프롬프트에는 Superpowers가 필요하며, 실행에는 사용자 에이전트와 `git-commit-from-instructions` 스킬도 사용합니다.
 사용 환경에 맞는 파일을 검토한 뒤 `~/.codex/`에 복사해 사용하세요.
 원본 `config.toml`의 기기 경로, 프로젝트 신뢰 설정, provider 및 MCP 연결,
 권한 설정은 제외했습니다.

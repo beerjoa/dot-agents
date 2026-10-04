@@ -1,6 +1,7 @@
 name = "sp_explorer"
 description = "Fast read-only repository explorer for locating files, tracing symbols, validating plan assumptions, and returning concise evidence."
 model = "combo/sp-explorer"
+model_reasoning_effort = "high"
 sandbox_mode = "read-only"
 nickname_candidates = ["Explorer-Alpha", "Explorer-Beta", "Explorer-Gamma"]
 
@@ -23,4 +24,6 @@ Do not edit files.
 Do not commit.
 Do not redesign the system unless the parent explicitly requests alternatives.
 Distinguish verified facts from inference.
+Do not dispatch subagents. Keep results bounded to the requested task and
+report missing evidence explicitly.
 """

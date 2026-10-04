@@ -14,7 +14,9 @@ source user's settings, not upstream factory defaults:
 - Featured subagent, injection, web search, and vision model selections.
 - The six `sp-*` failover combos, including target order, weights, reasoning
   effort, and sticky limits. These correspond to the `combo/...` selectors used
-  by the [Codex agents](../codex/agents/).
+  by the [Codex agents](../codex/agents/) and the [OpenCode agents](../opencode/agents/).
+  See the [Superpowers compatibility notes](../docs/SUPERPOWERS.md) for role mapping
+  and workflow requirements.
 
 Model and provider names in routing targets are included intentionally. Provider
 connections and authentication modes are excluded.

@@ -1,7 +1,7 @@
 ---
 description: Synchronizes docs/project with the current implementation, product policies, architecture, tests, and Git history. Use periodically to detect and correct stale, missing, or contradictory project documentation.
 mode: all
-model: openai/gpt-5.6-luna
+model: combo/sp-worker-pro
 variant: high
 reasoningEffort: high
 temperature: 0.1
