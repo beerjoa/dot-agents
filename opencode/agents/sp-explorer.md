@@ -1,9 +1,9 @@
 ---
 description: Fast read-only codebase explorer for locating files, tracing symbols, identifying conventions, and gathering minimal context for Superpowers agents.
 mode: subagent
-model: openai/gpt-5.6-luna
-reasoningEffort: medium
-variant: medium
+model: combo/sp-explorer
+reasoningEffort: high
+variant: high
 temperature: 0.1
 textVerbosity: low
 permission:

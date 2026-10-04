@@ -1,7 +1,7 @@
 ---
 description: Independent Superpowers code-quality reviewer for correctness, maintainability, security, performance, testing quality, and repository conventions.
 mode: subagent
-model: openai/gpt-5.6-luna
+model: combo/sp-code-review
 reasoningEffort: max
 variant: max
 temperature: 0.0

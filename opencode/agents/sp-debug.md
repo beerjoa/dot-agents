@@ -1,9 +1,9 @@
 ---
 description: Superpowers systematic debugging agent for unexplained test failures, regressions, integration errors, and runtime problems.
 mode: subagent
-model: openai/gpt-5.6-luna
-reasoningEffort: max
-variant: max
+model: combo/sp-debug
+reasoningEffort: high
+variant: high
 temperature: 0.0
 textVerbosity: max
 permission:

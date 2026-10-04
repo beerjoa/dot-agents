@@ -1,7 +1,7 @@
 ---
 description: High-capability Superpowers implementation worker for difficult cross-module, concurrency, migration, security, and architecture-sensitive tasks.
 mode: subagent
-model: openai/gpt-5.6-luna
+model: combo/sp-worker-pro
 reasoningEffort: max
 variant: max
 temperature: 0.1

@@ -1,7 +1,7 @@
 ---
 description: Cost-efficient Superpowers implementation worker for isolated, clearly planned tasks using test-driven development.
 mode: subagent
-model: commandcode-auth/deepseek-v4-flash
+model: combo/sp-worker
 reasoningEffort: max
 variant: max
 temperature: 0.1

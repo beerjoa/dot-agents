@@ -1,7 +1,7 @@
 ---
 description: Independent Superpowers specification-compliance reviewer. Checks implementations and plans strictly against approved requirements without reviewing style first.
 mode: subagent
-model: openai/gpt-5.6-luna
+model: combo/sp-spec-review
 reasoningEffort: max
 variant: max
 temperature: 0.0

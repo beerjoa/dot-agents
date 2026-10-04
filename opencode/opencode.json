@@ -79,6 +79,13 @@
             "output": 32000
           }
         },
+        "combo/sp-explorer": {
+          "name": "sp-explorer (combo)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
         "combo/sp-spec-review": {
           "name": "sp-spec-review (combo)",
           "limit": {

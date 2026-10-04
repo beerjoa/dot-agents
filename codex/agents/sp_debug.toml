@@ -1,7 +1,7 @@
 name = "sp_debug"
 description = "Systematic debugging agent for reproducible failures whose root cause is not yet demonstrated."
 model = "combo/sp-debug"
-model_reasoning_effort = "max"
+model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 nickname_candidates = ["Debuger-Alpha", "Debuger-Beta", "Debuger-Gamma"]
 

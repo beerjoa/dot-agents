@@ -1,7 +1,7 @@
 ---
 description: Commits staged or agent-authored changes using git-commit-from-instructions.
 mode: all
-model: opencode-go/deepseek-v4-flash
+model: combo/sp-worker
 variant: max
 reasoningEffort: max
 temperature: 0.1
