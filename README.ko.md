@@ -23,7 +23,9 @@
 [Superpowers 호환성 문서](./docs/SUPERPOWERS.md)에 검토한 워크플로 버전과
 Codex·OpenCode 에이전트의 OpenCodex combo 연결을 기록했습니다.
 [프롬프트](./codex/prompts/)에는 develop 통합, 계획 작성, Task 실행 지침을 담았습니다.
-계획·실행 프롬프트에는 Superpowers가 필요하며, 실행에는 사용자 에이전트와 `git-commit-from-instructions` 스킬도 사용합니다.
+[start-build](./codex/prompts/start-build.md)는 subagent 구현,
+[start-build-native](./codex/prompts/start-build-native.md)는 현재 세션의 직접 구현과 최종 브랜치 리뷰에 사용합니다.
+계획·실행에는 Superpowers가 필요하며, 실행은 `git-commit-from-instructions`와 구현 위임·최종 리뷰용 사용자 에이전트를 사용합니다.
 사용 환경에 맞는 파일을 검토한 뒤 `~/.codex/`에 복사해 사용하세요.
 원본 `config.toml`의 기기 경로, 프로젝트 신뢰 설정, provider 및 MCP 연결,
 권한 설정은 제외했습니다.

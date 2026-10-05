@@ -24,7 +24,9 @@ for the selected installation list.
 The [Superpowers compatibility notes](./docs/SUPERPOWERS.md) record the reviewed
 workflow version and OpenCodex combo mapping for Codex and OpenCode agents.
 The [prompts](./codex/prompts/) cover develop integration, planning, and task execution.
-The planning and execution prompts require Superpowers; execution also uses the custom agents and `git-commit-from-instructions` skill.
+Use [start-build](./codex/prompts/start-build.md) for subagent implementation or
+[start-build-native](./codex/prompts/start-build-native.md) to implement in the current session with one final branch review.
+Planning and execution require Superpowers; execution uses `git-commit-from-instructions` and the custom agents for delegated implementation or final review.
 Copy selected files to `~/.codex/` after reviewing them for your environment.
 The original `config.toml` also contains machine paths, project trust entries,
 provider and MCP connections, and authorization settings; those are omitted.

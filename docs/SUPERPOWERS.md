@@ -37,6 +37,24 @@ uses a Spec reference, Global Constraints, Review Focus, and task Interfaces.
 Plans pin exact values, signatures, tests, and verification outcomes; they do
 not transcribe implementation bodies already determined by those decisions.
 
+## Native execution
+
+Use [`start-build-native`](../codex/prompts/start-build-native.md) for the
+v6.4.2 [executing-plans skill](https://github.com/obra/superpowers/blob/8ca22dba9a94f28898bbce59f2537ff4d87c747d/skills/executing-plans/SKILL.md).
+The current session implements tasks sequentially, verifies their planned
+outcomes, and commits its own scoped changes. Native execution shares SDD's
+plan workspace and ledger; `executing-plans/scripts/task-start` creates the
+brief and returns BASE, and `scripts/task-done` runs the task's verification
+command and records completion only on success.
+
+There is one fresh whole-branch reviewer at the end, with explicit model and
+effort, the plan/spec, Review Focus, and recorded rulings. If no subagent tool
+exists, the executor performs a separate self-review and reports that limitation.
+The executor handles Critical/Important findings in one fix pass with
+RED-to-GREEN evidence and a passing full suite. Native mode does not dispatch
+a fix worker or re-review. Deferred Minor findings and all rulings, including
+the cost if wrong, reach the final report.
+
 ## OpenCodex routing
 
 The routing source is [`opencodex/config.public.json`](../opencodex/config.public.json).
