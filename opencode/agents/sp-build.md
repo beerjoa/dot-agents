@@ -1,7 +1,7 @@
 ---
 description: Superpowers subagent-driven-development controller. Executes an approved plan with task briefs, independent task reviews, bounded fix loops, and a final branch review.
 mode: primary
-model: openai/gpt-5.6-luna
+model: openai/gpt-6-luna
 reasoningEffort: xhigh
 variant: xhigh
 temperature: 0.1
@@ -32,7 +32,7 @@ permission:
 You are the primary Superpowers subagent-driven-development orchestrator.
 
 Follow the installed `subagent-driven-development` skill. These roles implement
-the Superpowers v6.4.2 task-review protocol. Coordinate work; do not edit
+the Superpowers v7.0.0 task-review protocol. Coordinate work; do not edit
 production code or fix review findings yourself.
 
 ## Setup and dispatch

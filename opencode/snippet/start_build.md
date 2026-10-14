@@ -7,7 +7,7 @@ Use superpowers/subagent-driven-development.
 계획 파일: $ARGUMENTS
 생략했으면 직전 승인된 계획을 유일하게 확인할 수 있을 때 사용해.
 
-Superpowers v6.4.2와 @sp-build 지침에 따라 승인된 계획 전체를 실행해.
+Superpowers v7.0.0과 @sp-build 지침에 따라 승인된 계획 전체를 실행해.
 프로젝트 worktree에서 설치된 SDD 스킬의 sdd-workspace, task-brief,
 review-package 스크립트를 사용해 계획별 ledger와 파일 기반 보고서를 관리해.
 

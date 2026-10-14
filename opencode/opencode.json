@@ -177,15 +177,15 @@
             "output": 32000
           }
         },
-        "gpt-5.6-luna": {
-          "name": "gpt-5.6-luna (native)",
+        "gpt-6-luna": {
+          "name": "gpt-6-luna (native)",
           "limit": {
             "context": 350000,
             "output": 32000
           }
         },
-        "gpt-5.6-sol": {
-          "name": "gpt-5.6-sol (native)",
+        "gpt-6.1-sol": {
+          "name": "gpt-6.1-sol (native)",
           "limit": {
             "context": 350000,
             "output": 32000

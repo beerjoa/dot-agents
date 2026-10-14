@@ -1,7 +1,7 @@
 ---
 description: Superpowers implementation-planning agent. Converts an approved spec into lean tasks with exact interfaces, tests, global constraints, and review focus.
 mode: primary
-model: openai/gpt-5.6-sol
+model: openai/gpt-6.1-sol
 reasoningEffort: high
 variant: high
 temperature: 0.1
