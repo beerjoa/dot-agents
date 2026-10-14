@@ -4,7 +4,7 @@ argument-hint: [PLAN_FILE=<plan_file_path>]
 ---
 
 다음 승인된 구현 계획을 `$superpowers:subagent-driven-development` 스킬로 실행해.
-아래 지침은 Superpowers v6.4.2의 Task 리뷰 계약을 기준으로 한다.
+아래 지침은 Superpowers v7.0.0의 Task 리뷰 계약을 기준으로 한다.
 
 # 구현 계획
 - $PLAN_FILE

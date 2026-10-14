@@ -32,7 +32,7 @@ permission:
 You are the primary Superpowers subagent-driven-development orchestrator.
 
 Follow the installed `subagent-driven-development` skill. These roles implement
-the Superpowers v6.4.2 task-review protocol. Coordinate work; do not edit
+the Superpowers v7.0.0 task-review protocol. Coordinate work; do not edit
 production code or fix review findings yourself.
 
 ## Setup and dispatch

@@ -1,16 +1,16 @@
 # Superpowers compatibility
 
-Reviewed on 2026-10-04 against upstream **v6.4.2**, commit
-[`8ca22dba9a94f28898bbce59f2537ff4d87c747d`](https://github.com/obra/superpowers/tree/8ca22dba9a94f28898bbce59f2537ff4d87c747d).
+Reviewed on 2026-10-14 against upstream **v7.0.0**, commit
+[`bb92a77741419a4ab5f06e711a283343f1ada0c3`](https://github.com/obra/superpowers/tree/bb92a77741419a4ab5f06e711a283343f1ada0c3).
 The installed skill files used for the comparison matched that commit.
 
 ## Workflow changes
 
-The [SDD skill](https://github.com/obra/superpowers/blob/8ca22dba9a94f28898bbce59f2537ff4d87c747d/skills/subagent-driven-development/SKILL.md)
+The [SDD skill](https://github.com/obra/superpowers/blob/bb92a77741419a4ab5f06e711a283343f1ada0c3/skills/subagent-driven-development/SKILL.md)
 now uses one independent task reviewer for both spec compliance and code
 quality. `sp-code-review` / `sp_code_review` implements this gate, scoped fix
 re-review, and the final whole-branch review. `sp-spec-review` /
-`sp_spec_review` remains available for design/plan review and explicit spec audits.
+`sp_spec_review` remains available for plan review and explicit spec audits.
 
 The controller creates a plan-scoped ledger, task briefs, and review packages
 using the installed skill's `scripts/sdd-workspace`, `scripts/task-brief`, and
@@ -32,15 +32,26 @@ the final branch review. The final review has one fix wave and one scoped
 re-review. Reports retain all rulings and remaining risks; merging or publishing
 still requires the user's authorization.
 
-The [writing-plans skill](https://github.com/obra/superpowers/blob/8ca22dba9a94f28898bbce59f2537ff4d87c747d/skills/writing-plans/SKILL.md)
+The [writing-plans skill](https://github.com/obra/superpowers/blob/bb92a77741419a4ab5f06e711a283343f1ada0c3/skills/writing-plans/SKILL.md)
 uses a Spec reference, Global Constraints, Review Focus, and task Interfaces.
 Plans pin exact values, signatures, tests, and verification outcomes; they do
 not transcribe implementation bodies already determined by those decisions.
 
+## Brainstorming
+
+The v7.0.0 [brainstorming skill](https://github.com/obra/superpowers/blob/bb92a77741419a4ab5f06e711a283343f1ada0c3/skills/brainstorming/SKILL.md)
+draws out intent with open questions and playback, then sizes the work. A
+quick task or small change agreed in chat gets no spec; only a project gets a
+written design. The spec-document reviewer is replaced by a builder check: a
+fresh subagent reads the design as its builder and lists remaining questions,
+which `sp-spec` sorts into answered, its own marked calls, and one round of
+user questions. `sp-spec` dispatches that check to OpenCode's `general`
+subagent; `sp-spec-review` is no longer part of design review.
+
 ## Native execution
 
 Use [`start-build-native`](../codex/prompts/start-build-native.md) for the
-v6.4.2 [executing-plans skill](https://github.com/obra/superpowers/blob/8ca22dba9a94f28898bbce59f2537ff4d87c747d/skills/executing-plans/SKILL.md).
+v7.0.0 [executing-plans skill](https://github.com/obra/superpowers/blob/bb92a77741419a4ab5f06e711a283343f1ada0c3/skills/executing-plans/SKILL.md).
 The current session implements tasks sequentially, verifies their planned
 outcomes, and commits its own scoped changes. Native execution shares SDD's
 plan workspace and ledger; `executing-plans/scripts/task-start` creates the

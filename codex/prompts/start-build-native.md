@@ -4,7 +4,7 @@ argument-hint: "[PLAN_FILE=<plan_file_path>]"
 ---
 
 다음 승인된 구현 계획을 `$superpowers:executing-plans` 스킬의 Native/inline
-방식으로 실행해. 아래 지침은 Superpowers v6.4.2를 기준으로 한다.
+방식으로 실행해. 아래 지침은 Superpowers v7.0.0을 기준으로 한다.
 
 # 구현 계획
 - $PLAN_FILE
