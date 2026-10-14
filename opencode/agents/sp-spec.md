@@ -1,7 +1,7 @@
 ---
 description: Superpowers brainstorming and design-spec agent. Use to draw out intent, size the work, and write approved design specifications before implementation planning.
 mode: primary
-model: openai/gpt-5.6-sol
+model: openai/gpt-6.1-sol
 reasoningEffort: medium
 variant: medium
 temperature: 0.3
