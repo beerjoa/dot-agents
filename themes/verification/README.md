@@ -55,3 +55,31 @@ fields followed the light/dark palette; unfocused fields, hover/pressed states,
 disabled glyphs and focus rings remain subject to Chromium's derived colors.
 This was not an exhaustive visual audit of every control, extension icon or
 platform. No screenshots, browser preferences or personal paths were committed.
+
+## Obsidian, 2026-10-19
+
+One CSS source now generates a portable two-mode theme and an Omarchy user
+template; generated-file consistency covers 16 outputs. Python/JSON parsing,
+CSS selector/placeholder/duplicate-variable checks, private-path filtering and
+Git whitespace checks passed. The original 14 generated color files are unchanged.
+No CSS parser dependency was added and no automated test suites were run.
+
+On the installed Obsidian 1.14.4, the existing Omarchy vault theme was selected
+with the base scheme set to system after backing up its appearance and CSS.
+The user template was installed outside package directories. Omarchy's existing
+synchronizer copied the generated CSS to the one registered vault without a new
+plugin or hook. The installed CSS matched Omarchy's current rendered output and
+contained no unresolved placeholders.
+
+Live switches between Wave and Lotus updated Obsidian's visible controls and
+its body class (`theme-dark` / `theme-light`), confirming system-mode adaptation.
+Lotus was restored afterward. The editor/sidebar/input/selection/accent-button
+text pairs checked from the palette have at least 4.5:1 contrast. Review found
+low contrast in several small semantic/syntax colors; those text roles now mix
+25% palette hue with 75% normal foreground. Their minimum contrast across the
+editor and code/sidebar surfaces is 4.63:1 in Lotus and 8.27:1 in Wave.
+
+Settings-window screenshots were inspected locally; no screenshots, vault names,
+notes, account settings or machine-local appearance/workspace files are in Git.
+This is not an exhaustive visual audit of every note, plugin or graph. Portable
+theme runtime application on macOS/Windows remains unverified.

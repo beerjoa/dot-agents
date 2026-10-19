@@ -1,0 +1,210 @@
+/* Generated Wave/Lotus theme; edit theme.css.tpl and the shared palettes. */
+/* Shared palette color roles; generated for Obsidian or rendered by Omarchy. */
+.theme-dark {
+  --color-base-00: #1f1f28;
+  --color-base-05: color-mix(in srgb, #1f1f28 95%, #dcd7ba);
+  --color-base-10: color-mix(in srgb, #1f1f28 90%, #dcd7ba);
+  --color-base-20: color-mix(in srgb, #1f1f28 85%, #dcd7ba);
+  --color-base-25: color-mix(in srgb, #1f1f28 80%, #dcd7ba);
+  --color-base-30: color-mix(in srgb, #1f1f28 75%, #dcd7ba);
+  --color-base-35: color-mix(in srgb, #1f1f28 70%, #dcd7ba);
+  --color-base-40: color-mix(in srgb, #1f1f28 60%, #dcd7ba);
+  --color-base-50: color-mix(in srgb, #1f1f28 50%, #dcd7ba);
+  --color-base-60: color-mix(in srgb, #1f1f28 40%, #dcd7ba);
+  --color-base-70: color-mix(in srgb, #1f1f28 30%, #dcd7ba);
+  --color-base-100: #dcd7ba;
+
+  --background-primary: #1f1f28;
+  --background-primary-alt: #223249;
+  --background-secondary: #17171e;
+  --background-secondary-alt: #111116;
+  --background-modifier-hover: color-mix(in srgb, #dcd7ba 8%, #1f1f28);
+  --background-modifier-active-hover: color-mix(in srgb, #7e9cd8 16%, #1f1f28);
+  --background-modifier-border: color-mix(in srgb, #dcd7ba 20%, #1f1f28);
+  --background-modifier-border-hover: color-mix(in srgb, #dcd7ba 35%, #1f1f28);
+  --background-modifier-border-focus: #7e9cd8;
+  --background-modifier-form-field: #223249;
+
+  --text-normal: #dcd7ba;
+  --text-muted: color-mix(in srgb, #dcd7ba 95%, #1f1f28);
+  --text-faint: #727169;
+  --text-on-accent: #1f1f28;
+  --text-selection: #363646;
+  --text-highlight-bg: color-mix(in srgb, #c0a36e 30%, transparent);
+  --text-accent: #7e9cd8;
+  --text-accent-hover: color-mix(in srgb, #7e9cd8 90%, #dcd7ba);
+  /* Mix semantic text toward normal text for small-label contrast. */
+  --text-error: color-mix(in srgb, #c34043 25%, #dcd7ba);
+  --text-success: color-mix(in srgb, #76946a 25%, #dcd7ba);
+  --text-warning: color-mix(in srgb, #c0a36e 25%, #dcd7ba);
+
+  --color-accent: #7e9cd8;
+  --color-accent-1: #7e9cd8;
+  --color-accent-2: color-mix(in srgb, #7e9cd8 90%, #dcd7ba);
+  --interactive-normal: #17171e;
+  --interactive-hover: color-mix(in srgb, #dcd7ba 10%, #17171e);
+  --interactive-accent: #7e9cd8;
+  --interactive-accent-hover: color-mix(in srgb, #7e9cd8 90%, #dcd7ba);
+  --input-background: #223249;
+  --checkbox-color: #7e9cd8;
+  --checkbox-color-hover: var(--interactive-accent-hover);
+  --checkbox-marker-color: #1f1f28;
+  --toggle-color: #7e9cd8;
+
+  --icon-color: #dcd7ba;
+  --icon-color-hover: #dcd7ba;
+  --icon-color-active: #7e9cd8;
+  --icon-color-focused: #7e9cd8;
+  --nav-item-color: #dcd7ba;
+  --nav-item-color-hover: #dcd7ba;
+  --nav-item-color-active: #dcd7ba;
+  --nav-item-background-hover: var(--background-modifier-hover);
+  --nav-item-background-active: #363646;
+  --tab-container-background: #17171e;
+  --tab-background-active: #1f1f28;
+  --tab-text-color: #dcd7ba;
+  --tab-text-color-focused: #dcd7ba;
+  --tab-text-color-active: #dcd7ba;
+  --tab-text-color-focused-active: #dcd7ba;
+  --titlebar-background: #1f1f28;
+  --titlebar-background-focused: #1f1f28;
+  --titlebar-text-color: #dcd7ba;
+  --titlebar-text-color-focused: #dcd7ba;
+
+  --link-color: #7e9cd8;
+  --link-color-hover: var(--interactive-accent-hover);
+  --link-external-color: #7e9cd8;
+  --link-external-color-hover: var(--interactive-accent-hover);
+  --h1-color: #dcd7ba;
+  --h2-color: #7e9cd8;
+  --h3-color: #dcd7ba;
+  --h4-color: #7e9cd8;
+  --h5-color: #dcd7ba;
+  --h6-color: #dcd7ba;
+  --code-background: #17171e;
+  --code-normal: #dcd7ba;
+  --code-comment: var(--text-muted);
+  --code-function: color-mix(in srgb, #7e9cd8 25%, #dcd7ba);
+  --code-keyword: color-mix(in srgb, #957fb8 25%, #dcd7ba);
+  --code-string: color-mix(in srgb, #76946a 25%, #dcd7ba);
+  --code-value: color-mix(in srgb, #c17158 25%, #dcd7ba);
+  --tag-color: #dcd7ba;
+  --tag-color-hover: #dcd7ba;
+  --tag-background: #363646;
+  --tag-background-hover: var(--background-modifier-active-hover);
+  --blockquote-border-color: #7e9cd8;
+  --graph-text: #dcd7ba;
+  --graph-line: var(--background-modifier-border);
+  --graph-node: #7e9cd8;
+  --graph-node-focused: #957fb8;
+  --graph-node-tag: #6a9589;
+  --graph-node-attachment: #76946a;
+  --scrollbar-bg: color-mix(in srgb, #dcd7ba 20%, transparent);
+  --scrollbar-thumb-bg: color-mix(in srgb, #dcd7ba 30%, transparent);
+  --scrollbar-active-thumb-bg: color-mix(in srgb, #dcd7ba 45%, transparent);
+}
+
+/* Shared palette color roles; generated for Obsidian or rendered by Omarchy. */
+.theme-light {
+  --color-base-00: #f1e9d2;
+  --color-base-05: color-mix(in srgb, #f1e9d2 95%, #545464);
+  --color-base-10: color-mix(in srgb, #f1e9d2 90%, #545464);
+  --color-base-20: color-mix(in srgb, #f1e9d2 85%, #545464);
+  --color-base-25: color-mix(in srgb, #f1e9d2 80%, #545464);
+  --color-base-30: color-mix(in srgb, #f1e9d2 75%, #545464);
+  --color-base-35: color-mix(in srgb, #f1e9d2 70%, #545464);
+  --color-base-40: color-mix(in srgb, #f1e9d2 60%, #545464);
+  --color-base-50: color-mix(in srgb, #f1e9d2 50%, #545464);
+  --color-base-60: color-mix(in srgb, #f1e9d2 40%, #545464);
+  --color-base-70: color-mix(in srgb, #f1e9d2 30%, #545464);
+  --color-base-100: #545464;
+
+  --background-primary: #f1e9d2;
+  --background-primary-alt: #faf4df;
+  --background-secondary: #e6dcc0;
+  --background-secondary-alt: #d8cdb0;
+  --background-modifier-hover: color-mix(in srgb, #545464 8%, #f1e9d2);
+  --background-modifier-active-hover: color-mix(in srgb, #4d699b 16%, #f1e9d2);
+  --background-modifier-border: color-mix(in srgb, #545464 20%, #f1e9d2);
+  --background-modifier-border-hover: color-mix(in srgb, #545464 35%, #f1e9d2);
+  --background-modifier-border-focus: #4d699b;
+  --background-modifier-form-field: #faf4df;
+
+  --text-normal: #545464;
+  --text-muted: color-mix(in srgb, #545464 95%, #f1e9d2);
+  --text-faint: #8a8980;
+  --text-on-accent: #f1e9d2;
+  --text-selection: #c9cbd1;
+  --text-highlight-bg: color-mix(in srgb, #77713f 30%, transparent);
+  --text-accent: #4d699b;
+  --text-accent-hover: color-mix(in srgb, #4d699b 90%, #545464);
+  /* Mix semantic text toward normal text for small-label contrast. */
+  --text-error: color-mix(in srgb, #c84053 25%, #545464);
+  --text-success: color-mix(in srgb, #6f894e 25%, #545464);
+  --text-warning: color-mix(in srgb, #77713f 25%, #545464);
+
+  --color-accent: #4d699b;
+  --color-accent-1: #4d699b;
+  --color-accent-2: color-mix(in srgb, #4d699b 90%, #545464);
+  --interactive-normal: #e6dcc0;
+  --interactive-hover: color-mix(in srgb, #545464 10%, #e6dcc0);
+  --interactive-accent: #4d699b;
+  --interactive-accent-hover: color-mix(in srgb, #4d699b 90%, #545464);
+  --input-background: #faf4df;
+  --checkbox-color: #4d699b;
+  --checkbox-color-hover: var(--interactive-accent-hover);
+  --checkbox-marker-color: #f1e9d2;
+  --toggle-color: #4d699b;
+
+  --icon-color: #545464;
+  --icon-color-hover: #43436c;
+  --icon-color-active: #4d699b;
+  --icon-color-focused: #4d699b;
+  --nav-item-color: #545464;
+  --nav-item-color-hover: #43436c;
+  --nav-item-color-active: #43436c;
+  --nav-item-background-hover: var(--background-modifier-hover);
+  --nav-item-background-active: #c9cbd1;
+  --tab-container-background: #e6dcc0;
+  --tab-background-active: #f1e9d2;
+  --tab-text-color: #545464;
+  --tab-text-color-focused: #545464;
+  --tab-text-color-active: #43436c;
+  --tab-text-color-focused-active: #43436c;
+  --titlebar-background: #f1e9d2;
+  --titlebar-background-focused: #f1e9d2;
+  --titlebar-text-color: #545464;
+  --titlebar-text-color-focused: #43436c;
+
+  --link-color: #4d699b;
+  --link-color-hover: var(--interactive-accent-hover);
+  --link-external-color: #4d699b;
+  --link-external-color-hover: var(--interactive-accent-hover);
+  --h1-color: #43436c;
+  --h2-color: #4d699b;
+  --h3-color: #43436c;
+  --h4-color: #4d699b;
+  --h5-color: #43436c;
+  --h6-color: #545464;
+  --code-background: #e6dcc0;
+  --code-normal: #545464;
+  --code-comment: var(--text-muted);
+  --code-function: color-mix(in srgb, #4d699b 25%, #545464);
+  --code-keyword: color-mix(in srgb, #b35b79 25%, #545464);
+  --code-string: color-mix(in srgb, #6f894e 25%, #545464);
+  --code-value: color-mix(in srgb, #cc6d00 25%, #545464);
+  --tag-color: #545464;
+  --tag-color-hover: #43436c;
+  --tag-background: #c9cbd1;
+  --tag-background-hover: var(--background-modifier-active-hover);
+  --blockquote-border-color: #4d699b;
+  --graph-text: #545464;
+  --graph-line: var(--background-modifier-border);
+  --graph-node: #4d699b;
+  --graph-node-focused: #b35b79;
+  --graph-node-tag: #597b75;
+  --graph-node-attachment: #6f894e;
+  --scrollbar-bg: color-mix(in srgb, #545464 20%, transparent);
+  --scrollbar-thumb-bg: color-mix(in srgb, #545464 30%, transparent);
+  --scrollbar-active-thumb-bg: color-mix(in srgb, #545464 45%, transparent);
+}

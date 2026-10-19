@@ -100,3 +100,28 @@ backed-up native registrations, flags and refresh/export hooks, and remove the
 new helper/sudoers files through administrator authentication. Reapply the chosen
 Omarchy theme to restore its generated color policy. Do not replace unrelated
 browser policies or an existing full profile.
+
+## Obsidian
+
+Omarchy already renders `obsidian.css` and copies it to the **Omarchy** theme in
+registered Obsidian vaults on system theme changes. No extra plugin or hook is
+needed. To use the shared control/text roles, first back up an existing user
+template and affected vault theme CSS, then install the generated override:
+
+```sh
+install -Dm644 themes/platforms/linux-omarchy/obsidian.css.tpl \
+  "$HOME/.config/omarchy/themed/obsidian.css.tpl"
+omarchy theme refresh
+```
+
+Select **Omarchy** in the intended vault's **Settings → Appearance → Themes**.
+Set its base color scheme to **Adapt to system**. Omarchy's synchronization
+copies the CSS but does not choose the theme in Obsidian for you. It updates
+registered vaults, so review that list before refreshing. Backups, vault paths
+and the vault's appearance/workspace files stay local.
+
+The user template follows the current Omarchy palette for both scheme selectors;
+it is not hardcoded to Kanagawa. To restore the stock styling, remove this user
+override (or restore the prior one) and refresh the current theme again. Other
+Obsidian themes and settings are not managed by this adapter. For portable
+Wave/Lotus use, see the [Obsidian guide](../../apps/obsidian/README.md).

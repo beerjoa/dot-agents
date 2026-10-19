@@ -1,0 +1,104 @@
+/* Shared palette color roles; generated for Obsidian or rendered by Omarchy. */
+.theme-dark, .theme-light {
+  --color-base-00: {{ background }};
+  --color-base-05: color-mix(in srgb, {{ background }} 95%, {{ foreground }});
+  --color-base-10: color-mix(in srgb, {{ background }} 90%, {{ foreground }});
+  --color-base-20: color-mix(in srgb, {{ background }} 85%, {{ foreground }});
+  --color-base-25: color-mix(in srgb, {{ background }} 80%, {{ foreground }});
+  --color-base-30: color-mix(in srgb, {{ background }} 75%, {{ foreground }});
+  --color-base-35: color-mix(in srgb, {{ background }} 70%, {{ foreground }});
+  --color-base-40: color-mix(in srgb, {{ background }} 60%, {{ foreground }});
+  --color-base-50: color-mix(in srgb, {{ background }} 50%, {{ foreground }});
+  --color-base-60: color-mix(in srgb, {{ background }} 40%, {{ foreground }});
+  --color-base-70: color-mix(in srgb, {{ background }} 30%, {{ foreground }});
+  --color-base-100: {{ foreground }};
+
+  --background-primary: {{ background }};
+  --background-primary-alt: {{ lighter_background }};
+  --background-secondary: {{ dark_background }};
+  --background-secondary-alt: {{ darker_background }};
+  --background-modifier-hover: color-mix(in srgb, {{ foreground }} 8%, {{ background }});
+  --background-modifier-active-hover: color-mix(in srgb, {{ blue }} 16%, {{ background }});
+  --background-modifier-border: color-mix(in srgb, {{ foreground }} 20%, {{ background }});
+  --background-modifier-border-hover: color-mix(in srgb, {{ foreground }} 35%, {{ background }});
+  --background-modifier-border-focus: {{ blue }};
+  --background-modifier-form-field: {{ lighter_background }};
+
+  --text-normal: {{ foreground }};
+  --text-muted: color-mix(in srgb, {{ foreground }} 95%, {{ background }});
+  --text-faint: {{ dark_foreground }};
+  --text-on-accent: {{ background }};
+  --text-selection: {{ selection }};
+  --text-highlight-bg: color-mix(in srgb, {{ yellow }} 30%, transparent);
+  --text-accent: {{ blue }};
+  --text-accent-hover: color-mix(in srgb, {{ blue }} 90%, {{ foreground }});
+  /* Mix semantic text toward normal text for small-label contrast. */
+  --text-error: color-mix(in srgb, {{ red }} 25%, {{ foreground }});
+  --text-success: color-mix(in srgb, {{ green }} 25%, {{ foreground }});
+  --text-warning: color-mix(in srgb, {{ yellow }} 25%, {{ foreground }});
+
+  --color-accent: {{ blue }};
+  --color-accent-1: {{ blue }};
+  --color-accent-2: color-mix(in srgb, {{ blue }} 90%, {{ foreground }});
+  --interactive-normal: {{ dark_background }};
+  --interactive-hover: color-mix(in srgb, {{ foreground }} 10%, {{ dark_background }});
+  --interactive-accent: {{ blue }};
+  --interactive-accent-hover: color-mix(in srgb, {{ blue }} 90%, {{ foreground }});
+  --input-background: {{ lighter_background }};
+  --checkbox-color: {{ blue }};
+  --checkbox-color-hover: var(--interactive-accent-hover);
+  --checkbox-marker-color: {{ background }};
+  --toggle-color: {{ blue }};
+
+  --icon-color: {{ foreground }};
+  --icon-color-hover: {{ bright_foreground }};
+  --icon-color-active: {{ blue }};
+  --icon-color-focused: {{ blue }};
+  --nav-item-color: {{ foreground }};
+  --nav-item-color-hover: {{ bright_foreground }};
+  --nav-item-color-active: {{ bright_foreground }};
+  --nav-item-background-hover: var(--background-modifier-hover);
+  --nav-item-background-active: {{ selection }};
+  --tab-container-background: {{ dark_background }};
+  --tab-background-active: {{ background }};
+  --tab-text-color: {{ foreground }};
+  --tab-text-color-focused: {{ foreground }};
+  --tab-text-color-active: {{ bright_foreground }};
+  --tab-text-color-focused-active: {{ bright_foreground }};
+  --titlebar-background: {{ background }};
+  --titlebar-background-focused: {{ background }};
+  --titlebar-text-color: {{ foreground }};
+  --titlebar-text-color-focused: {{ bright_foreground }};
+
+  --link-color: {{ blue }};
+  --link-color-hover: var(--interactive-accent-hover);
+  --link-external-color: {{ blue }};
+  --link-external-color-hover: var(--interactive-accent-hover);
+  --h1-color: {{ bright_foreground }};
+  --h2-color: {{ blue }};
+  --h3-color: {{ bright_foreground }};
+  --h4-color: {{ blue }};
+  --h5-color: {{ bright_foreground }};
+  --h6-color: {{ foreground }};
+  --code-background: {{ dark_background }};
+  --code-normal: {{ foreground }};
+  --code-comment: var(--text-muted);
+  --code-function: color-mix(in srgb, {{ blue }} 25%, {{ foreground }});
+  --code-keyword: color-mix(in srgb, {{ magenta }} 25%, {{ foreground }});
+  --code-string: color-mix(in srgb, {{ green }} 25%, {{ foreground }});
+  --code-value: color-mix(in srgb, {{ orange }} 25%, {{ foreground }});
+  --tag-color: {{ foreground }};
+  --tag-color-hover: {{ bright_foreground }};
+  --tag-background: {{ selection }};
+  --tag-background-hover: var(--background-modifier-active-hover);
+  --blockquote-border-color: {{ blue }};
+  --graph-text: {{ foreground }};
+  --graph-line: var(--background-modifier-border);
+  --graph-node: {{ blue }};
+  --graph-node-focused: {{ magenta }};
+  --graph-node-tag: {{ cyan }};
+  --graph-node-attachment: {{ green }};
+  --scrollbar-bg: color-mix(in srgb, {{ foreground }} 20%, transparent);
+  --scrollbar-thumb-bg: color-mix(in srgb, {{ foreground }} 30%, transparent);
+  --scrollbar-active-thumb-bg: color-mix(in srgb, {{ foreground }} 45%, transparent);
+}

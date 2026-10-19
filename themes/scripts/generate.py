@@ -25,6 +25,8 @@ def render():
     files = {}
     palettes = {}
     keys = json.loads((ROOT / 'apps/chromium/theme-keys.json').read_text())
+    obsidian_template = (ROOT / 'apps/obsidian/theme.css.tpl').read_text()
+    obsidian = ['/* Generated Wave/Lotus theme; edit theme.css.tpl and the shared palettes. */']
     codex = ['# Generated color-only snippet; merge into existing config.toml.',
              '[desktop]', 'appearanceTheme = "system"']
     for slug, name, mode in PALETTES:
@@ -32,6 +34,8 @@ def render():
         if p['mode'] != mode or any(not re.fullmatch(r'#[0-9a-fA-F]{6}', v) for k, v in p.items() if k != 'mode'):
             raise ValueError(f'Invalid palette: {slug}')
         palettes[mode] = p
+        obsidian.append(re.sub(r'{{ (\w+) }}', lambda match: p[match[1]], obsidian_template)
+                        .replace('.theme-dark, .theme-light', f'.theme-{mode}'))
         colors = {k: rgb(p['foreground']) for k in ('toolbar_text', 'bookmark_text', 'toolbar_button_icon', 'ntp_text')}
         colors.update({k: rgb(p['bright_foreground']) for k in ('tab_text', 'omnibox_text')})
         inactive_text = p['light_foreground'] if mode == 'dark' else p['foreground']
@@ -82,6 +86,8 @@ def render():
             '    { "LazyVim/LazyVim", opts = { colorscheme = "kanagawa-' + variant + '" } },\n'
             '}\n')
     files['apps/codex/appearance.toml'] = '\n'.join(codex) + '\n'
+    files['apps/obsidian/theme.css'] = '\n'.join(obsidian)
+    files['platforms/linux-omarchy/obsidian.css.tpl'] = obsidian_template
     theme = {'mode': 1, 'engine': 'dynamicTheme', 'darkColorScheme': 'Default', 'lightColorScheme': 'Default'}
     for mode, p in palettes.items():
         theme[f'{mode}SchemeBackgroundColor'] = p['background']

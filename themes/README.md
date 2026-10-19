@@ -17,6 +17,7 @@ from Omarchy and from the browser automation.
 - [`apps/codex/appearance.toml`](apps/codex/appearance.toml): desktop appearance tables only.
 - [`apps/terminals/`](apps/terminals/): Ghostty, Kitty and Alacritty color snippets.
 - [`apps/neovim/`](apps/neovim/): LazyVim/kanagawa.nvim snippets.
+- [`apps/obsidian/`](apps/obsidian/): portable Wave/Lotus theme and shared CSS source.
 - [`bridge/`](bridge/): native host source and machine-local registration preparation.
 - [`platforms/`](platforms/): OS-specific application, hooks and policy handling.
 - [`assets/`](assets/): image inventory, kept separate from color configuration.
@@ -54,6 +55,8 @@ No private signing keys are required for unpacked local use.
 - Terminals: include or import the desired color file using that terminal's
   configuration. Preserve existing fonts, shell commands, keybindings and paths.
 - Neovim: use the snippets only if the existing setup uses LazyVim and kanagawa.nvim.
+- Obsidian: install the two portable theme files in the intended vault and choose
+  its base scheme, or use the existing Omarchy theme with the Linux user template.
 
 ## Platform status
 

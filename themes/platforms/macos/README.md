@@ -11,6 +11,9 @@
 - Include the color snippet for Ghostty, Kitty or Alacritty if that application
   is already part of the Mac setup. Fonts and commands remain machine-local.
 - Choose a LazyVim snippet only for a compatible existing Neovim setup.
+- Install the [portable Obsidian theme](../../apps/obsidian/README.md) in each
+  intended vault and select **Adapt to system** for OS-driven Wave/Lotus switching.
+  Actual macOS application has not been verified.
 
 ## Optional native host preparation
 

@@ -18,6 +18,9 @@
   only colors; they do not copy terminal programs, hardware settings or keybindings.
 - Neovim snippets retain the existing LazyVim/kanagawa.nvim configuration shape
   and override only the palette background.
+- Obsidian CSS is authored here from the shared palettes using
+  [documented CSS variables](https://docs.obsidian.md/Reference/CSS+variables/Foundations/Colors).
+  The Linux adapter uses Omarchy's existing user template and vault-theme sync.
 
 Review upstream changes before rebasing the Dark Reader patch. The extension
 build and its dependencies are deliberately not vendored here.
