@@ -146,15 +146,6 @@
           "modelProfile": "Tier 1 (Complex Implementation, II 47.8-50.2, Eng 49.7-51.9, TBench4 48-51.5%): Use medium (15.6s) or high for non-trivial multi-file or stateful implementation."
         },
         {
-          "provider": "google-antigravity",
-          "model": "claude-sonnet-5-5",
-          "weight": 1,
-          "reasoningEfforts": [
-            "high"
-          ],
-          "modelProfile": "Tier 1B (High-Capability Worker, II 46.8, Eng 48.3, FrontierCode 44.3%, TBench4 43.9%): Strong multi-file feature implementation and refactoring via Antigravity."
-        },
-        {
           "provider": "opencode-go",
           "model": "mimo-v2.6-pro",
           "weight": 1,
@@ -332,16 +323,7 @@
           "reasoningEfforts": [
             "medium"
           ],
-          "modelProfile": "Tier 1A (Top Native Pro Worker, II 47.8, Eng 49.7, TBench4 48.0%, LCR 83.3%, E2E 15.6s): Highest engineering and agentic benchmark in this combo for architecture, auth, migration, and concurrency."
-        },
-        {
-          "provider": "google-antigravity",
-          "model": "claude-sonnet-5-5",
-          "weight": 1,
-          "reasoningEfforts": [
-            "high"
-          ],
-          "modelProfile": "Tier 1B (Antigravity Sonnet Pro Worker, II 46.8, Eng 48.3, FrontierCode 44.3%, TBench4 43.9%): Strong frontier coder for complex multi-file implementation and refactoring."
+          "modelProfile": "Tier 1 (Top Pro Worker, II 47.8, Eng 49.7, TBench4 48.0%, LCR 83.3%, E2E 15.6s): Highest engineering and agentic benchmark in this combo for architecture, auth, migration, and concurrency."
         },
         {
           "provider": "opencode-go",
@@ -425,22 +407,13 @@
           "modelProfile": "Tier 3B (High-Quota Routine Spec Auditor, II 48.1, StratOps 51.2, GDPval 59.0%, Hallucination 32.9%, 45k req/5h): Cost-efficient reviewer for simple, well-bounded plans."
         },
         {
-          "provider": "google-antigravity",
-          "model": "claude-opus-5-5",
-          "weight": 1,
-          "reasoningEfforts": [
-            "high"
-          ],
-          "modelProfile": "Tier 1A (Apex Auditor via Antigravity, II 53.6, StratOps 59.3, Eng 56.2, FrontierCode 54.0%): Reserve ONLY for the hardest, highest-risk architecture, security, concurrency, or system-wide spec audits."
-        },
-        {
           "provider": "anthropic",
           "model": "claude-opus-5-5",
           "weight": 1,
           "reasoningEfforts": [
             "high"
           ],
-          "modelProfile": "Tier 1B (Apex Auditor Direct Fallback, II 53.6, StratOps 59.3, Eng 56.2, FrontierCode 54.0%, scarce quota): Reserve ONLY as direct Anthropic fallback for the hardest, highest-risk spec audits."
+          "modelProfile": "Tier 1 (Apex Auditor, II 53.6, StratOps 59.3, Eng 56.2, FrontierCode 54.0%, scarce quota): Reserve ONLY for the hardest, highest-risk architecture, security, concurrency, or system-wide spec audits."
         }
       ]
     },
