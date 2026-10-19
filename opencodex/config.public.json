@@ -101,10 +101,34 @@
       "defaultEffort": "high",
       "reasoningEffortMode": "adaptive",
       "targets": [
-        { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["high", "xhigh"] },
-        { "provider": "anthropic", "model": "claude-opus-5-5", "weight": 1, "reasoningEfforts": ["high"] },
-        { "provider": "google-antigravity", "model": "gemini-4-argon", "weight": 1, "reasoningEfforts": ["high"] },
-        { "provider": "opencode-go", "model": "muse-spark-1.3-contributor", "weight": 1, "reasoningEfforts": ["max"] }
+        {
+          "provider": "openai",
+          "model": "gpt-6.1-sol",
+          "weight": 1,
+          "reasoningEfforts": ["high", "xhigh"],
+          "modelProfile": "Tier 2 (primary frontier auditor): Default high-capability spec and plan reviewer; use high for standard plans and xhigh for complex cross-module architecture."
+        },
+        {
+          "provider": "google-antigravity",
+          "model": "gemini-4-argon",
+          "weight": 1,
+          "reasoningEfforts": ["high"],
+          "modelProfile": "Tier 3 (large-context frontier auditor): Strong spec and interface-consistency reviewer for broad multi-file plans."
+        },
+        {
+          "provider": "opencode-go",
+          "model": "muse-spark-1.3-contributor",
+          "weight": 1,
+          "reasoningEfforts": ["max"],
+          "modelProfile": "Tier 4 (routine spec auditor): Cost-efficient reviewer for simple, well-bounded plans and straightforward spec checks."
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-opus-5-5",
+          "weight": 1,
+          "reasoningEfforts": ["high"],
+          "modelProfile": "Tier 1 (apex auditor, scarce quota): Reserve ONLY for the hardest, highest-risk architecture, security, concurrency, or ambiguous system-wide specification audits."
+        }
       ]
     },
     "sp-code-review": {
@@ -113,10 +137,34 @@
       "defaultEffort": "high",
       "reasoningEffortMode": "adaptive",
       "targets": [
-        { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["high", "xhigh"] },
-        { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["high", "max"] },
-        { "provider": "opencode-go", "model": "deepseek-v4.1-flash", "weight": 1, "reasoningEfforts": ["max"] },
-        { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1, "reasoningEfforts": ["high"] }
+        {
+          "provider": "openai",
+          "model": "gpt-6.1-sol",
+          "weight": 1,
+          "reasoningEfforts": ["medium", "high"],
+          "modelProfile": "Tier 1 (highest in this combo): Frontier code reviewer for complex logic, concurrency, security, and multi-file diffs; use medium for moderate diffs and high for complex diffs."
+        },
+        {
+          "provider": "openai",
+          "model": "gpt-6-luna",
+          "weight": 1,
+          "reasoningEfforts": ["max"],
+          "modelProfile": "Tier 2 (strong standard reviewer): Fast, high-accuracy code and spec-compliance reviewer for standard implementation tasks."
+        },
+        {
+          "provider": "opencode-go",
+          "model": "deepseek-v4.1-flash",
+          "weight": 1,
+          "reasoningEfforts": ["max"],
+          "modelProfile": "Tier 3 (cost-efficient reviewer): Capable reasoning reviewer for bounded task diffs and scoped fix re-reviews."
+        },
+        {
+          "provider": "google-antigravity",
+          "model": "gemini-3.8-flash",
+          "weight": 1,
+          "reasoningEfforts": ["high"],
+          "modelProfile": "Tier 4 (lightweight reviewer): Fast reviewer for small, straightforward diffs and low-risk re-reviews."
+        }
       ]
     },
     "sp-debug": {
