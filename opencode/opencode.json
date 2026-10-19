@@ -156,13 +156,6 @@
             "output": 32000
           }
         },
-        "cursor/grok-4.7": {
-          "name": "grok-4.7 (cursor)",
-          "limit": {
-            "context": 350000,
-            "output": 32000
-          }
-        },
         "google-antigravity/claude-opus-5-5": {
           "name": "claude-opus-5-5 (google-antigravity)",
           "limit": {
