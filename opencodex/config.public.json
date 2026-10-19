@@ -32,6 +32,7 @@
       "strategy": "jev",
       "stickyLimit": 1,
       "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
       "targets": [
         {
           "provider": "openai",
@@ -54,13 +55,22 @@
           "modelProfile": "Tier 1B (High-Precision Frontier, II 52.6, TBench4 57.1%, Hallucination 15.1%): Best for complex multi-file analysis and fact-critical reasoning."
         },
         {
+          "provider": "google-antigravity",
+          "model": "claude-sonnet-5-5",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high"
+          ],
+          "modelProfile": "Tier 2A (Agentic Frontier, II 46.8, Eng 48.3, StratOps 51.6, FrontierCode 44.3%): Strong general reasoning, synthesis, and multi-step planning via Antigravity quota."
+        },
+        {
           "provider": "opencode-go",
           "model": "muse-spark-1.3-contributor",
           "weight": 1,
           "reasoningEfforts": [
             "max"
           ],
-          "modelProfile": "Tier 2 (Balanced Frontier, II 48.1, GDPval 59.0%, Hallucination 32.9%): Strong for synthesis, documentation, planning, and medium-complexity reasoning."
+          "modelProfile": "Tier 2B (High-Quota Balanced Frontier, II 48.1, GDPval 59.0%, Hallucination 32.9%, 45k req/5h): High-allowance model for synthesis, documentation, planning, and medium-complexity reasoning."
         },
         {
           "provider": "openai",
@@ -72,13 +82,13 @@
           ],
           "modelProfile": "Tier 3 (Routine Generalist, II 32.9-38.1, FrontierCode 41.9%): Fast native Codex model for straightforward general subagent tasks."
         }
-      ],
-      "reasoningEffortMode": "adaptive"
+      ]
     },
     "explorer": {
       "strategy": "jev",
       "stickyLimit": 1,
       "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
       "targets": [
         {
           "provider": "openai",
@@ -102,18 +112,28 @@
           "modelProfile": "Tier 1 (Deep Context Explorer, II 39.8-40.9, LCR 84.0%, GPQA 95.3%, E2E 19s): Best for broad multi-file architecture discovery and cross-module tracing."
         },
         {
+          "provider": "opencode-go",
+          "model": "glm-5.3-flash",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high",
+            "max"
+          ],
+          "modelProfile": "Tier 2B (Low-Hallucination Explorer, II 41.8, LCR 80.0%, Hallucination 27.6%, 6.3k req/5h): High-accuracy search and dependency lookup."
+        },
+        {
           "provider": "cursor",
           "model": "composer-2.5",
           "weight": 1,
           "modelProfile": "Tier 3 (Fast Light Lookup): Use for simple file location, path checks, and small read-only lookups."
         }
-      ],
-      "reasoningEffortMode": "adaptive"
+      ]
     },
     "worker": {
       "strategy": "jev",
       "stickyLimit": 1,
       "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
       "targets": [
         {
           "provider": "openai",
@@ -126,14 +146,23 @@
           "modelProfile": "Tier 1 (Complex Implementation, II 47.8-50.2, Eng 49.7-51.9, TBench4 48-51.5%): Use medium (15.6s) or high for non-trivial multi-file or stateful implementation."
         },
         {
-          "provider": "openai",
-          "model": "gpt-6-luna",
+          "provider": "google-antigravity",
+          "model": "claude-sonnet-5-5",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high"
+          ],
+          "modelProfile": "Tier 1B (High-Capability Worker, II 46.8, Eng 48.3, FrontierCode 44.3%, TBench4 43.9%): Strong multi-file feature implementation and refactoring via Antigravity."
+        },
+        {
+          "provider": "opencode-go",
+          "model": "mimo-v2.6-pro",
           "weight": 1,
           "reasoningEfforts": [
             "high",
             "max"
           ],
-          "modelProfile": "Tier 2B (Native Codex Implementer, FrontierCode 41.9%, LCR 83.3%): Reliable for standard Codex code-mode and apply_patch implementation."
+          "modelProfile": "Tier 2A (Deep Code Worker, II 46.3, Eng 46.9, FrontierCode 45.4%, SciCode 60.9%, LCR 86.3%, 3.2k req/5h): Top open-weights coder for complex logic and long-context edits."
         },
         {
           "provider": "opencode-go",
@@ -143,17 +172,27 @@
             "high",
             "max"
           ],
-          "modelProfile": "Tier 2A (Fast High-Code Worker, II 45.1, FrontierCode 44.0%, TBench4 33.8%, 212 t/s, E2E 12.2s): Strong, fast coder for well-specified feature tasks."
+          "modelProfile": "Tier 2B (Fast High-Quota Worker, II 45.1, FrontierCode 44.0%, TBench4 33.8%, E2E 12.2s, 34.7k req/5h): Ultra-fast, high-allowance coder for well-specified feature tasks."
         },
         {
-          "provider": "opencode-zen",
-          "model": "deepseek-v4.1-flash-free",
+          "provider": "opencode-go",
+          "model": "glm-5.3-flash",
           "weight": 1,
           "reasoningEfforts": [
             "high",
             "max"
           ],
-          "modelProfile": "Tier 3 (Free High-Speed Coder, II 45.1, FrontierCode 44.0%, E2E 12.2s): Cost-free fast worker for isolated implementation and test writing."
+          "modelProfile": "Tier 3A (Low-Hallucination Worker, II 41.8, Eng 43.8, Hallucination 27.6%, 6.3k req/5h): Reliable mid-tier worker for standard features and tests."
+        },
+        {
+          "provider": "openai",
+          "model": "gpt-6-luna",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high",
+            "max"
+          ],
+          "modelProfile": "Tier 3B (Native Codex Implementer, FrontierCode 41.9%, LCR 83.3%): Reliable for standard Codex code-mode and apply_patch implementation."
         },
         {
           "provider": "google-antigravity",
@@ -170,13 +209,13 @@
           "weight": 1,
           "modelProfile": "Tier 5 (Simple Boilerplate Edit): Use only for trivial single-file or mechanical edits."
         }
-      ],
-      "reasoningEffortMode": "adaptive"
+      ]
     },
     "sp-explorer": {
       "strategy": "jev",
       "stickyLimit": 1,
       "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
       "targets": [
         {
           "provider": "openai",
@@ -200,18 +239,28 @@
           "modelProfile": "Tier 1 (Deep Context Explorer, II 39.8-40.9, LCR 84.0%, GPQA 95.3%, E2E 19s): Best for broad multi-file architecture discovery and cross-module tracing."
         },
         {
+          "provider": "opencode-go",
+          "model": "glm-5.3-flash",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high",
+            "max"
+          ],
+          "modelProfile": "Tier 2B (Low-Hallucination Explorer, II 41.8, LCR 80.0%, Hallucination 27.6%, 6.3k req/5h): High-accuracy search and dependency lookup."
+        },
+        {
           "provider": "cursor",
           "model": "composer-2.5",
           "weight": 1,
           "modelProfile": "Tier 3 (Fast Light Lookup): Use for simple file location, path checks, and small read-only lookups."
         }
-      ],
-      "reasoningEffortMode": "adaptive"
+      ]
     },
     "sp-worker": {
       "strategy": "jev",
       "stickyLimit": 1,
       "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
       "targets": [
         {
           "provider": "openai",
@@ -221,7 +270,17 @@
             "high",
             "max"
           ],
-          "modelProfile": "Tier 1B (Native Codex TDD Worker, FrontierCode 41.9%, LCR 83.3%): Primary native tool/apply_patch worker; use max for complex tasks and high for standard tasks."
+          "modelProfile": "Tier 2B (Native Codex TDD Worker, FrontierCode 41.9%, LCR 83.3%): Primary native tool/apply_patch worker; use max for complex tasks and high for standard tasks."
+        },
+        {
+          "provider": "opencode-go",
+          "model": "mimo-v2.6-pro",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high",
+            "max"
+          ],
+          "modelProfile": "Tier 1A (Top Open-Weights TDD Worker, II 46.3, Eng 46.9, FrontierCode 45.4%, LCR 86.3%, 3.2k req/5h): Highest coding benchmark in sp-worker for logic-heavy tasks."
         },
         {
           "provider": "opencode-go",
@@ -231,17 +290,17 @@
             "high",
             "max"
           ],
-          "modelProfile": "Tier 1A (High-Benchmark Fast Worker, II 45.1, FrontierCode 44.0%, TBench4 33.8%, E2E 12.2s): Top coding benchmark in sp-worker for algorithmic and logic-heavy tasks."
+          "modelProfile": "Tier 1B (High-Speed TDD Worker, II 45.1, FrontierCode 44.0%, TBench4 33.8%, E2E 12.2s, 34.7k req/5h): Fast, high-quota worker for bounded feature and test implementation."
         },
         {
-          "provider": "opencode-zen",
-          "model": "deepseek-v4.1-flash-free",
+          "provider": "opencode-go",
+          "model": "glm-5.3-flash",
           "weight": 1,
           "reasoningEfforts": [
             "high",
             "max"
           ],
-          "modelProfile": "Tier 2 (Free High-Speed Worker, II 45.1, FrontierCode 44.0%, E2E 12.2s): Cost-free fast worker for bounded TDD tasks."
+          "modelProfile": "Tier 2A (Low-Hallucination Worker, II 41.8, Eng 43.8, Hallucination 27.6%, 6.3k req/5h): Reliable worker for standard TDD steps and test suites."
         },
         {
           "provider": "google-antigravity",
@@ -258,13 +317,13 @@
           "weight": 1,
           "modelProfile": "Tier 4 (Simple Mechanical Task): Use only for small, mechanical, single-file tasks."
         }
-      ],
-      "reasoningEffortMode": "adaptive"
+      ]
     },
     "sp-worker-pro": {
       "strategy": "jev",
       "stickyLimit": 1,
       "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
       "targets": [
         {
           "provider": "openai",
@@ -273,7 +332,25 @@
           "reasoningEfforts": [
             "medium"
           ],
-          "modelProfile": "Tier 1 (Top Pro Worker, II 47.8, Eng 49.7, TBench4 48.0%, LCR 83.3%, E2E 15.6s): Highest engineering and agentic benchmark in this combo for architecture, auth, migration, and concurrency."
+          "modelProfile": "Tier 1A (Top Native Pro Worker, II 47.8, Eng 49.7, TBench4 48.0%, LCR 83.3%, E2E 15.6s): Highest engineering and agentic benchmark in this combo for architecture, auth, migration, and concurrency."
+        },
+        {
+          "provider": "google-antigravity",
+          "model": "claude-sonnet-5-5",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high"
+          ],
+          "modelProfile": "Tier 1B (Antigravity Sonnet Pro Worker, II 46.8, Eng 48.3, FrontierCode 44.3%, TBench4 43.9%): Strong frontier coder for complex multi-file implementation and refactoring."
+        },
+        {
+          "provider": "opencode-go",
+          "model": "mimo-v2.6-pro",
+          "weight": 1,
+          "reasoningEfforts": [
+            "max"
+          ],
+          "modelProfile": "Tier 2A (Deep Logic Pro Worker, II 46.3, Eng 46.9, FrontierCode 45.4%, SciCode 60.9%, LCR 86.3%): Strong second tier for algorithm-heavy and long-context implementation."
         },
         {
           "provider": "opencode-go",
@@ -282,7 +359,7 @@
           "reasoningEfforts": [
             "max"
           ],
-          "modelProfile": "Tier 2 (Fast Deep-Code Worker, II 45.1, Eng 45.2, FrontierCode 44.0%, TBench4 33.8%, E2E 12.2s): Strong second tier for algorithm-heavy and multi-file implementation."
+          "modelProfile": "Tier 2B (Fast High-Code Pro Worker, II 45.1, Eng 45.2, FrontierCode 44.0%, TBench4 33.8%, E2E 12.2s, 34.7k req/5h): High-speed coder for multi-file feature implementation."
         },
         {
           "provider": "openai",
@@ -302,13 +379,13 @@
           ],
           "modelProfile": "Tier 4 (Fast Integration Worker, II 40.9, Eng 42.8, SRE 52.5%, E2E 19.4s): Use for lighter integration or infrastructure tasks."
         }
-      ],
-      "reasoningEffortMode": "adaptive"
+      ]
     },
     "sp-spec-review": {
       "strategy": "jev",
       "stickyLimit": 1,
       "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
       "targets": [
         {
           "provider": "openai",
@@ -318,7 +395,7 @@
             "high",
             "xhigh"
           ],
-          "modelProfile": "Tier 2 (Primary Frontier Auditor, II 50.2-51.0, StratOps 54.9-56.0, LCR 82.3%): Default high-capability spec/plan reviewer; use high (56s) for standard plans and xhigh for complex architecture."
+          "modelProfile": "Tier 2B (Primary Frontier Auditor, II 50.2-51.0, StratOps 54.9-56.0, LCR 82.3%): Default high-capability spec/plan reviewer; use high (56s) for standard plans and xhigh for complex architecture."
         },
         {
           "provider": "google-antigravity",
@@ -330,13 +407,31 @@
           "modelProfile": "Tier 2A (Low-Hallucination Frontier Auditor, II 52.6, StratOps 56.2, Eng 55.2, Hallucination 15.1%): Best for broad multi-file interface and requirement consistency checks."
         },
         {
+          "provider": "google-antigravity",
+          "model": "claude-sonnet-5-5",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high"
+          ],
+          "modelProfile": "Tier 3A (Sonnet Spec Auditor, II 46.8, StratOps 51.6, Eng 48.3, FrontierCode 44.3%): Strong architectural and requirement reviewer via Antigravity quota."
+        },
+        {
           "provider": "opencode-go",
           "model": "muse-spark-1.3-contributor",
           "weight": 1,
           "reasoningEfforts": [
             "max"
           ],
-          "modelProfile": "Tier 3 (Routine Spec Auditor, II 48.1, StratOps 51.2, GDPval 59.0%, Hallucination 32.9%): Cost-efficient reviewer for simple, well-bounded plans."
+          "modelProfile": "Tier 3B (High-Quota Routine Spec Auditor, II 48.1, StratOps 51.2, GDPval 59.0%, Hallucination 32.9%, 45k req/5h): Cost-efficient reviewer for simple, well-bounded plans."
+        },
+        {
+          "provider": "google-antigravity",
+          "model": "claude-opus-5-5",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high"
+          ],
+          "modelProfile": "Tier 1A (Apex Auditor via Antigravity, II 53.6, StratOps 59.3, Eng 56.2, FrontierCode 54.0%): Reserve ONLY for the hardest, highest-risk architecture, security, concurrency, or system-wide spec audits."
         },
         {
           "provider": "anthropic",
@@ -345,15 +440,15 @@
           "reasoningEfforts": [
             "high"
           ],
-          "modelProfile": "Tier 1 (Apex Auditor, II 53.6, StratOps 59.3, Eng 56.2, FrontierCode 54.0%, scarce quota): Reserve ONLY for the hardest, highest-risk architecture, security, concurrency, or system-wide spec audits."
+          "modelProfile": "Tier 1B (Apex Auditor Direct Fallback, II 53.6, StratOps 59.3, Eng 56.2, FrontierCode 54.0%, scarce quota): Reserve ONLY as direct Anthropic fallback for the hardest, highest-risk spec audits."
         }
-      ],
-      "reasoningEffortMode": "adaptive"
+      ]
     },
     "sp-code-review": {
       "strategy": "jev",
       "stickyLimit": 1,
       "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
       "targets": [
         {
           "provider": "openai",
@@ -363,7 +458,25 @@
             "medium",
             "high"
           ],
-          "modelProfile": "Tier 1 (Top Code Reviewer, II 47.8-50.2, Eng 49.7-51.9, TBench4 48.0-51.5%): Highest reviewer in this combo; use high for complex security/concurrency diffs and medium (15.6s) for standard multi-file diffs."
+          "modelProfile": "Tier 1A (Top Code Reviewer, II 47.8-50.2, Eng 49.7-51.9, TBench4 48.0-51.5%): Highest reviewer in this combo; use high for complex security/concurrency diffs and medium (15.6s) for standard multi-file diffs."
+        },
+        {
+          "provider": "google-antigravity",
+          "model": "claude-sonnet-5-5",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high"
+          ],
+          "modelProfile": "Tier 1B (Antigravity Sonnet Reviewer, II 46.8, Eng 48.3, FrontierCode 44.3%): Thorough code quality, architecture, and bug reviewer via Antigravity quota."
+        },
+        {
+          "provider": "opencode-go",
+          "model": "mimo-v2.6-pro",
+          "weight": 1,
+          "reasoningEfforts": [
+            "max"
+          ],
+          "modelProfile": "Tier 2A (Deep Logic Code Reviewer, II 46.3, Eng 46.9, FrontierCode 45.4%, LCR 86.3%): Strong reviewer for multi-file logic and long-context diffs."
         },
         {
           "provider": "opencode-go",
@@ -372,7 +485,16 @@
           "reasoningEfforts": [
             "max"
           ],
-          "modelProfile": "Tier 2 (Fast Deep Code Reviewer, II 45.1, Eng 45.2, FrontierCode 44.0%, GDPval 62.3%, E2E 12.2s): Strong, fast reviewer for bounded feature diffs and logic checks."
+          "modelProfile": "Tier 2B (Fast High-Quota Reviewer, II 45.1, Eng 45.2, FrontierCode 44.0%, E2E 12.2s, 34.7k req/5h): Fast, high-allowance reviewer for bounded feature diffs."
+        },
+        {
+          "provider": "opencode-go",
+          "model": "glm-5.3-flash",
+          "weight": 1,
+          "reasoningEfforts": [
+            "max"
+          ],
+          "modelProfile": "Tier 3A (Low-Hallucination Reviewer, II 41.8, Eng 43.8, Hallucination 27.6%, 6.3k req/5h): High-precision reviewer with low false-positive rate."
         },
         {
           "provider": "openai",
@@ -381,7 +503,7 @@
           "reasoningEfforts": [
             "max"
           ],
-          "modelProfile": "Tier 3 (Standard Codex Reviewer, FrontierCode 41.9%, LCR 83.3%, II 38.1): Solid native reviewer for routine task diffs."
+          "modelProfile": "Tier 3B (Standard Codex Reviewer, FrontierCode 41.9%, LCR 83.3%, II 38.1): Solid native reviewer for routine task diffs."
         },
         {
           "provider": "google-antigravity",
@@ -392,13 +514,13 @@
           ],
           "modelProfile": "Tier 4 (Lightweight Fast Reviewer, II 40.9, Eng 42.8, SRE 52.5%, E2E 19.4s): Fast reviewer for small diffs and scoped fix re-reviews."
         }
-      ],
-      "reasoningEffortMode": "adaptive"
+      ]
     },
     "sp-debug": {
       "strategy": "jev",
       "stickyLimit": 1,
       "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
       "targets": [
         {
           "provider": "openai",
@@ -422,12 +544,30 @@
         },
         {
           "provider": "google-antigravity",
+          "model": "claude-sonnet-5-5",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high"
+          ],
+          "modelProfile": "Tier 2A (Antigravity Sonnet Debugger, II 46.8, Eng 48.3, TBench4 43.9%): Strong multi-file call-chain and state-bug analyzer."
+        },
+        {
+          "provider": "opencode-go",
+          "model": "mimo-v2.6-pro",
+          "weight": 1,
+          "reasoningEfforts": [
+            "max"
+          ],
+          "modelProfile": "Tier 2B (Scientific/Algorithmic Debugger, II 46.3, SciCode 60.9%, LCR 86.3%): Strong for algorithmic, data-flow, and long-trace debugging."
+        },
+        {
+          "provider": "google-antigravity",
           "model": "gemini-3.8-flash",
           "weight": 1,
           "reasoningEfforts": [
             "high"
           ],
-          "modelProfile": "Tier 2 (Fast SRE/Runtime Debugger, II 40.9, ITBench SRE 52.5%, TBench2.1 87.6%, E2E 19.4s): Fast debugger for runtime, config, and environment failures."
+          "modelProfile": "Tier 3A (Fast SRE/Runtime Debugger, II 40.9, ITBench SRE 52.5%, TBench2.1 87.6%, E2E 19.4s): Fast debugger for runtime, config, and environment failures."
         },
         {
           "provider": "openai",
@@ -437,10 +577,9 @@
             "high",
             "max"
           ],
-          "modelProfile": "Tier 3 (Routine Test Debugger, FrontierCode 41.9%, II 32.9-38.1): Standard native debugger for localized unit test failures."
+          "modelProfile": "Tier 3B (Routine Test Debugger, FrontierCode 41.9%, II 32.9-38.1): Standard native debugger for localized unit test failures."
         }
-      ],
-      "reasoningEffortMode": "adaptive"
+      ]
     }
   },
   "multiAgentMode": "v1",
