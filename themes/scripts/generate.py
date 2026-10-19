@@ -32,13 +32,17 @@ def render():
         if p['mode'] != mode or any(not re.fullmatch(r'#[0-9a-fA-F]{6}', v) for k, v in p.items() if k != 'mode'):
             raise ValueError(f'Invalid palette: {slug}')
         palettes[mode] = p
-        colors = {k: rgb(p['foreground']) for k in ('tab_text', 'tab_background_text', 'bookmark_text', 'toolbar_button_icon', 'omnibox_text', 'ntp_text')}
+        colors = {k: rgb(p['foreground']) for k in ('toolbar_text', 'bookmark_text', 'toolbar_button_icon', 'ntp_text')}
+        colors.update({k: rgb(p['bright_foreground']) for k in ('tab_text', 'omnibox_text')})
+        inactive_text = p['light_foreground'] if mode == 'dark' else p['foreground']
+        colors.update({k: rgb(inactive_text) for k in ('tab_background_text', 'tab_background_text_inactive')})
+        colors.update({k: rgb(p['dark_background']) for k in ('background_tab', 'background_tab_inactive')})
         colors.update({k: rgb(p['background']) for k in ('frame', 'frame_inactive', 'toolbar', 'ntp_background')})
         colors.update(button_background=rgb(p['lighter_background'] if mode == 'dark' else p['dark_background']),
                       omnibox_background=rgb(p['dark_background'] if mode == 'dark' else p['lighter_background']),
                       ntp_link=rgb(p['blue']))
         files[f'apps/chromium/themes/{slug}/manifest.json'] = json_text({
-            'manifest_version': 3, 'name': f'Omarchy — {name}', 'version': '1.0.0',
+            'manifest_version': 3, 'name': f'Omarchy — {name}', 'version': '1.0.1',
             'key': keys[mode], 'theme': {'colors': colors},
         })
         files[f'platforms/linux-omarchy/chromium/{slug}.theme'] = ','.join(map(str, rgb(p['background']))) + '\n'

@@ -1,16 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Omarchy — Kanagawa Lotus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC7SiQKmD3/LiuCin3rWdO0jdNqhhhn924Cq+apALerPlrHw0Ablts54eQL1yqMkzni72wQuJ4ZZSJfLbQoHy36MDMHzCIZu8oypTVyDPLZU8y+aHQXNYwk7twlcbWZgZkLNa7T7/u722KdCYKsZ8WrC2AA0OeKH41nUbZpa879UQIDAQAB",
   "theme": {
     "colors": {
-      "tab_text": [
-        84,
-        84,
-        100
-      ],
-      "tab_background_text": [
+      "toolbar_text": [
         84,
         84,
         100
@@ -25,15 +20,40 @@
         84,
         100
       ],
-      "omnibox_text": [
-        84,
-        84,
-        100
-      ],
       "ntp_text": [
         84,
         84,
         100
+      ],
+      "tab_text": [
+        67,
+        67,
+        108
+      ],
+      "omnibox_text": [
+        67,
+        67,
+        108
+      ],
+      "tab_background_text": [
+        84,
+        84,
+        100
+      ],
+      "tab_background_text_inactive": [
+        84,
+        84,
+        100
+      ],
+      "background_tab": [
+        230,
+        220,
+        192
+      ],
+      "background_tab_inactive": [
+        230,
+        220,
+        192
       ],
       "frame": [
         241,

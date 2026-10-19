@@ -4,6 +4,33 @@
 Their `frame`, `frame_inactive`, `toolbar` and new-tab background use the palette
 background directly. Address fields, buttons and icons use separate palette roles.
 
+## Color roles
+
+| Role | Lotus | Wave |
+| --- | --- | --- |
+| Frame, toolbar and new-tab page | `#f1e9d2` | `#1f1f28` |
+| Inactive tab surface | `#e6dcc0` | `#17171e` |
+| Active tab and address text | `#43436c` | `#dcd7ba` |
+| Inactive tab text, including unfocused windows | `#545464` | `#c8c093` |
+| Toolbar labels, bookmarks and enabled icons | `#545464` | `#dcd7ba` |
+| Address field background | `#faf4df` | `#17171e` |
+| Control button background | `#e6dcc0` | `#223249` |
+| New-tab links | `#4d699b` | `#7e9cd8` |
+
+Toolbar labels and inactive-window tab colors are explicit so they do not fall
+back to unrelated browser defaults. Small text retains at least 4.5:1 contrast
+against its assigned surface. Lotus's lighter muted colors are not used for
+small tab labels because their contrast is too low.
+
+The [Chromium theme color table](https://chromium.googlesource.com/chromium/src/+/main/chrome/browser/themes/browser_theme_pack.cc)
+exposes these base roles. Hover, pressed and disabled variants are derived by
+Chromium from the base colors, contrast and transparency rules. Themes do not
+expose independent focus-ring, selection or accent overrides; an exact Lotus
+blue focus ring cannot be guaranteed by these manifests. Extension-provided
+icons and page controls also have their own rendering.
+
+## Stable identities
+
 | Component | Extension ID |
 | --- | --- |
 | Lotus | `ccehnmniielbahkigdnafcjlbodlnbin` |
