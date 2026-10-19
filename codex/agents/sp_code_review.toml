@@ -1,7 +1,7 @@
 name = "sp_code_review"
 description = "Independent Superpowers task reviewer for spec compliance and code quality, scoped fix re-review, and final whole-branch review."
 model = "combo/sp-code-review"
-model_reasoning_effort = "max"
+model_reasoning_effort = "high"
 sandbox_mode = "read-only"
 nickname_candidates = ["Coder-Reviewer-Alpha", "Coder-Reviewer-Beta", "Coder-Reviewer-Gamma"]
 

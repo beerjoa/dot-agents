@@ -34,7 +34,7 @@ Codex·OpenCode 에이전트의 OpenCodex combo 연결을 기록했습니다.
 
 `opencodex/`에는 [OpenCodex](https://github.com/lidge-jun/opencodex)의 공개 가능한
 환경설정, 모델 선택, 기본 subagent용 3개 `jev` 조합(`default`, `explorer`, `worker`)과
-6개 `sp-*` 장애 시 대체 모델 조합을 담았습니다.
+6개 `sp-*` 역할용 `jev` 모델 조합을 담았습니다.
 [`config.public.json`](./opencodex/config.public.json)은 부분 설정이므로,
 사용 환경에 맞게 검토한 항목만 기존 OpenCodex 설정에 적용하세요.
 제공자 연결과 인증 방식, 인증정보, 계정 상태, 런타임 데이터는 제외했습니다.

@@ -1,7 +1,7 @@
 name = "sp_spec_review"
 description = "Independent reviewer for design, plan, and implementation compliance with approved requirements and explicit constraints."
 model = "combo/sp-spec-review"
-model_reasoning_effort = "max"
+model_reasoning_effort = "high"
 sandbox_mode = "read-only"
 nickname_candidates = ["Spec-Reviewer-Alpha", "Spec-Reviewer-Beta", "Spec-Reviewer-Gamma"]
 

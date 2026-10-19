@@ -56,62 +56,82 @@
         { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["high", "max"] },
         { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["medium", "high"] },
         { "provider": "opencode-go", "model": "deepseek-v4.1-flash", "weight": 1, "reasoningEfforts": ["high", "max"] },
+        { "provider": "opencode-zen", "model": "deepseek-v4.1-flash-free", "weight": 1, "reasoningEfforts": ["high", "max"] },
         { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1, "reasoningEfforts": ["high"] },
         { "provider": "cursor", "model": "composer-2.5", "weight": 1 }
       ]
     },
     "sp-explorer": {
-      "strategy": "failover",
+      "strategy": "jev",
       "stickyLimit": 1,
       "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
       "targets": [
-        { "provider": "openai", "model": "gpt-6-luna", "weight": 1 },
-        { "provider": "devin", "model": "swe-1-7", "weight": 1 }
+        { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["medium", "high", "max"] },
+        { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1, "reasoningEfforts": ["medium", "high"] },
+        { "provider": "cursor", "model": "composer-2.5", "weight": 1 }
       ]
     },
     "sp-worker": {
-      "strategy": "failover",
+      "strategy": "jev",
       "stickyLimit": 1,
-      "defaultEffort": "max",
+      "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
       "targets": [
-        { "provider": "openai", "model": "gpt-6-luna", "weight": 1 },
-        { "provider": "opencode-go", "model": "deepseek-v4.1-flash", "weight": 1 }
+        { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["high", "max"] },
+        { "provider": "opencode-go", "model": "deepseek-v4.1-flash", "weight": 1, "reasoningEfforts": ["high", "max"] },
+        { "provider": "opencode-zen", "model": "deepseek-v4.1-flash-free", "weight": 1, "reasoningEfforts": ["high", "max"] },
+        { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1, "reasoningEfforts": ["high"] },
+        { "provider": "cursor", "model": "composer-2.5", "weight": 1 }
       ]
     },
     "sp-worker-pro": {
-      "strategy": "failover",
+      "strategy": "jev",
       "stickyLimit": 1,
-      "defaultEffort": "max",
+      "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
       "targets": [
-        { "provider": "opencode-go", "model": "deepseek-v4.1-flash", "weight": 1 },
-        { "provider": "openai", "model": "gpt-6-luna", "weight": 1 }
+        { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["medium"] },
+        { "provider": "opencode-go", "model": "deepseek-v4.1-flash", "weight": 1, "reasoningEfforts": ["max"] },
+        { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["max"] },
+        { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1, "reasoningEfforts": ["high"] }
       ]
     },
     "sp-spec-review": {
-      "strategy": "failover",
+      "strategy": "jev",
       "stickyLimit": 1,
-      "defaultEffort": "max",
+      "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
       "targets": [
-        { "provider": "devin", "model": "swe-2", "weight": 1 },
-        { "provider": "opencode-go", "model": "deepseek-v4.1-flash", "weight": 1 }
+        { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["medium", "high", "xhigh"] },
+        { "provider": "google-antigravity", "model": "gemini-4-argon", "weight": 1, "reasoningEfforts": ["high"] },
+        { "provider": "anthropic", "model": "claude-opus-5-5", "weight": 1, "reasoningEfforts": ["high"] },
+        { "provider": "opencode-go", "model": "muse-spark-1.3-contributor", "weight": 1, "reasoningEfforts": ["max"] }
       ]
     },
     "sp-code-review": {
-      "strategy": "failover",
+      "strategy": "jev",
       "stickyLimit": 1,
-      "defaultEffort": "max",
+      "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
       "targets": [
-        { "provider": "devin", "model": "swe-2", "weight": 1 },
-        { "provider": "openai", "model": "gpt-6-luna", "weight": 1 }
+        { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["medium", "high", "xhigh"] },
+        { "provider": "anthropic", "model": "claude-opus-5-5", "weight": 1, "reasoningEfforts": ["high"] },
+        { "provider": "cursor", "model": "grok-4.7", "weight": 1, "reasoningEfforts": ["high", "xhigh"] },
+        { "provider": "google-antigravity", "model": "gemini-4-argon", "weight": 1, "reasoningEfforts": ["high"] },
+        { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["high", "max"] }
       ]
     },
     "sp-debug": {
-      "strategy": "failover",
+      "strategy": "jev",
       "stickyLimit": 1,
       "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
       "targets": [
-        { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1 },
-        { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1 }
+        { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["medium", "high", "xhigh"] },
+        { "provider": "cursor", "model": "grok-4.7", "weight": 1, "reasoningEfforts": ["high", "xhigh"] },
+        { "provider": "google-antigravity", "model": "gemini-4-argon", "weight": 1, "reasoningEfforts": ["high"] },
+        { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1, "reasoningEfforts": ["high"] }
       ]
     }
   },

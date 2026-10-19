@@ -69,15 +69,17 @@ the cost if wrong, reach the final report.
 ## OpenCodex routing
 
 The routing source is [`opencodex/config.public.json`](../opencodex/config.public.json).
-Both OpenCode and Codex agent definitions use the `combo/sp-*` model IDs directly.
+Both OpenCode and Codex agent definitions use the `combo/sp-*` model IDs directly,
+with `strategy: "jev"` and `reasoningEffortMode: "adaptive"` selecting the
+target model and its per-target reasoning effort (`medium` / `high` / `max` / `xhigh`).
 
 | Role | OpenCode model | Codex model | Effort |
 | --- | --- | --- | --- |
 | Explorer | `combo/sp-explorer` | `combo/sp-explorer` | high |
-| Worker | `combo/sp-worker` | `combo/sp-worker` | max |
-| Worker Pro | `combo/sp-worker-pro` | `combo/sp-worker-pro` | max |
-| Spec review | `combo/sp-spec-review` | `combo/sp-spec-review` | max |
-| Task / final review | `combo/sp-code-review` | `combo/sp-code-review` | max |
+| Worker | `combo/sp-worker` | `combo/sp-worker` | high (adaptive up to max) |
+| Worker Pro | `combo/sp-worker-pro` | `combo/sp-worker-pro` | high (adaptive per target) |
+| Spec review | `combo/sp-spec-review` | `combo/sp-spec-review` | high (adaptive up to max/xhigh) |
+| Task / final review | `combo/sp-code-review` | `combo/sp-code-review` | high (adaptive up to max/xhigh) |
 | Debug | `combo/sp-debug` | `combo/sp-debug` | high |
 
 The callable OpenCode `git-committer` also uses `sp-worker`, and

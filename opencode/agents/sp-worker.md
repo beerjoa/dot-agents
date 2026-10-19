@@ -2,8 +2,8 @@
 description: Cost-efficient Superpowers implementation worker for isolated, clearly planned tasks using test-driven development.
 mode: subagent
 model: combo/sp-worker
-reasoningEffort: max
-variant: max
+reasoningEffort: high
+variant: high
 temperature: 0.1
 textVerbosity: low
 permission:
