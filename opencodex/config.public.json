@@ -14,8 +14,14 @@
   "dropCodexSafetyBuffering": false,
   "emptyCompletionRetry": false,
   "memoryModels": {
-    "extract": { "model": "google-antigravity/gemini-3.8-flash", "reasoningEffort": "high" },
-    "consolidation": { "model": "gpt-6.1-sol", "reasoningEffort": "high" }
+    "extract": {
+      "model": "google-antigravity/gemini-3.8-flash",
+      "reasoningEffort": "high"
+    },
+    "consolidation": {
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "high"
+    }
   },
   "webSearchSidecar": {
     "model": "gpt-6-luna",
@@ -26,158 +32,415 @@
       "strategy": "jev",
       "stickyLimit": 1,
       "defaultEffort": "high",
-      "reasoningEffortMode": "adaptive",
-      "targets": [
-        { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["medium", "high", "xhigh"] },
-        { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["high", "max"] },
-        { "provider": "google-antigravity", "model": "gemini-4-argon", "weight": 1, "reasoningEfforts": ["high"] },
-        { "provider": "opencode-go", "model": "muse-spark-1.3-contributor", "weight": 1, "reasoningEfforts": ["max"] }
-      ]
-    },
-    "explorer": {
-      "strategy": "jev",
-      "stickyLimit": 1,
-      "defaultEffort": "high",
-      "reasoningEffortMode": "adaptive",
-      "targets": [
-        { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["medium", "high", "max"] },
-        { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1, "reasoningEfforts": ["medium", "high"] },
-        { "provider": "cursor", "model": "composer-2.5", "weight": 1 }
-      ]
-    },
-    "worker": {
-      "strategy": "jev",
-      "stickyLimit": 1,
-      "defaultEffort": "high",
-      "reasoningEffortMode": "adaptive",
-      "targets": [
-        { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["high", "max"] },
-        { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["medium", "high"] },
-        { "provider": "opencode-go", "model": "deepseek-v4.1-flash", "weight": 1, "reasoningEfforts": ["high", "max"] },
-        { "provider": "opencode-zen", "model": "deepseek-v4.1-flash-free", "weight": 1, "reasoningEfforts": ["high", "max"] },
-        { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1, "reasoningEfforts": ["high"] },
-        { "provider": "cursor", "model": "composer-2.5", "weight": 1 }
-      ]
-    },
-    "sp-explorer": {
-      "strategy": "jev",
-      "stickyLimit": 1,
-      "defaultEffort": "high",
-      "reasoningEffortMode": "adaptive",
-      "targets": [
-        { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["medium", "high", "max"] },
-        { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1, "reasoningEfforts": ["medium", "high"] },
-        { "provider": "cursor", "model": "composer-2.5", "weight": 1 }
-      ]
-    },
-    "sp-worker": {
-      "strategy": "jev",
-      "stickyLimit": 1,
-      "defaultEffort": "high",
-      "reasoningEffortMode": "adaptive",
-      "targets": [
-        { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["high", "max"] },
-        { "provider": "opencode-go", "model": "deepseek-v4.1-flash", "weight": 1, "reasoningEfforts": ["high", "max"] },
-        { "provider": "opencode-zen", "model": "deepseek-v4.1-flash-free", "weight": 1, "reasoningEfforts": ["high", "max"] },
-        { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1, "reasoningEfforts": ["high"] },
-        { "provider": "cursor", "model": "composer-2.5", "weight": 1 }
-      ]
-    },
-    "sp-worker-pro": {
-      "strategy": "jev",
-      "stickyLimit": 1,
-      "defaultEffort": "high",
-      "reasoningEffortMode": "adaptive",
-      "targets": [
-        { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["medium"] },
-        { "provider": "opencode-go", "model": "deepseek-v4.1-flash", "weight": 1, "reasoningEfforts": ["max"] },
-        { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["max"] },
-        { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1, "reasoningEfforts": ["high"] }
-      ]
-    },
-    "sp-spec-review": {
-      "strategy": "jev",
-      "stickyLimit": 1,
-      "defaultEffort": "high",
-      "reasoningEffortMode": "adaptive",
       "targets": [
         {
           "provider": "openai",
           "model": "gpt-6.1-sol",
           "weight": 1,
-          "reasoningEfforts": ["high", "xhigh"],
-          "modelProfile": "Tier 2 (primary frontier auditor): Default high-capability spec and plan reviewer; use high for standard plans and xhigh for complex cross-module architecture."
+          "reasoningEfforts": [
+            "medium",
+            "high",
+            "xhigh"
+          ],
+          "modelProfile": "Tier 1A (Primary Frontier, II 47.8-51.0, TBench4 48-54%): Use medium (15.6s) for moderate tasks, high (56s) for complex engineering, xhigh for hardest reasoning."
         },
         {
           "provider": "google-antigravity",
           "model": "gemini-4-argon",
           "weight": 1,
-          "reasoningEfforts": ["high"],
-          "modelProfile": "Tier 3 (large-context frontier auditor): Strong spec and interface-consistency reviewer for broad multi-file plans."
+          "reasoningEfforts": [
+            "high"
+          ],
+          "modelProfile": "Tier 1B (High-Precision Frontier, II 52.6, TBench4 57.1%, Hallucination 15.1%): Best for complex multi-file analysis and fact-critical reasoning."
         },
         {
           "provider": "opencode-go",
           "model": "muse-spark-1.3-contributor",
           "weight": 1,
-          "reasoningEfforts": ["max"],
-          "modelProfile": "Tier 4 (routine spec auditor): Cost-efficient reviewer for simple, well-bounded plans and straightforward spec checks."
-        },
-        {
-          "provider": "anthropic",
-          "model": "claude-opus-5-5",
-          "weight": 1,
-          "reasoningEfforts": ["high"],
-          "modelProfile": "Tier 1 (apex auditor, scarce quota): Reserve ONLY for the hardest, highest-risk architecture, security, concurrency, or ambiguous system-wide specification audits."
-        }
-      ]
-    },
-    "sp-code-review": {
-      "strategy": "jev",
-      "stickyLimit": 1,
-      "defaultEffort": "high",
-      "reasoningEffortMode": "adaptive",
-      "targets": [
-        {
-          "provider": "openai",
-          "model": "gpt-6.1-sol",
-          "weight": 1,
-          "reasoningEfforts": ["medium", "high"],
-          "modelProfile": "Tier 1 (highest in this combo): Frontier code reviewer for complex logic, concurrency, security, and multi-file diffs; use medium for moderate diffs and high for complex diffs."
+          "reasoningEfforts": [
+            "max"
+          ],
+          "modelProfile": "Tier 2 (Balanced Frontier, II 48.1, GDPval 59.0%, Hallucination 32.9%): Strong for synthesis, documentation, planning, and medium-complexity reasoning."
         },
         {
           "provider": "openai",
           "model": "gpt-6-luna",
           "weight": 1,
-          "reasoningEfforts": ["max"],
-          "modelProfile": "Tier 2 (strong standard reviewer): Fast, high-accuracy code and spec-compliance reviewer for standard implementation tasks."
-        },
+          "reasoningEfforts": [
+            "high",
+            "max"
+          ],
+          "modelProfile": "Tier 3 (Routine Generalist, II 32.9-38.1, FrontierCode 41.9%): Fast native Codex model for straightforward general subagent tasks."
+        }
+      ],
+      "reasoningEffortMode": "adaptive"
+    },
+    "explorer": {
+      "strategy": "jev",
+      "stickyLimit": 1,
+      "defaultEffort": "high",
+      "targets": [
         {
-          "provider": "opencode-go",
-          "model": "deepseek-v4.1-flash",
+          "provider": "openai",
+          "model": "gpt-6-luna",
           "weight": 1,
-          "reasoningEfforts": ["max"],
-          "modelProfile": "Tier 3 (cost-efficient reviewer): Capable reasoning reviewer for bounded task diffs and scoped fix re-reviews."
+          "reasoningEfforts": [
+            "medium",
+            "high",
+            "max"
+          ],
+          "modelProfile": "Tier 2 (Native Code Explorer, LCR 78-83%, 125 t/s): Reliable Codex-native repo explorer; use medium/high (18s) for standard symbol search and max for deeper tracing."
         },
         {
           "provider": "google-antigravity",
           "model": "gemini-3.8-flash",
           "weight": 1,
-          "reasoningEfforts": ["high"],
-          "modelProfile": "Tier 4 (lightweight reviewer): Fast reviewer for small, straightforward diffs and low-risk re-reviews."
+          "reasoningEfforts": [
+            "medium",
+            "high"
+          ],
+          "modelProfile": "Tier 1 (Deep Context Explorer, II 39.8-40.9, LCR 84.0%, GPQA 95.3%, E2E 19s): Best for broad multi-file architecture discovery and cross-module tracing."
+        },
+        {
+          "provider": "cursor",
+          "model": "composer-2.5",
+          "weight": 1,
+          "modelProfile": "Tier 3 (Fast Light Lookup): Use for simple file location, path checks, and small read-only lookups."
         }
-      ]
+      ],
+      "reasoningEffortMode": "adaptive"
+    },
+    "worker": {
+      "strategy": "jev",
+      "stickyLimit": 1,
+      "defaultEffort": "high",
+      "targets": [
+        {
+          "provider": "openai",
+          "model": "gpt-6.1-sol",
+          "weight": 1,
+          "reasoningEfforts": [
+            "medium",
+            "high"
+          ],
+          "modelProfile": "Tier 1 (Complex Implementation, II 47.8-50.2, Eng 49.7-51.9, TBench4 48-51.5%): Use medium (15.6s) or high for non-trivial multi-file or stateful implementation."
+        },
+        {
+          "provider": "openai",
+          "model": "gpt-6-luna",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high",
+            "max"
+          ],
+          "modelProfile": "Tier 2B (Native Codex Implementer, FrontierCode 41.9%, LCR 83.3%): Reliable for standard Codex code-mode and apply_patch implementation."
+        },
+        {
+          "provider": "opencode-go",
+          "model": "deepseek-v4.1-flash",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high",
+            "max"
+          ],
+          "modelProfile": "Tier 2A (Fast High-Code Worker, II 45.1, FrontierCode 44.0%, TBench4 33.8%, 212 t/s, E2E 12.2s): Strong, fast coder for well-specified feature tasks."
+        },
+        {
+          "provider": "opencode-zen",
+          "model": "deepseek-v4.1-flash-free",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high",
+            "max"
+          ],
+          "modelProfile": "Tier 3 (Free High-Speed Coder, II 45.1, FrontierCode 44.0%, E2E 12.2s): Cost-free fast worker for isolated implementation and test writing."
+        },
+        {
+          "provider": "google-antigravity",
+          "model": "gemini-3.8-flash",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high"
+          ],
+          "modelProfile": "Tier 4 (Fast Utility Worker, II 40.9, Eng 42.8, SRE 52.5%, E2E 19.4s): Good for config, scripts, and straightforward edits."
+        },
+        {
+          "provider": "cursor",
+          "model": "composer-2.5",
+          "weight": 1,
+          "modelProfile": "Tier 5 (Simple Boilerplate Edit): Use only for trivial single-file or mechanical edits."
+        }
+      ],
+      "reasoningEffortMode": "adaptive"
+    },
+    "sp-explorer": {
+      "strategy": "jev",
+      "stickyLimit": 1,
+      "defaultEffort": "high",
+      "targets": [
+        {
+          "provider": "openai",
+          "model": "gpt-6-luna",
+          "weight": 1,
+          "reasoningEfforts": [
+            "medium",
+            "high",
+            "max"
+          ],
+          "modelProfile": "Tier 2 (Native Code Explorer, LCR 78-83%, 125 t/s): Reliable Codex-native repo explorer; use medium/high (18s) for standard symbol search and max for deeper tracing."
+        },
+        {
+          "provider": "google-antigravity",
+          "model": "gemini-3.8-flash",
+          "weight": 1,
+          "reasoningEfforts": [
+            "medium",
+            "high"
+          ],
+          "modelProfile": "Tier 1 (Deep Context Explorer, II 39.8-40.9, LCR 84.0%, GPQA 95.3%, E2E 19s): Best for broad multi-file architecture discovery and cross-module tracing."
+        },
+        {
+          "provider": "cursor",
+          "model": "composer-2.5",
+          "weight": 1,
+          "modelProfile": "Tier 3 (Fast Light Lookup): Use for simple file location, path checks, and small read-only lookups."
+        }
+      ],
+      "reasoningEffortMode": "adaptive"
+    },
+    "sp-worker": {
+      "strategy": "jev",
+      "stickyLimit": 1,
+      "defaultEffort": "high",
+      "targets": [
+        {
+          "provider": "openai",
+          "model": "gpt-6-luna",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high",
+            "max"
+          ],
+          "modelProfile": "Tier 1B (Native Codex TDD Worker, FrontierCode 41.9%, LCR 83.3%): Primary native tool/apply_patch worker; use max for complex tasks and high for standard tasks."
+        },
+        {
+          "provider": "opencode-go",
+          "model": "deepseek-v4.1-flash",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high",
+            "max"
+          ],
+          "modelProfile": "Tier 1A (High-Benchmark Fast Worker, II 45.1, FrontierCode 44.0%, TBench4 33.8%, E2E 12.2s): Top coding benchmark in sp-worker for algorithmic and logic-heavy tasks."
+        },
+        {
+          "provider": "opencode-zen",
+          "model": "deepseek-v4.1-flash-free",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high",
+            "max"
+          ],
+          "modelProfile": "Tier 2 (Free High-Speed Worker, II 45.1, FrontierCode 44.0%, E2E 12.2s): Cost-free fast worker for bounded TDD tasks."
+        },
+        {
+          "provider": "google-antigravity",
+          "model": "gemini-3.8-flash",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high"
+          ],
+          "modelProfile": "Tier 3 (Fast SRE/Config Worker, II 40.9, Eng 42.8, SRE 52.5%, E2E 19.4s): Good for straightforward tasks, scripts, and config changes."
+        },
+        {
+          "provider": "cursor",
+          "model": "composer-2.5",
+          "weight": 1,
+          "modelProfile": "Tier 4 (Simple Mechanical Task): Use only for small, mechanical, single-file tasks."
+        }
+      ],
+      "reasoningEffortMode": "adaptive"
+    },
+    "sp-worker-pro": {
+      "strategy": "jev",
+      "stickyLimit": 1,
+      "defaultEffort": "high",
+      "targets": [
+        {
+          "provider": "openai",
+          "model": "gpt-6.1-sol",
+          "weight": 1,
+          "reasoningEfforts": [
+            "medium"
+          ],
+          "modelProfile": "Tier 1 (Top Pro Worker, II 47.8, Eng 49.7, TBench4 48.0%, LCR 83.3%, E2E 15.6s): Highest engineering and agentic benchmark in this combo for architecture, auth, migration, and concurrency."
+        },
+        {
+          "provider": "opencode-go",
+          "model": "deepseek-v4.1-flash",
+          "weight": 1,
+          "reasoningEfforts": [
+            "max"
+          ],
+          "modelProfile": "Tier 2 (Fast Deep-Code Worker, II 45.1, Eng 45.2, FrontierCode 44.0%, TBench4 33.8%, E2E 12.2s): Strong second tier for algorithm-heavy and multi-file implementation."
+        },
+        {
+          "provider": "openai",
+          "model": "gpt-6-luna",
+          "weight": 1,
+          "reasoningEfforts": [
+            "max"
+          ],
+          "modelProfile": "Tier 3 (Native Codex Pro Worker, FrontierCode 41.9%, LCR 83.3%, II 38.1): Reliable native Codex implementer for multi-step patch and test workflows."
+        },
+        {
+          "provider": "google-antigravity",
+          "model": "gemini-3.8-flash",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high"
+          ],
+          "modelProfile": "Tier 4 (Fast Integration Worker, II 40.9, Eng 42.8, SRE 52.5%, E2E 19.4s): Use for lighter integration or infrastructure tasks."
+        }
+      ],
+      "reasoningEffortMode": "adaptive"
+    },
+    "sp-spec-review": {
+      "strategy": "jev",
+      "stickyLimit": 1,
+      "defaultEffort": "high",
+      "targets": [
+        {
+          "provider": "openai",
+          "model": "gpt-6.1-sol",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high",
+            "xhigh"
+          ],
+          "modelProfile": "Tier 2 (Primary Frontier Auditor, II 50.2-51.0, StratOps 54.9-56.0, LCR 82.3%): Default high-capability spec/plan reviewer; use high (56s) for standard plans and xhigh for complex architecture."
+        },
+        {
+          "provider": "google-antigravity",
+          "model": "gemini-4-argon",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high"
+          ],
+          "modelProfile": "Tier 2A (Low-Hallucination Frontier Auditor, II 52.6, StratOps 56.2, Eng 55.2, Hallucination 15.1%): Best for broad multi-file interface and requirement consistency checks."
+        },
+        {
+          "provider": "opencode-go",
+          "model": "muse-spark-1.3-contributor",
+          "weight": 1,
+          "reasoningEfforts": [
+            "max"
+          ],
+          "modelProfile": "Tier 3 (Routine Spec Auditor, II 48.1, StratOps 51.2, GDPval 59.0%, Hallucination 32.9%): Cost-efficient reviewer for simple, well-bounded plans."
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-opus-5-5",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high"
+          ],
+          "modelProfile": "Tier 1 (Apex Auditor, II 53.6, StratOps 59.3, Eng 56.2, FrontierCode 54.0%, scarce quota): Reserve ONLY for the hardest, highest-risk architecture, security, concurrency, or system-wide spec audits."
+        }
+      ],
+      "reasoningEffortMode": "adaptive"
+    },
+    "sp-code-review": {
+      "strategy": "jev",
+      "stickyLimit": 1,
+      "defaultEffort": "high",
+      "targets": [
+        {
+          "provider": "openai",
+          "model": "gpt-6.1-sol",
+          "weight": 1,
+          "reasoningEfforts": [
+            "medium",
+            "high"
+          ],
+          "modelProfile": "Tier 1 (Top Code Reviewer, II 47.8-50.2, Eng 49.7-51.9, TBench4 48.0-51.5%): Highest reviewer in this combo; use high for complex security/concurrency diffs and medium (15.6s) for standard multi-file diffs."
+        },
+        {
+          "provider": "opencode-go",
+          "model": "deepseek-v4.1-flash",
+          "weight": 1,
+          "reasoningEfforts": [
+            "max"
+          ],
+          "modelProfile": "Tier 2 (Fast Deep Code Reviewer, II 45.1, Eng 45.2, FrontierCode 44.0%, GDPval 62.3%, E2E 12.2s): Strong, fast reviewer for bounded feature diffs and logic checks."
+        },
+        {
+          "provider": "openai",
+          "model": "gpt-6-luna",
+          "weight": 1,
+          "reasoningEfforts": [
+            "max"
+          ],
+          "modelProfile": "Tier 3 (Standard Codex Reviewer, FrontierCode 41.9%, LCR 83.3%, II 38.1): Solid native reviewer for routine task diffs."
+        },
+        {
+          "provider": "google-antigravity",
+          "model": "gemini-3.8-flash",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high"
+          ],
+          "modelProfile": "Tier 4 (Lightweight Fast Reviewer, II 40.9, Eng 42.8, SRE 52.5%, E2E 19.4s): Fast reviewer for small diffs and scoped fix re-reviews."
+        }
+      ],
+      "reasoningEffortMode": "adaptive"
     },
     "sp-debug": {
       "strategy": "jev",
       "stickyLimit": 1,
       "defaultEffort": "high",
-      "reasoningEffortMode": "adaptive",
       "targets": [
-        { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["medium", "high", "xhigh"] },
-        { "provider": "google-antigravity", "model": "gemini-4-argon", "weight": 1, "reasoningEfforts": ["high"] },
-        { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1, "reasoningEfforts": ["high"] },
-        { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["high", "max"] }
-      ]
+        {
+          "provider": "openai",
+          "model": "gpt-6.1-sol",
+          "weight": 1,
+          "reasoningEfforts": [
+            "medium",
+            "high",
+            "xhigh"
+          ],
+          "modelProfile": "Tier 1A (Primary Root-Cause Debugger, II 47.8-51.0, TBench4 48.0-54.0%): Native Codex debugger; use medium (15.6s) for clear failures, high/xhigh for subtle multi-module bugs."
+        },
+        {
+          "provider": "google-antigravity",
+          "model": "gemini-4-argon",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high"
+          ],
+          "modelProfile": "Tier 1B (Apex Analytical Debugger, II 52.6, TBench4 57.1%, SciCode 61.8%, Hallucination 15.1%): Best for elusive root-cause analysis requiring high factual precision."
+        },
+        {
+          "provider": "google-antigravity",
+          "model": "gemini-3.8-flash",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high"
+          ],
+          "modelProfile": "Tier 2 (Fast SRE/Runtime Debugger, II 40.9, ITBench SRE 52.5%, TBench2.1 87.6%, E2E 19.4s): Fast debugger for runtime, config, and environment failures."
+        },
+        {
+          "provider": "openai",
+          "model": "gpt-6-luna",
+          "weight": 1,
+          "reasoningEfforts": [
+            "high",
+            "max"
+          ],
+          "modelProfile": "Tier 3 (Routine Test Debugger, FrontierCode 41.9%, II 32.9-38.1): Standard native debugger for localized unit test failures."
+        }
+      ],
+      "reasoningEffortMode": "adaptive"
     }
   },
   "multiAgentMode": "v1",
