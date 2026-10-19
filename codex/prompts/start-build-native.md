@@ -76,8 +76,8 @@ Consumes/Produces 인터페이스 충돌을 사전 점검해 ledger에 표로 �
 subagent 도구가 있으면 새 맥락의 `sp_code_review`에
 `requesting-code-review/code-reviewer.md`, 패키지, plan/spec 경로,
 Global Constraints, Review Focus 원문, ledger의 Ruling 위치를 전달한다.
-최종 브랜치 전체 리뷰 1회에는 `anthropic/claude-opus-5-5`(effort `high`)를 우선 지정하고,
-지원되지 않을 때만 `combo/sp-code-review`가 실제 라우팅과 spawn allowlist에서 지원되는지 확인해 사용한다.
+지원하는 모델과 reasoning effort를 명시하고 최종 리뷰에 적합한 역량을 확인한다.
+`combo/sp-code-review`도 실제 라우팅과 spawn allowlist에서 지원되는지 확인한다.
 도구가 지원하면 `fork_turns: "none"`을 사용한다.
 
 subagent 도구 자체가 없으면 같은 템플릿으로 별도의 자기 검토를 수행한다.

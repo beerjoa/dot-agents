@@ -107,10 +107,8 @@ review is clean or residuals are parked with rulings at the cap.
 
 Run the plan's integration verification and dispatch one final `sp-code-review`
 with `requesting-code-review/code-reviewer.md`, the branch-base..HEAD package,
-global constraints, and all deferred/parked ledger entries. Reserve
-`anthropic/claude-opus-5-5` (effort `high`) exclusively for this single whole-branch
-review when supported, falling back to `combo/sp-code-review` (do not use Opus on
-per-task reviews or scoped fix re-reviews). If findings remain, dispatch one
+global constraints, and all deferred/parked ledger entries. Verify the combo's
+route is suitable for the whole-branch review. If findings remain, dispatch one
 fix worker with the complete list, then one scoped re-review. Adjudicate residuals
 and report them; do not launch repeated final fix waves or empty final commits.
 

@@ -21,5 +21,5 @@ reasoning effort를 명시하고 실제 라우팅의 지원 여부와 역량을 
 DONE, DONE_WITH_CONCERNS, NEEDS_CONTEXT, BLOCKED를 구분하고,
 최대 5회 수정 루프와 FIX_BASE..HEAD 범위 재리뷰를 수행해.
 완료 Task를 재실행하거나 작업자가 자체 리뷰어를 생성하게 하지 마.
-마지막 전체 브랜치 리뷰 1회에만 `anthropic/claude-opus-5-5`(effort `high`)를 우선 지정하고(미지원 시 `combo/sp-code-review`), 최대 한 번의 최종 수정·재리뷰 후
+마지막에는 전체 브랜치 리뷰와 최대 한 번의 최종 수정·재리뷰를 수행하고,
 커밋·검증 증거·Ruling·남은 지적을 보고해.
