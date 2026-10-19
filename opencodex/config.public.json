@@ -114,9 +114,9 @@
       "reasoningEffortMode": "adaptive",
       "targets": [
         { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["high", "xhigh"] },
-        { "provider": "google-antigravity", "model": "gemini-4-argon", "weight": 1, "reasoningEfforts": ["high"] },
         { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["high", "max"] },
-        { "provider": "opencode-go", "model": "muse-spark-1.3-contributor", "weight": 1, "reasoningEfforts": ["max"] }
+        { "provider": "opencode-go", "model": "deepseek-v4.1-flash", "weight": 1, "reasoningEfforts": ["max"] },
+        { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1, "reasoningEfforts": ["high"] }
       ]
     },
     "sp-debug": {

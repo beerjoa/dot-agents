@@ -84,9 +84,6 @@ target model and its per-target reasoning effort (`medium` / `high` / `max` / `x
 
 The callable OpenCode `git-committer` also uses `sp-worker`, and
 `project-docs-sync` uses `sp-worker-pro` while retaining its high-effort setting.
-`anthropic/claude-opus-5-5` is excluded from high-frequency combos (`default`,
-`sp-code-review`) and included only in `combo/sp-spec-review` for low-frequency
-spec/plan audits.
 Primary agent models are configured separately.
 
 Set up OpenCodex and its provider connections locally, then apply the reviewed
