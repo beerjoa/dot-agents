@@ -85,7 +85,9 @@ dispatch 도구가 fork_turns를 지원하면 `fork_turns: "none"`으로 격리�
 
 계획의 통합 검증 후 `sp_code_review`에 `requesting-code-review/code-reviewer.md`,
 브랜치 시작점..HEAD 패키지, Global Constraints, deferred/parked 기록을 전달한다.
-최종 리뷰에 적합한 실제 모델 라우팅을 확인한다. 지적이 있으면 전체 목록을
+최종 브랜치 전체 리뷰 1회에는 `anthropic/claude-opus-5-5`(effort `high`)를 우선 지정하고,
+지원되지 않을 때만 `combo/sp-code-review`를 사용한다(상시 Task 리뷰·최종 수정 재리뷰에는 Opus를 사용하지 않는다).
+지적이 있으면 전체 목록을
 하나의 수정 작업자에게 맡기고, 수정 범위 재리뷰를 한 번 수행한다.
 남은 지적은 판정·기록·보고하며 반복적인 최종 수정 wave나 빈 커밋을 만들지 마라.
 

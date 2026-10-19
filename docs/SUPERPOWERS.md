@@ -79,11 +79,14 @@ target model and its per-target reasoning effort (`medium` / `high` / `max` / `x
 | Worker | `combo/sp-worker` | `combo/sp-worker` | high (adaptive up to max) |
 | Worker Pro | `combo/sp-worker-pro` | `combo/sp-worker-pro` | high (adaptive per target) |
 | Spec review | `combo/sp-spec-review` | `combo/sp-spec-review` | high (adaptive up to max/xhigh) |
-| Task / final review | `combo/sp-code-review` | `combo/sp-code-review` | high (adaptive up to max/xhigh) |
+| Task / fix re-review | `combo/sp-code-review` | `combo/sp-code-review` | high (adaptive up to max/xhigh) |
+| Final whole-branch review | `anthropic/claude-opus-5-5` (fallback `combo/sp-code-review`) | `anthropic/claude-opus-5-5` (fallback `combo/sp-code-review`) | high |
 | Debug | `combo/sp-debug` | `combo/sp-debug` | high |
 
 The callable OpenCode `git-committer` also uses `sp-worker`, and
 `project-docs-sync` uses `sp-worker-pro` while retaining its high-effort setting.
+`anthropic/claude-opus-5-5` is excluded from routine combos and reserved for the
+single final whole-branch review.
 Primary agent models are configured separately.
 
 Set up OpenCodex and its provider connections locally, then apply the reviewed

@@ -30,7 +30,6 @@
       "targets": [
         { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["medium", "high", "xhigh"] },
         { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["high", "max"] },
-        { "provider": "anthropic", "model": "claude-opus-5-5", "weight": 1, "reasoningEfforts": ["high"] },
         { "provider": "google-antigravity", "model": "gemini-4-argon", "weight": 1, "reasoningEfforts": ["high"] },
         { "provider": "cursor", "model": "grok-4.7", "weight": 1, "reasoningEfforts": ["high", "xhigh"] },
         { "provider": "opencode-go", "model": "muse-spark-1.3-contributor", "weight": 1, "reasoningEfforts": ["max"] }
@@ -105,7 +104,6 @@
       "targets": [
         { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["medium", "high", "xhigh"] },
         { "provider": "google-antigravity", "model": "gemini-4-argon", "weight": 1, "reasoningEfforts": ["high"] },
-        { "provider": "anthropic", "model": "claude-opus-5-5", "weight": 1, "reasoningEfforts": ["high"] },
         { "provider": "opencode-go", "model": "muse-spark-1.3-contributor", "weight": 1, "reasoningEfforts": ["max"] }
       ]
     },
@@ -116,7 +114,6 @@
       "reasoningEffortMode": "adaptive",
       "targets": [
         { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["medium", "high", "xhigh"] },
-        { "provider": "anthropic", "model": "claude-opus-5-5", "weight": 1, "reasoningEfforts": ["high"] },
         { "provider": "cursor", "model": "grok-4.7", "weight": 1, "reasoningEfforts": ["high", "xhigh"] },
         { "provider": "google-antigravity", "model": "gemini-4-argon", "weight": 1, "reasoningEfforts": ["high"] },
         { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["high", "max"] }
