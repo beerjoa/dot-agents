@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "Omarchy Browser Theme Switcher",
+  "version": "1.0.1",
+  "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDfKGvX6WA7Dz2S2WMURxjOynzmmtRAwOsL+Q9dJQZ9KD1SvgoaVmK2DKRDREJeqANmIJ8ZMPkzXloa0oOKYrW7qqYcGJwZFlyCDoDvlj/sOSrQCE0JTAbzvSDmLc5euiIR1VlZ8kAnw3EAimVgaqtFMcszQOsWKP7jyob0uwcFnQIDAQAB",
+  "permissions": ["management", "nativeMessaging", "storage", "alarms"],
+  "background": {"service_worker": "theme-switcher.js"}
+}

@@ -1,0 +1,12 @@
+{
+  "theme": {
+    "mode": 1,
+    "engine": "dynamicTheme",
+    "darkColorScheme": "Default",
+    "lightColorScheme": "Default",
+    "darkSchemeBackgroundColor": "#1f1f28",
+    "darkSchemeTextColor": "#dcd7ba",
+    "lightSchemeBackgroundColor": "#f1e9d2",
+    "lightSchemeTextColor": "#545464"
+  }
+}

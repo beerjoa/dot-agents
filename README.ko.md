@@ -37,3 +37,12 @@ Codex·OpenCode 에이전트의 OpenCodex combo 연결을 기록했습니다.
 [`config.public.json`](./opencodex/config.public.json)은 부분 설정이므로,
 사용 환경에 맞게 검토한 항목만 기존 OpenCodex 설정에 적용하세요.
 제공자 연결과 인증 방식, 인증정보, 계정 상태, 런타임 데이터는 제외했습니다.
+
+## [공통 테마](./themes/README.md)
+
+`themes/`에는 Kanagawa Wave 다크·사용자 지정 Lotus 라이트 팔레트와,
+여기서 생성하는 브라우저·Dark Reader·Codex·터미널 색상 설정을 모았습니다.
+브라우저 전환 확장, 고정 버전 Dark Reader 패치와 Native Messaging 소스도
+포함합니다. Linux/Omarchy 연동과 macOS 재사용 안내는 구분했습니다.
+개인 프로필·사이트 목록·기기별 등록 파일은 제외하며, Python 3.11+로 색상
+파일을 생성할 수 있습니다. 저장소 복제만으로 기존 기기 설정이 변경되지는 않습니다.

@@ -1,0 +1,8 @@
+#!/bin/bash
+# Remove the generated color seed after Omarchy applies its browser policy.
+# The helper is root-owned, accepts no arguments, and edits only that one key.
+set -euo pipefail
+export PATH=/usr/bin:/bin
+sudo -n /usr/local/bin/omarchy-helium-browser-theme-policy
+pgrep -f '/opt/helium-browser-bin/helium' >/dev/null || exit 0
+helium-browser --refresh-platform-policy --no-startup-window &>/dev/null

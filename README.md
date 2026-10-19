@@ -40,3 +40,12 @@ and six `sp-*` failover combos. Its
 apply selected fields to an existing configuration after reviewing them.
 Provider connections, authentication modes, credentials, account state, and
 runtime data are excluded.
+
+## [Shared themes](./themes/README.md)
+
+`themes/` holds the Kanagawa Wave dark and customized Lotus light palettes,
+generated browser/Dark Reader/Codex/terminal color files, the browser switcher,
+and the pinned Dark Reader/native bridge source. Linux/Omarchy integration is
+separated from macOS reuse guidance. Personal profiles, site lists and machine
+registrations are excluded. Generate color files with Python 3.11+; installation
+is explicit and does not happen when cloning this repository.

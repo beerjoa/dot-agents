@@ -1,0 +1,7 @@
+# Per-machine exports, checkouts, native registrations and private settings.
+local/
+build/
+upstream/
+initial-settings.json
+bridge-config.json
+palette.json

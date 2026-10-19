@@ -1,0 +1,10 @@
+{
+  "enabled": true,
+  "dayTheme": "Kanagawa Lotus",
+  "nightTheme": "Kanagawa",
+  "scheduleMode": "solar",
+  "dayStart": 540,
+  "nightStart": 1140,
+  "dayOffset": 0,
+  "nightOffset": 0
+}
