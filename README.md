@@ -35,7 +35,8 @@ provider and MCP connections, and authorization settings; those are omitted.
 
 The `opencodex/` directory contains reviewed public
 [OpenCodex](https://github.com/lidge-jun/opencodex) preferences, model selections,
-and six `sp-*` failover combos. Its
+three built-in subagent `jev` combos (`default`, `explorer`, `worker`), and six
+`sp-*` failover combos. Its
 [`config.public.json`](./opencodex/config.public.json) is a partial configuration:
 apply selected fields to an existing configuration after reviewing them.
 Provider connections, authentication modes, credentials, account state, and

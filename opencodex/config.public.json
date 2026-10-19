@@ -2,20 +2,64 @@
   "port": 10100,
   "managementUsageMaxReadBytes": 67108864,
   "appOwnedMemoryBudgetMb": 256,
-  "defaultModelAliases": false,
+  "defaultProvider": "openai",
   "fastRows": true,
   "subagentModels": [
     "gpt-6-luna"
   ],
-  "injectionModel": "gpt-6-luna",
-  "injectionEffort": "max",
   "websockets": false,
   "codexAutoStart": true,
+  "codexShimAutoRestore": true,
+  "multiAgentGuidanceEnabled": true,
+  "dropCodexSafetyBuffering": false,
+  "emptyCompletionRetry": false,
+  "memoryModels": {
+    "extract": { "model": "google-antigravity/gemini-3.8-flash", "reasoningEffort": "high" },
+    "consolidation": { "model": "gpt-6.1-sol", "reasoningEffort": "high" }
+  },
   "webSearchSidecar": {
     "model": "gpt-6-luna",
     "backend": "openai"
   },
   "combos": {
+    "default": {
+      "strategy": "jev",
+      "stickyLimit": 1,
+      "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
+      "targets": [
+        { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["medium", "high", "xhigh"] },
+        { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["high", "max"] },
+        { "provider": "anthropic", "model": "claude-opus-5-5", "weight": 1, "reasoningEfforts": ["high"] },
+        { "provider": "google-antigravity", "model": "gemini-4-argon", "weight": 1, "reasoningEfforts": ["high"] },
+        { "provider": "cursor", "model": "grok-4.7", "weight": 1, "reasoningEfforts": ["high", "xhigh"] },
+        { "provider": "opencode-go", "model": "muse-spark-1.3-contributor", "weight": 1, "reasoningEfforts": ["max"] }
+      ]
+    },
+    "explorer": {
+      "strategy": "jev",
+      "stickyLimit": 1,
+      "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
+      "targets": [
+        { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["medium", "high", "max"] },
+        { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1, "reasoningEfforts": ["medium", "high"] },
+        { "provider": "cursor", "model": "composer-2.5", "weight": 1 }
+      ]
+    },
+    "worker": {
+      "strategy": "jev",
+      "stickyLimit": 1,
+      "defaultEffort": "high",
+      "reasoningEffortMode": "adaptive",
+      "targets": [
+        { "provider": "openai", "model": "gpt-6-luna", "weight": 1, "reasoningEfforts": ["high", "max"] },
+        { "provider": "openai", "model": "gpt-6.1-sol", "weight": 1, "reasoningEfforts": ["medium", "high"] },
+        { "provider": "opencode-go", "model": "deepseek-v4.1-flash", "weight": 1, "reasoningEfforts": ["high", "max"] },
+        { "provider": "google-antigravity", "model": "gemini-3.8-flash", "weight": 1, "reasoningEfforts": ["high"] },
+        { "provider": "cursor", "model": "composer-2.5", "weight": 1 }
+      ]
+    },
     "sp-explorer": {
       "strategy": "failover",
       "stickyLimit": 1,
@@ -75,6 +119,6 @@
   "visionSidecar": {
     "model": "gpt-6-luna",
     "backend": "openai",
-    "reasoning": "medium"
+    "reasoning": "low"
   }
 }

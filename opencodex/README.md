@@ -12,6 +12,8 @@ source user's settings, not upstream factory defaults:
   model alias and fast service-tier preferences, WebSocket and proxy auto-start
   preferences, and multi-agent mode.
 - Featured subagent, injection, web search, and vision model selections.
+- Three `jev` combos (`default`, `explorer`, `worker`) for built-in subagent
+  overrides, plus
 - The six `sp-*` failover combos, including target order, weights, reasoning
   effort, and sticky limits. These correspond to the `combo/...` selectors used
   by the [Codex agents](../codex/agents/) and the [OpenCode agents](../opencode/agents/).
@@ -30,7 +32,8 @@ the other fields, including your provider and account configuration. Merge
 selected entries within `combos` to preserve any unrelated local combos. If you
 use `OPENCODEX_HOME`, the active `config.json` is under that directory instead.
 
-Configure the `openai`, `devin`, `opencode-go`, and `google-antigravity` providers
+Configure the `openai`, `anthropic`, `cursor`, `devin`, `opencode-go`, and `google-antigravity` providers
+(and `jev` / `TYPESAFE_API_KEY` for `strategy: "jev"` combos)
 locally before using the corresponding combos. Verify that the target models
 and reasoning efforts are available to your own accounts. The public subset
 does not configure those connections or guarantee model availability.

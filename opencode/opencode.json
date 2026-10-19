@@ -65,6 +65,20 @@
             "output": 32000
           }
         },
+        "combo/default": {
+          "name": "default (combo)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "combo/explorer": {
+          "name": "explorer (combo)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
         "combo/sp-code-review": {
           "name": "sp-code-review (combo)",
           "limit": {
@@ -102,6 +116,13 @@
         },
         "combo/sp-worker-pro": {
           "name": "sp-worker-pro (combo)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "combo/worker": {
+          "name": "worker (combo)",
           "limit": {
             "context": 350000,
             "output": 32000
