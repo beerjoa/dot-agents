@@ -125,3 +125,45 @@ it is not hardcoded to Kanagawa. To restore the stock styling, remove this user
 override (or restore the prior one) and refresh the current theme again. Other
 Obsidian themes and settings are not managed by this adapter. For portable
 Wave/Lotus use, see the [Obsidian guide](../../apps/obsidian/README.md).
+
+## Paseo
+
+Paseo 0.12.0 custom themes disable built-in System adaptation. This adapter
+instead reads Omarchy's active `colors.toml` and reloads a separate client-only
+plugin, `dot-agents-omarchy`, using the official Paseo CLI. Its stable theme ID
+keeps **Omarchy (automatic)** selected across light/dark changes. Theme Scheduler
+already calls `omarchy theme set`, so the same hook handles scheduled and manual
+switches; the scheduler plugin itself is unchanged.
+
+Requires Python 3.11+, Paseo 0.12.0+, and the local `paseo` CLI on PATH. Back up
+the local Paseo daemon configuration first. From the repository root:
+
+```sh
+root="${XDG_DATA_HOME:-$HOME/.local/share}/omarchy-paseo-theme"
+install -d -m700 "$root"
+install -m755 themes/platforms/linux-omarchy/paseo-theme-sync.py "$root/"
+python3 "$root/paseo-theme-sync.py" --prepare
+paseo plugin add "$root/plugin"
+omarchy hook install theme-set themes/platforms/linux-omarchy/80-paseo-theme
+```
+
+Review configured plugins before enabling **Settings → Plugins → Enable plugins**
+if it is off. Select **Omarchy (automatic)** once in **Appearance → Theme** on the
+intended client. Existing manual Wave/Lotus selections remain available.
+The separate syntax theme and other settings are not changed.
+
+Generated plugin files and the lock stay under the machine-local root above,
+outside the repository. Use the same `XDG_DATA_HOME` and `PASEO_HOME` environment
+for setup and hook execution; default Paseo home is `~/.paseo`. The palette must
+provide `mode` and the required color roles used by the portable plugin.
+Invalid input leaves the previously generated colors untouched. Updates are
+serialized; each source file is replaced atomically before reload. The hook
+does not start a stopped daemon or enable/install plugins. A stopped daemon reads
+the latest generated source when it next starts. Reload errors are reported by
+the hook; Paseo does not automatically recover a failed plugin reload.
+
+To update this adapter, reinstall the Python script above and run it once without
+`--prepare`. To undo, select another theme, remove
+`~/.config/omarchy/hooks/theme-set.d/80-paseo-theme`, run
+`paseo plugin remove dot-agents-omarchy`, and remove the machine-local root.
+The portable `dot-agents-kanagawa` plugin is independent and can be retained.

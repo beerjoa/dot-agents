@@ -137,3 +137,27 @@ selected, so automatic Wave/Lotus switching is not implemented here. The
 separate syntax theme was preserved. App restart persistence, additional hosts,
 macOS, Windows and mobile runtime application remain unverified. Private daemon
 settings, browser storage, screenshots and backups are not committed.
+
+## Paseo automatic Omarchy adapter, 2026-10-20
+
+A separate `dot-agents-omarchy` client-only plugin now contributes one stable
+`current` theme. A user `theme-set.d/80-paseo-theme` hook renders its palette
+outside Git from Omarchy's active colors and calls the official plugin reload
+command. Theme Scheduler's source calls `omarchy theme set`, which runs this
+hook; neither the scheduler nor package-owned Omarchy/Paseo files were modified.
+The portable manual Wave/Lotus plugin and separate syntax theme are preserved.
+
+After a private daemon-config backup, plugin installation and reload reported
+`running`. **Omarchy (automatic)** was selected once through Appearance. A live
+manual `omarchy theme set kanagawa` changed the selected theme's appearance and
+visible background, text and controls to dark without another selection. A
+subsequent `kanagawa-lotus` switch restored the initial light OS and app colors
+while retaining the automatic selection. Screenshots were inspected locally.
+This exercises the scheduler's command path, not a timed scheduler event.
+
+Generated-file consistency still covers 20 unchanged outputs. Python and Bash
+syntax, palette/manifest structure, installed-file correspondence and Git
+whitespace checks passed. No automated test suites were run. Daemon restart,
+stopped-daemon catch-up, multiple hosts, rapid concurrent switches and other
+operating systems were not exercised. Runtime plugin source, configuration,
+backups and screenshots remain outside Git.

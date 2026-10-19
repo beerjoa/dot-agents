@@ -27,6 +27,8 @@
 - Paseo color plugin is authored here from the shared palettes using the
   [official 0.12.0 theme API](https://github.com/getpaseo/paseo/blob/cafe4b01c8522ff39560241c5deb01427dc8dc5b/public-docs/plugins/reference.md#contribute-a-theme).
   Only the client registration pattern is used; no third-party plugin is installed.
+  The Linux automatic adapter uses the same API and the official plugin reload
+  command; no Paseo package files or private client settings are copied.
 
 Review upstream changes before rebasing the Dark Reader patch. The extension
 build and its dependencies are deliberately not vendored here.

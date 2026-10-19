@@ -61,7 +61,7 @@ No private signing keys are required for unpacked local use.
   its base scheme, or use the existing Omarchy theme with the Linux user template.
 - Zeron: import its theme package, select the light/dark variants, and follow System.
 - Paseo: install the local color plugin and select Wave or Lotus in Appearance.
-  Custom themes in 0.12.0 do not automatically follow System light/dark changes.
+  On Omarchy, the optional Linux adapter adds an automatic current-palette theme.
 
 ## Platform status
 

@@ -34,8 +34,9 @@ focus follow the shared palettes. Lotus secondary text uses normal foreground
 for readable contrast on its raised surfaces.
 
 In 0.12.0, **System** chooses built-in themes; a contributed theme is a separate,
-single selection. This plugin does not implement automatic Wave/Lotus switching
-with Omarchy. Choose the other variant manually in Appearance.
+single selection. This portable plugin provides manual Wave/Lotus choices.
+For scheduled and manual Omarchy switching, install the separate
+[Linux automatic adapter](../../platforms/linux-omarchy/README.md#paseo).
 
 To undo, select the previous built-in theme (for example **System**), then run
 `paseo plugin remove dot-agents-kanagawa`. Removal does not delete this directory.
