@@ -4,6 +4,12 @@
   <p><a href="./README.md">English</a> | 한국어</p>
 </div>
 
+## [신규 PC 설치와 안전한 병합](./docs/SETUP.md)
+
+설정을 적용하는 에이전트는 이 가이드부터 확인하세요. 백업·선택적 병합,
+provider 로그인과 환경변수, 기기별 advisor 동의, OpenCode native free 모델,
+설치 후 검증과 인계 절차를 정리했습니다.
+
 ## [OpenCode 설정](./opencode/opencode.json)
 
 개인정보를 제거한 `opencode.json`에는 다음 내용이 포함되어 있습니다.

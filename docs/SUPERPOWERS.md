@@ -79,7 +79,7 @@ target model and its per-target reasoning effort (`medium` / `high` / `max` / `x
 | Worker | `combo/sp-worker` | `combo/sp-worker` | high (adaptive up to max) |
 | Worker Pro | `combo/sp-worker-pro` | `combo/sp-worker-pro` | high (adaptive per target) |
 | Spec review | `combo/sp-spec-review` | `combo/sp-spec-review` | high (adaptive up to max/xhigh) |
-| Task / final review | `combo/sp-code-review` | `combo/sp-code-review` | high (adaptive up to max/xhigh) |
+| Task / final review | `combo/sp-code-review` | `combo/sp-code-review` | high (Sol medium/high; Luna max; adaptive per target) |
 | Debug | `combo/sp-debug` | `combo/sp-debug` | high |
 
 The callable OpenCode `git-committer` also uses `sp-worker`, and
@@ -87,8 +87,9 @@ The callable OpenCode `git-committer` also uses `sp-worker`, and
 Primary agent models are configured separately.
 
 Set up OpenCodex and its provider connections locally, then apply the reviewed
-combo definitions. A role or combo name does not guarantee model capability:
-the existing Worker Pro combo's target order is not a capability ladder.
+combo definitions using the [new-machine setup guide](SETUP.md). A role or
+combo name does not guarantee model capability: Jev uses target profiles and
+allowed efforts; array order is not a guaranteed capability ladder.
 Check the actual supported route before escalating rounds 4–5 or selecting a
 whole-branch reviewer. If routing cannot provide the required capability, report
 that blocker rather than repeating the same route or inheriting the parent model.

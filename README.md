@@ -4,6 +4,12 @@
   <p>English | <a href="./README.ko.md">한국어</a></p>
 </div>
 
+## [New machine setup and safe merging](./docs/SETUP.md)
+
+Agents applying these settings should start with this guide: it covers backups,
+selective merging, provider login, environment variables, per-machine advisor
+consent, native OpenCode free models, and verification before handoff.
+
 ## [OpenCode config](./opencode/opencode.json)
 
 The sanitized `opencode.json` contains:

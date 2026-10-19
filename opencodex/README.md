@@ -24,6 +24,11 @@ connections and authentication modes are excluded.
 
 ## Applying the settings
 
+Start with the [new-machine setup and safe-merge guide](../docs/SETUP.md).
+Provider authentication, process environment, client integration, and advisor
+context-sharing consent require local setup beyond this public file. Advisor
+preferences alone do not enable the sidecar or grant consent.
+
 This file is a **partial configuration**, not a replacement for
 `~/.opencodex/config.json`. Set up OpenCodex and its providers first, then review
 and apply selected top-level fields to your existing configuration. Preserve
@@ -31,11 +36,15 @@ the other fields, including your provider and account configuration. Merge
 selected entries within `combos` to preserve any unrelated local combos. If you
 use `OPENCODEX_HOME`, the active `config.json` is under that directory instead.
 
-Configure the `openai`, `anthropic`, `cursor`, `opencode-go`, `opencode-zen`,
+Configure the `openai`, `anthropic`, `cursor`, `opencode-go`,
 and `google-antigravity` providers (plus `jev` / `TYPESAFE_API_KEY` for `strategy: "jev"` combos)
 locally before using the corresponding combos. Verify that the target models
 and reasoning efforts are available to your own accounts. The public subset
 does not configure those connections or guarantee model availability.
+
+`opencode-zen` is not required by these combos. Native OpenCode free models use
+OpenCode's own `opencode/...-free` routes; do not add the proxy's rejected Zen
+free routes to shared combos. See the setup guide for this separate option.
 
 The port must be available on the destination machine. Review auto-start and
 multi-agent mode against your installed version before applying them. Follow
