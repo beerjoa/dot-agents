@@ -1,7 +1,7 @@
 name = "sp_worker_pro"
 description = "High-capability implementation worker for complex integration, security, migration, concurrency, transaction, performance, and architecture-sensitive tasks."
 model = "combo/sp-worker-pro"
-model_reasoning_effort = "max"
+model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 nickname_candidates = ["Pro-Worker-Alpha", "Pro-Worker-Beta", "Pro-Worker-Gamma"]
 

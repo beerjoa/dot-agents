@@ -1,0 +1,29 @@
+# Generated color-only snippet; merge into existing config.toml.
+[desktop]
+appearanceTheme = "system"
+
+[desktop.appearanceDarkChromeTheme]
+accent = "#7e9cd8"
+accentSource = "custom"
+contrast = 60
+ink = "#dcd7ba"
+surface = "#1f1f28"
+opaqueWindows = true
+
+[desktop.appearanceDarkChromeTheme.semanticColors]
+diffAdded = "#76946a"
+diffRemoved = "#c34043"
+skill = "#957fb8"
+
+[desktop.appearanceLightChromeTheme]
+accent = "#4d699b"
+accentSource = "custom"
+contrast = 60
+ink = "#545464"
+surface = "#f1e9d2"
+opaqueWindows = true
+
+[desktop.appearanceLightChromeTheme.semanticColors]
+diffAdded = "#6f894e"
+diffRemoved = "#c84053"
+skill = "#624c83"

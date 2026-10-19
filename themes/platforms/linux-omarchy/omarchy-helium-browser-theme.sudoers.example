@@ -1,0 +1,1 @@
+your_login ALL=(root) NOPASSWD: /usr/local/bin/omarchy-helium-browser-theme-policy ""

@@ -1,0 +1,5 @@
+{
+  "id": "dot-agents-kanagawa",
+  "description": "Kanagawa Wave and Lotus color themes from the shared dot-agents palettes",
+  "requirements": { "paseo": ">=0.12.0" }
+}

@@ -1,7 +1,7 @@
 name = "sp_worker"
 description = "Cost-efficient implementation worker for isolated, clearly specified Superpowers plan tasks."
 model = "combo/sp-worker"
-model_reasoning_effort = "max"
+model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 nickname_candidates = ["Worker-Alpha", "Worker-Beta", "Worker-Gamma"]
 

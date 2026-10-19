@@ -2,8 +2,8 @@
 description: Independent Superpowers task reviewer for spec compliance and code quality, scoped fix re-review, and final whole-branch review.
 mode: subagent
 model: combo/sp-code-review
-reasoningEffort: max
-variant: max
+reasoningEffort: high
+variant: high
 temperature: 0.0
 textVerbosity: medium
 permission:

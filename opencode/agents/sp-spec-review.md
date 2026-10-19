@@ -2,8 +2,8 @@
 description: Independent Superpowers specification-compliance reviewer. Checks implementations and plans strictly against approved requirements without reviewing style first.
 mode: subagent
 model: combo/sp-spec-review
-reasoningEffort: max
-variant: max
+reasoningEffort: high
+variant: high
 temperature: 0.0
 textVerbosity: low
 permission:

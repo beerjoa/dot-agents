@@ -1,0 +1,160 @@
+diff --git i/src/background/index.ts w/src/background/index.ts
+index e151e96..ddfc870 100644
+--- i/src/background/index.ts
++++ w/src/background/index.ts
+@@ -7,6 +7,7 @@ import {isFirefox} from '../utils/platform';
+ 
+ import {Extension} from './extension';
+ import {makeChromiumHappy} from './make-chromium-happy';
++import {startOmarchyBridge} from './omarchy-bridge';
+ import {setNewsForTesting} from './newsmaker';
+ import {ASSERT} from './utils/log';
+ import {sendLog} from './utils/sendLog';
+@@ -51,6 +52,7 @@ type TestMessage = {
+ 
+ // Start extension
+ const extension = Extension.start();
++void extension.then(startOmarchyBridge);
+ 
+ const welcome = `  /''''\\
+  (0)==(0)
+diff --git i/src/inject/index.ts w/src/inject/index.ts
+index 156c146..0328863 100644
+--- i/src/inject/index.ts
++++ w/src/inject/index.ts
+@@ -221,6 +221,11 @@ runColorSchemeChangeDetector((isDark) =>
+ );
+ 
+ chrome.runtime.onMessage.addListener(onMessage);
++chrome.runtime.onMessage.addListener((message: {type?: string}) => {
++    if (message?.type === 'omarchy-palette-changed') {
++        sendConnectionOrResumeMessage(MessageTypeCStoBG.DOCUMENT_CONNECT);
++    }
++});
+ sendConnectionOrResumeMessage(MessageTypeCStoBG.DOCUMENT_CONNECT);
+ scheduleConnectionRetry();
+ 
+diff --git i/src/manifest-chrome-mv3.json w/src/manifest-chrome-mv3.json
+index 08dddaf..500ba58 100644
+--- i/src/manifest-chrome-mv3.json
++++ w/src/manifest-chrome-mv3.json
+@@ -1,5 +1,7 @@
+ {
+     "manifest_version": 3,
++    "name": "Dark Reader — Omarchy",
++    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4nSCrn5BAOPL3n1tGdoTU2BEXO5+Z3cfhVCJYoaXc0a3SFbksyUISt5M8al1kfJD2DzHukGxEJv9Jk5z55ueRMBqLs4qyMMNWlRn2cKtbei4LhwLCcrE4KRMpjCGg8aOvlETjWRguaAuWkNq34E1hNldqYxhuxAEVA2wj62cBCtxk85fx6DlAHnnI86nOPAifBrpylE4ySQu9Ogn7IcJkLWR28OoMyBDYnvbRKWRxjU3pRVd7gimwE2bta1qRd0Ssa4Cmi+54+aJU7yPVYk+OsQKykA1MOU8VhA9vlxZfd018Nw50M+y7UuVlyMBd3iw1knsFLQyTJ/ylHvCz584iQIDAQAB",
+     "minimum_chrome_version": "106.0.0.0",
+     "action": {
+         "default_title": "Dark Reader",
+@@ -58,6 +60,7 @@
+         }
+     ],
+     "permissions": [
++        "nativeMessaging",
+         "alarms",
+         "fontSettings",
+         "scripting",
+diff --git 1/src/background/omarchy-bridge.ts 2/src/background/omarchy-bridge.ts
+new file mode 100644
+index 0000000..3ded9e3
+--- /dev/null
++++ 2/src/background/omarchy-bridge.ts
+@@ -0,0 +1,98 @@
++import type {Theme, UserSettings} from '../definitions';
++import {validateSettings} from '../utils/validation';
++
++import {Extension} from './extension';
++import UserStorage from './user-storage';
++
++const HOST = 'dev.beerjoa.omarchy_theme';
++const RETRY_ALARM = 'omarchy-bridge-reconnect';
++
++type Palette = {mode: 'light' | 'dark'; background: string; foreground: string};
++
++function isPalette(value: unknown): value is Palette {
++    if (!value || typeof value !== 'object') {
++        return false;
++    }
++    const palette = value as Partial<Palette>;
++    return (palette.mode === 'light' || palette.mode === 'dark') &&
++        typeof palette.background === 'string' && /^#[0-9a-f]{6}$/i.test(palette.background) &&
++        typeof palette.foreground === 'string' && /^#[0-9a-f]{6}$/i.test(palette.foreground);
++}
++
++export function startOmarchyBridge(): void {
++    let port: chrome.runtime.Port | null = null;
++    let queue = Promise.resolve();
++
++    async function apply(message: {type?: string; palette?: unknown; initialSettings?: Partial<UserSettings>}) {
++        if (message.type !== 'palette' || !isPalette(message.palette)) {
++            throw new Error('Invalid Omarchy palette');
++        }
++        const {omarchyBridgeInitialized} = await chrome.storage.local.get('omarchyBridgeInitialized');
++        let settings = UserStorage.settings;
++        if (!omarchyBridgeInitialized && message.initialSettings) {
++            const validated = validateSettings(message.initialSettings);
++            if (validated.errors.length > 0) {
++                throw new Error('Invalid initial Dark Reader settings');
++            }
++            settings = {...settings, ...validated.settings};
++            // Optional permissions belong to the extension ID and are not imported.
++            if (settings.enableContextMenus && !await chrome.permissions.contains({permissions: ['contextMenus']})) {
++                settings = {...settings, enableContextMenus: false};
++            }
++        }
++        const palette = message.palette;
++        const theme: Theme = {...settings.theme, mode: palette.mode === 'dark' ? 1 : 0};
++        if (palette.mode === 'dark') {
++            theme.darkColorScheme = 'Default';
++            theme.darkSchemeBackgroundColor = palette.background;
++            theme.darkSchemeTextColor = palette.foreground;
++        } else {
++            theme.lightColorScheme = 'Default';
++            theme.lightSchemeBackgroundColor = palette.background;
++            theme.lightSchemeTextColor = palette.foreground;
++        }
++        await Extension.changeSettings({
++            ...(!omarchyBridgeInitialized ? settings : {}),
++            theme,
++            automation: {...settings.automation, enabled: false},
++            syncSettings: false,
++            changeBrowserTheme: false,
++        });
++        // Reconnect content scripts whose document is missing from the MV3 tab cache.
++        const tabs = await chrome.tabs.query({discarded: false});
++        await Promise.all(tabs.map((tab) => chrome.tabs.sendMessage(tab.id!, {type: 'omarchy-palette-changed'}).catch(() => {
++            // Protected browser pages and tabs without a content script cannot receive this.
++        })));
++        await chrome.storage.local.set({
++            ...(!omarchyBridgeInitialized ? UserStorage.settings : {}),
++            omarchyBridgeInitialized: true,
++            omarchyBridgeStatus: {connected: true, palette, error: null},
++        });
++    }
++
++    function connect() {
++        if (port) {
++            return;
++        }
++        port = chrome.runtime.connectNative(HOST);
++        port.onMessage.addListener((message) => {
++            queue = queue.then(() => apply(message)).catch(async (error) => {
++                await chrome.storage.local.set({omarchyBridgeStatus: {connected: true, error: String(error)}});
++            });
++        });
++        port.onDisconnect.addListener(() => {
++            const error = chrome.runtime.lastError?.message || 'Native host disconnected';
++            port = null;
++            void chrome.storage.local.set({omarchyBridgeStatus: {connected: false, error}});
++            void chrome.alarms.create(RETRY_ALARM, {delayInMinutes: 0.5});
++        });
++        port.postMessage({type: 'subscribe'});
++    }
++
++    chrome.alarms.onAlarm.addListener((alarm) => {
++        if (alarm.name === RETRY_ALARM) {
++            connect();
++        }
++    });
++    connect();
++}

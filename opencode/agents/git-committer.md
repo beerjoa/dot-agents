@@ -2,8 +2,8 @@
 description: Commits staged or agent-authored changes using git-commit-from-instructions.
 mode: all
 model: combo/sp-worker
-variant: max
-reasoningEffort: max
+variant: high
+reasoningEffort: high
 temperature: 0.1
 permission:
   read: allow

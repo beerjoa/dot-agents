@@ -32,9 +32,9 @@ argument-hint: [PLAN_FILE=<plan_file_path>]
 확인한 뒤 프로젝트 worktree에서 다음 스크립트를 호출한다.
 계획을 유일하게 식별할 수 없으면 실행할 계획 파일 경로를 요청한다.
 
-- `bash "$SDD_SKILL_DIR/scripts/sdd-workspace" "$PLAN_FILE"`
-- `bash "$SDD_SKILL_DIR/scripts/task-brief" "$PLAN_FILE" N`
-- `bash "$SDD_SKILL_DIR/scripts/review-package" "$PLAN_FILE" BASE HEAD`
+- `bash "$$SDD_SKILL_DIR/scripts/sdd-workspace" "$PLAN_FILE"`
+- `bash "$$SDD_SKILL_DIR/scripts/task-brief" "$PLAN_FILE" N`
+- `bash "$$SDD_SKILL_DIR/scripts/review-package" "$PLAN_FILE" BASE HEAD`
 
 반환된 계획별 workspace에 progress.md, brief, report, 리뷰 패키지를 둔다.
 ledger 첫 줄은 `# SDD ledger — plan: <plan file path>`로 하고, 재개 시 계획

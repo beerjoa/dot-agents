@@ -12,16 +12,22 @@ source user's settings, not upstream factory defaults:
   model alias and fast service-tier preferences, WebSocket and proxy auto-start
   preferences, and multi-agent mode.
 - Featured subagent, injection, web search, and vision model selections.
-- The six `sp-*` failover combos, including target order, weights, reasoning
-  effort, and sticky limits. These correspond to the `combo/...` selectors used
-  by the [Codex agents](../codex/agents/) and the [OpenCode agents](../opencode/agents/).
-  See the [Superpowers compatibility notes](../docs/SUPERPOWERS.md) for role mapping
-  and workflow requirements.
+- Nine `jev` combos (`default`, `explorer`, `worker`, and the six `sp-*` roles),
+  including candidate targets, weights, per-target reasoning efforts, and sticky
+  limits. These correspond to the `combo/...` selectors used by the
+  [Codex agents](../codex/agents/) and the [OpenCode agents](../opencode/agents/).
+  See the [Superpowers compatibility notes](../docs/SUPERPOWERS.md) for role
+  mapping and workflow requirements.
 
 Model and provider names in routing targets are included intentionally. Provider
 connections and authentication modes are excluded.
 
 ## Applying the settings
+
+Start with the [new-machine setup and safe-merge guide](../docs/SETUP.md).
+Provider authentication, process environment, client integration, and advisor
+context-sharing consent require local setup beyond this public file. Advisor
+preferences alone do not enable the sidecar or grant consent.
 
 This file is a **partial configuration**, not a replacement for
 `~/.opencodex/config.json`. Set up OpenCodex and its providers first, then review
@@ -30,10 +36,15 @@ the other fields, including your provider and account configuration. Merge
 selected entries within `combos` to preserve any unrelated local combos. If you
 use `OPENCODEX_HOME`, the active `config.json` is under that directory instead.
 
-Configure the `openai`, `devin`, `opencode-go`, and `google-antigravity` providers
+Configure the `openai`, `anthropic`, `cursor`, `opencode-go`,
+and `google-antigravity` providers (plus `jev` / `TYPESAFE_API_KEY` for `strategy: "jev"` combos)
 locally before using the corresponding combos. Verify that the target models
 and reasoning efforts are available to your own accounts. The public subset
 does not configure those connections or guarantee model availability.
+
+`opencode-zen` is not required by these combos. Native OpenCode free models use
+OpenCode's own `opencode/...-free` routes; do not add the proxy's rejected Zen
+free routes to shared combos. See the setup guide for this separate option.
 
 The port must be available on the destination machine. Review auto-start and
 multi-agent mode against your installed version before applying them. Follow

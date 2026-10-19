@@ -2,8 +2,8 @@
 description: High-capability Superpowers implementation worker for difficult cross-module, concurrency, migration, security, and architecture-sensitive tasks.
 mode: subagent
 model: combo/sp-worker-pro
-reasoningEffort: max
-variant: max
+reasoningEffort: high
+variant: high
 temperature: 0.1
 textVerbosity: medium
 permission:

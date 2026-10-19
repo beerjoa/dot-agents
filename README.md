@@ -4,6 +4,12 @@
   <p>English | <a href="./README.ko.md">한국어</a></p>
 </div>
 
+## [New machine setup and safe merging](./docs/SETUP.md)
+
+Agents applying these settings should start with this guide: it covers backups,
+selective merging, provider login, environment variables, per-machine advisor
+consent, native OpenCode free models, and verification before handoff.
+
 ## [OpenCode config](./opencode/opencode.json)
 
 The sanitized `opencode.json` contains:
@@ -35,8 +41,17 @@ provider and MCP connections, and authorization settings; those are omitted.
 
 The `opencodex/` directory contains reviewed public
 [OpenCodex](https://github.com/lidge-jun/opencodex) preferences, model selections,
-and six `sp-*` failover combos. Its
+and nine `jev` combos (`default`, `explorer`, `worker`, and the six `sp-*` roles). Its
 [`config.public.json`](./opencodex/config.public.json) is a partial configuration:
 apply selected fields to an existing configuration after reviewing them.
 Provider connections, authentication modes, credentials, account state, and
 runtime data are excluded.
+
+## [Shared themes](./themes/README.md)
+
+`themes/` holds the Kanagawa Wave dark and customized Lotus light palettes,
+generated browser/Dark Reader/Codex/terminal color files, the browser switcher,
+and the pinned Dark Reader/native bridge source. Linux/Omarchy integration is
+separated from macOS reuse guidance. Personal profiles, site lists and machine
+registrations are excluded. Generate color files with Python 3.11+; installation
+is explicit and does not happen when cloning this repository.

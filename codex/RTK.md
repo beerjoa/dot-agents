@@ -4,7 +4,7 @@
 
 ## Rule
 
-Always prefix shell commands with `rtk`.
+When `rtk` is installed, prefix shell commands with `rtk`. If it is unavailable, use the normal shell command and continue; do not let the optional binary block work.
 
 Examples:
 

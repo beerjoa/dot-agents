@@ -1,0 +1,22 @@
+{
+  "name": "dot-agents-kanagawa",
+  "displayName": "Dot Agents Kanagawa",
+  "publisher": "dot-agents",
+  "version": "1.0.0",
+  "contributes": {
+    "themes": [
+      {
+        "id": "kanagawa-wave",
+        "label": "Kanagawa Wave",
+        "uiTheme": "vs-dark",
+        "path": "./themes/kanagawa-wave.json"
+      },
+      {
+        "id": "kanagawa-lotus",
+        "label": "Kanagawa Lotus",
+        "uiTheme": "vs",
+        "path": "./themes/kanagawa-lotus.json"
+      }
+    ]
+  }
+}

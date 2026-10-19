@@ -28,10 +28,10 @@ subagent-driven-development 디렉터리를 SDD_SKILL_DIR로 확인한다.
 프로젝트 worktree에서 다음 스크립트들을 호출한다. 캐시의 절대 경로나
 프로젝트 기준의 스킬 상대 경로를 추측하지 마라.
 
-- `bash "$SDD_SKILL_DIR/scripts/sdd-workspace" "$PLAN_FILE"`
-- `bash "$EXEC_SKILL_DIR/scripts/task-start" "$PLAN_FILE" N`
-- `bash "$EXEC_SKILL_DIR/scripts/task-done" "$PLAN_FILE" N BASE -- <task verification command>`
-- `bash "$SDD_SKILL_DIR/scripts/review-package" "$PLAN_FILE" BRANCH_BASE HEAD`
+- `bash "$$SDD_SKILL_DIR/scripts/sdd-workspace" "$PLAN_FILE"`
+- `bash "$$EXEC_SKILL_DIR/scripts/task-start" "$PLAN_FILE" N`
+- `bash "$$EXEC_SKILL_DIR/scripts/task-done" "$PLAN_FILE" N BASE -- <task verification command>`
+- `bash "$$SDD_SKILL_DIR/scripts/review-package" "$PLAN_FILE" BRANCH_BASE HEAD`
 
 plan과 연결된 spec을 한 번 읽고 Global Constraints, Review Focus를 확인한다.
 spec에 접근할 수 없으면 ledger에 기록하고, 근거 없는 판단은 잠정적임을 표시한다.
