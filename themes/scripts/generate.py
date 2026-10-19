@@ -34,6 +34,48 @@ def render():
         if p['mode'] != mode or any(not re.fullmatch(r'#[0-9a-fA-F]{6}', v) for k, v in p.items() if k != 'mode'):
             raise ValueError(f'Invalid palette: {slug}')
         palettes[mode] = p
+        zeron_colors = {}
+        for role, tokens in {
+            'dark_background': ('panel.background', 'list.hoverBackground', 'dropdown.background', 'menu.background', 'editorWidget.background'),
+            'lighter_background': ('input.background',),
+            'foreground': ('foreground', 'editor.foreground', 'input.foreground', 'terminal.foreground'),
+            'light_foreground': ('descriptionForeground', 'tab.inactiveForeground'),
+            'dark_foreground': ('disabledForeground', 'input.placeholderForeground'),
+            'selection': ('list.activeSelectionBackground', 'list.inactiveSelectionBackground', 'terminal.selectionBackground'),
+            'muted': ('panel.border', 'widget.border'),
+            'blue': ('focusBorder', 'textLink.foreground', 'button.background'),
+            'background': ('editor.background', 'sideBar.background', 'activityBar.background', 'terminal.background', 'button.foreground'),
+            'bright_foreground': ('editorCursor.foreground',),
+            'red': ('editorError.foreground',),
+            'yellow': ('editorWarning.foreground',),
+            'green': ('gitDecoration.addedResourceForeground',),
+        }.items():
+            zeron_colors.update({token: p[role] for token in tokens})
+        zeron_colors.update({
+            'diffEditor.insertedTextBackground': p['green'] + '30',
+            'diffEditor.removedTextBackground': p['red'] + '30',
+            'diffEditor.diagonalFill': p['blue'] + '20',
+        })
+        ansi_names = ('Black', 'Red', 'Green', 'Yellow', 'Blue', 'Magenta', 'Cyan', 'White')
+        for bright, roles in [('', ANSI[:8]), ('Bright', ANSI[8:])]:
+            zeron_colors.update({f'terminal.ansi{bright}{label}': p[role]
+                                 for label, role in zip(ansi_names, roles)})
+        files[f'apps/zeron/themes/{slug}.json'] = json_text({
+            'name': name, 'type': mode, 'colors': zeron_colors,
+            'tokenColors': [
+                {'scope': scope, 'settings': {'foreground': p[role]}}
+                for scope, role in [
+                    ('comment', 'light_foreground'), ('keyword', 'magenta'),
+                    ('keyword.operator', 'cyan'), ('string', 'green'),
+                    ('constant.numeric', 'orange'), ('constant.language', 'orange'),
+                    ('entity.name.function', 'blue'), ('support.function', 'blue'),
+                    ('entity.name.type', 'yellow'), ('support.type', 'yellow'),
+                    ('variable', 'foreground'), ('variable.parameter', 'foreground'),
+                    ('variable.other.property', 'cyan'), ('entity.name.tag', 'red'),
+                    ('entity.other.attribute', 'yellow'), ('punctuation', 'foreground'),
+                ]
+            ],
+        })
         obsidian.append(re.sub(r'{{ (\w+) }}', lambda match: p[match[1]], obsidian_template)
                         .replace('.theme-dark, .theme-light', f'.theme-{mode}'))
         colors = {k: rgb(p['foreground']) for k in ('toolbar_text', 'bookmark_text', 'toolbar_button_icon', 'ntp_text')}
@@ -86,6 +128,15 @@ def render():
             '    { "LazyVim/LazyVim", opts = { colorscheme = "kanagawa-' + variant + '" } },\n'
             '}\n')
     files['apps/codex/appearance.toml'] = '\n'.join(codex) + '\n'
+    files['apps/zeron/package.json'] = json_text({
+        'name': 'dot-agents-kanagawa', 'displayName': 'Dot Agents Kanagawa',
+        'publisher': 'dot-agents', 'version': '1.0.0',
+        'contributes': {'themes': [
+            {'id': slug, 'label': name, 'uiTheme': 'vs-dark' if mode == 'dark' else 'vs',
+             'path': f'./themes/{slug}.json'}
+            for slug, name, mode in PALETTES
+        ]},
+    })
     files['apps/obsidian/theme.css'] = '\n'.join(obsidian)
     files['platforms/linux-omarchy/obsidian.css.tpl'] = obsidian_template
     theme = {'mode': 1, 'engine': 'dynamicTheme', 'darkColorScheme': 'Default', 'lightColorScheme': 'Default'}

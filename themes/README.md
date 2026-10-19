@@ -18,6 +18,7 @@ from Omarchy and from the browser automation.
 - [`apps/terminals/`](apps/terminals/): Ghostty, Kitty and Alacritty color snippets.
 - [`apps/neovim/`](apps/neovim/): LazyVim/kanagawa.nvim snippets.
 - [`apps/obsidian/`](apps/obsidian/): portable Wave/Lotus theme and shared CSS source.
+- [`apps/zeron/`](apps/zeron/): Wave/Lotus package for Zeron's built-in theme importer.
 - [`bridge/`](bridge/): native host source and machine-local registration preparation.
 - [`platforms/`](platforms/): OS-specific application, hooks and policy handling.
 - [`assets/`](assets/): image inventory, kept separate from color configuration.
@@ -57,6 +58,7 @@ No private signing keys are required for unpacked local use.
 - Neovim: use the snippets only if the existing setup uses LazyVim and kanagawa.nvim.
 - Obsidian: install the two portable theme files in the intended vault and choose
   its base scheme, or use the existing Omarchy theme with the Linux user template.
+- Zeron: import its theme package, select the light/dark variants, and follow System.
 
 ## Platform status
 

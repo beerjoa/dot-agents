@@ -83,3 +83,27 @@ Settings-window screenshots were inspected locally; no screenshots, vault names,
 notes, account settings or machine-local appearance/workspace files are in Git.
 This is not an exhaustive visual audit of every note, plugin or graph. Portable
 theme runtime application on macOS/Windows remains unverified.
+
+## Zeron, 2026-10-19
+
+Zeron 0.2.113's official theme documentation and importer source were checked
+before implementation. Three generated JSON files provide a VS Code theme
+package with both Wave and Lotus. The existing 16 outputs are unchanged.
+Generated-file consistency now covers 19 outputs; JSON/Python parsing and Git
+whitespace checks passed. No automated test suites or new dependencies were used.
+
+After backing up device-local settings outside Git, the installed app's own
+Appearance importer analyzed and imported both variants as a snapshot. Both
+compiled variants retained the exact editor/shell backgrounds and supplied all
+mapped color roles; the only fallback record concerns the opaque surface
+recommendation. The importer adjusted muted/faint text to its contrast targets.
+Wave had no validation warnings. Lotus retained the shared ANSI16 bright green
+at slot 10, for which the importer reports contrast below 3:1.
+
+Light and dark selections were set to Lotus and Wave with System mode, theme
+default accent/surface, and wallpaper-derived colors disabled. Live Omarchy
+switches changed the visible Zeron controls to Wave and back to Lotus without
+restarting the app or adding a hook. Local settings screenshots were inspected;
+this is not an exhaustive check of agent sessions, code, terminal output or every
+interaction state. No private settings, library source paths, screenshots or
+backups are committed. macOS/Windows runtime application remains unverified.

@@ -21,6 +21,9 @@
 - Obsidian CSS is authored here from the shared palettes using
   [documented CSS variables](https://docs.obsidian.md/Reference/CSS+variables/Foundations/Colors).
   The Linux adapter uses Omarchy's existing user template and vault-theme sync.
+- Zeron color data is authored here from the shared palettes, targeting the
+  [official 0.2.113 theme importer](https://github.com/zeronsh/zeron/blob/6ac8859998909bc5afd55838afb0635c281f31c3/docs/theme-system.md).
+  No Zeron implementation, built-in theme or device-local library is copied.
 
 Review upstream changes before rebasing the Dark Reader patch. The extension
 build and its dependencies are deliberately not vendored here.
