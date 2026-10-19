@@ -107,3 +107,33 @@ restarting the app or adding a hook. Local settings screenshots were inspected;
 this is not an exhaustive check of agent sessions, code, terminal output or every
 interaction state. No private settings, library source paths, screenshots or
 backups are committed. macOS/Windows runtime application remains unverified.
+
+## Paseo, 2026-10-20
+
+The installed Paseo desktop 0.12.0 and its matching official plugin API/source
+were inspected. A local client-only plugin registers the two eight-color
+palettes through `client.addTheme`. It has no server entry, preparation command,
+dependency installation, network call or filesystem operation. Generated-file
+consistency covers 20 outputs; the previous 19 outputs are unchanged. Python
+syntax, manifest/palette JSON, hex color/schema shape, private-path filtering
+and Git whitespace checks passed. No automated test suites were run.
+
+The daemon configuration was backed up outside Git. Official `paseo plugin add`
+registered the local directory. Plugins were initially globally disabled; only
+this new plugin was configured. Enabling the global switch in Settings allowed
+the plugin to load. The final daemon-config differences were only `plugins` and
+`pluginsEnabled`; other daemon configuration was preserved.
+
+Both variants appeared in Appearance and were selected and visually inspected
+on Linux. The app showed the Lotus surfaces and then Wave surfaces, text, input
+fields and borders. Wave was left selected to match the current dark Omarchy
+mode. Official plugin reload returned `running`. The source foreground/secondary
+text contrast across background/raised/control surfaces is at least 7.05:1 in
+Wave and 5.43:1 in Lotus. This is not an exhaustive audit of all derived states,
+terminal ANSI colors, code or agent sessions.
+
+Paseo 0.12.0 disables adaptive system theming when a contributed theme is
+selected, so automatic Wave/Lotus switching is not implemented here. The
+separate syntax theme was preserved. App restart persistence, additional hosts,
+macOS, Windows and mobile runtime application remain unverified. Private daemon
+settings, browser storage, screenshots and backups are not committed.

@@ -24,6 +24,9 @@
 - Zeron color data is authored here from the shared palettes, targeting the
   [official 0.2.113 theme importer](https://github.com/zeronsh/zeron/blob/6ac8859998909bc5afd55838afb0635c281f31c3/docs/theme-system.md).
   No Zeron implementation, built-in theme or device-local library is copied.
+- Paseo color plugin is authored here from the shared palettes using the
+  [official 0.12.0 theme API](https://github.com/getpaseo/paseo/blob/cafe4b01c8522ff39560241c5deb01427dc8dc5b/public-docs/plugins/reference.md#contribute-a-theme).
+  Only the client registration pattern is used; no third-party plugin is installed.
 
 Review upstream changes before rebasing the Dark Reader patch. The extension
 build and its dependencies are deliberately not vendored here.

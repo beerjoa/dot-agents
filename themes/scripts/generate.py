@@ -24,6 +24,7 @@ def json_text(value):
 def render():
     files = {}
     palettes = {}
+    paseo = []
     keys = json.loads((ROOT / 'apps/chromium/theme-keys.json').read_text())
     obsidian_template = (ROOT / 'apps/obsidian/theme.css.tpl').read_text()
     obsidian = ['/* Generated Wave/Lotus theme; edit theme.css.tpl and the shared palettes. */']
@@ -34,6 +35,17 @@ def render():
         if p['mode'] != mode or any(not re.fullmatch(r'#[0-9a-fA-F]{6}', v) for k, v in p.items() if k != 'mode'):
             raise ValueError(f'Invalid palette: {slug}')
         palettes[mode] = p
+        paseo.append({
+            'id': slug, 'name': name, 'appearance': mode,
+            'colors': {
+                'background': p['background'], 'foreground': p['foreground'],
+                'raised': p['dark_background'],
+                'control': p['lighter_background'], 'border': p['muted'],
+                'accent': p['blue'],
+                'mutedForeground': p['light_foreground'] if mode == 'dark' else p['foreground'],
+                'ring': p['blue'],
+            },
+        })
         zeron_colors = {}
         for role, tokens in {
             'dark_background': ('panel.background', 'list.hoverBackground', 'dropdown.background', 'menu.background', 'editorWidget.background'),
@@ -128,6 +140,14 @@ def render():
             '    { "LazyVim/LazyVim", opts = { colorscheme = "kanagawa-' + variant + '" } },\n'
             '}\n')
     files['apps/codex/appearance.toml'] = '\n'.join(codex) + '\n'
+    files['apps/paseo/index.client.ts'] = (
+        '// Generated color-only plugin; edit the shared palettes and generator.\n'
+        'import type { PluginClientContext } from "@getpaseo/plugin/client";\n\n'
+        'export default function contribute(client: PluginClientContext) {\n'
+        '  const themes = ' + json_text(paseo).rstrip() + ' as const;\n'
+        '  for (const theme of themes) client.addTheme(theme);\n'
+        '  return () => {};\n'
+        '}\n')
     files['apps/zeron/package.json'] = json_text({
         'name': 'dot-agents-kanagawa', 'displayName': 'Dot Agents Kanagawa',
         'publisher': 'dot-agents', 'version': '1.0.0',
