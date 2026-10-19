@@ -18,7 +18,11 @@
     },
     "notionApi": {
       "type": "local",
-      "command": ["npx", "-y", "@notionhq/notion-mcp-server"],
+      "command": [
+        "npx",
+        "-y",
+        "@notionhq/notion-mcp-server"
+      ],
       "enabled": true,
       "environment": {
         "NOTION_TOKEN": "{env:NOTION_TOKEN}"
@@ -34,7 +38,9 @@
     "commandcode": {
       "npm": "commandcode-go-opencode-provider",
       "name": "Command Code",
-      "env": ["COMMANDCODE_API_KEY"]
+      "env": [
+        "COMMANDCODE_API_KEY"
+      ]
     },
     "opencodex": {
       "npm": "@ai-sdk/openai-compatible",
@@ -128,20 +134,6 @@
             "output": 32000
           }
         },
-        "cursor/claude-haiku-5-5": {
-          "name": "claude-haiku-5-5 (cursor)",
-          "limit": {
-            "context": 350000,
-            "output": 32000
-          }
-        },
-        "cursor/claude-opus-5-5": {
-          "name": "claude-opus-5-5 (cursor)",
-          "limit": {
-            "context": 350000,
-            "output": 32000
-          }
-        },
         "cursor/composer-2.5": {
           "name": "composer-2.5 (cursor)",
           "limit": {
@@ -153,13 +145,6 @@
           "name": "composer-2.5-fast (cursor)",
           "limit": {
             "context": 200000,
-            "output": 32000
-          }
-        },
-        "google-antigravity/claude-opus-5-5": {
-          "name": "claude-opus-5-5 (google-antigravity)",
-          "limit": {
-            "context": 350000,
             "output": 32000
           }
         },
@@ -184,22 +169,8 @@
             "output": 32000
           }
         },
-        "gpt-6-astra": {
-          "name": "gpt-6-astra (native)",
-          "limit": {
-            "context": 350000,
-            "output": 32000
-          }
-        },
         "gpt-6-luna": {
           "name": "gpt-6-luna (native)",
-          "limit": {
-            "context": 350000,
-            "output": 32000
-          }
-        },
-        "gpt-6-sol": {
-          "name": "gpt-6-sol (native)",
           "limit": {
             "context": 350000,
             "output": 32000
@@ -247,6 +218,13 @@
             "output": 32000
           }
         },
+        "opencode-go/mimo-v2.6-pro": {
+          "name": "mimo-v2.6-pro (opencode-go)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
         "opencode-go/minimax-m3.1-flash-free": {
           "name": "minimax-m3.1-flash-free (opencode-go)",
           "limit": {
@@ -270,62 +248,6 @@
         },
         "opencode-go/step-5-preview": {
           "name": "step-5-preview (opencode-go)",
-          "limit": {
-            "context": 350000,
-            "output": 32000
-          }
-        },
-        "opencode-zen/beam-free": {
-          "name": "beam-free (opencode-zen)",
-          "limit": {
-            "context": 350000,
-            "output": 32000
-          }
-        },
-        "opencode-zen/big-pickle": {
-          "name": "big-pickle (opencode-zen)",
-          "limit": {
-            "context": 350000,
-            "output": 32000
-          }
-        },
-        "opencode-zen/deepseek-v4.1-flash-free": {
-          "name": "deepseek-v4.1-flash-free (opencode-zen)",
-          "limit": {
-            "context": 350000,
-            "output": 32000
-          }
-        },
-        "opencode-zen/glm-5.3-flash-free": {
-          "name": "glm-5.3-flash-free (opencode-zen)",
-          "limit": {
-            "context": 350000,
-            "output": 32000
-          }
-        },
-        "opencode-zen/jev-1.13-free": {
-          "name": "jev-1.13-free (opencode-zen)",
-          "limit": {
-            "context": 350000,
-            "output": 32000
-          }
-        },
-        "opencode-zen/longcat-2.5-preview-free": {
-          "name": "longcat-2.5-preview-free (opencode-zen)",
-          "limit": {
-            "context": 350000,
-            "output": 32000
-          }
-        },
-        "opencode-zen/mimo-v2.6-flash-free": {
-          "name": "mimo-v2.6-flash-free (opencode-zen)",
-          "limit": {
-            "context": 350000,
-            "output": 32000
-          }
-        },
-        "opencode-zen/minimax-m3.1-flash-free": {
-          "name": "minimax-m3.1-flash-free (opencode-zen)",
           "limit": {
             "context": 350000,
             "output": 32000

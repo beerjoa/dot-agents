@@ -5,7 +5,11 @@
   "defaultProvider": "openai",
   "fastRows": true,
   "subagentModels": [
-    "gpt-6-luna"
+    "combo/default",
+    "combo/explorer",
+    "combo/worker",
+    "combo/sp-worker",
+    "combo/sp-worker-pro"
   ],
   "websockets": false,
   "codexAutoStart": true,
@@ -560,5 +564,17 @@
     "model": "gpt-6-luna",
     "backend": "openai",
     "reasoning": "low"
-  }
+  },
+  "compactionRouting": {
+    "model": "google-antigravity/gemini-3.8-flash",
+    "reasoningEffort": "high"
+  },
+  "advisor": {
+    "model": "google-antigravity/gemini-4-argon",
+    "effort": "high",
+    "policy": "adaptive",
+    "maxConsultationsPerTask": 2
+  },
+  "injectionModel": "combo/default",
+  "injectionEffort": "high"
 }
