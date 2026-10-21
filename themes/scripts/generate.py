@@ -35,6 +35,14 @@ def render():
         if p['mode'] != mode or any(not re.fullmatch(r'#[0-9a-fA-F]{6}', v) for k, v in p.items() if k != 'mode'):
             raise ValueError(f'Invalid palette: {slug}')
         palettes[mode] = p
+        orca = [f'name: "{name}"', f'details: "{"darker" if mode == "dark" else "lighter"}"',
+                f'background: "{p["background"]}"', f'foreground: "{p["foreground"]}"',
+                f'cursor: "{p["bright_foreground"]}"', 'terminal_colors:']
+        for section, roles in [('normal', ANSI[:8]), ('bright', ANSI[8:])]:
+            orca.append(f'  {section}:')
+            orca.extend(f'    {label}: "{p[role]}"' for label, role in
+                        zip(('black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'), roles))
+        files[f'apps/orca/{slug}.yaml'] = '\n'.join(orca) + '\n'
         paseo.append({
             'id': slug, 'name': name, 'appearance': mode,
             'colors': {

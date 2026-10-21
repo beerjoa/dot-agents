@@ -161,3 +161,36 @@ whitespace checks passed. No automated test suites were run. Daemon restart,
 stopped-daemon catch-up, multiple hosts, rapid concurrent switches and other
 operating systems were not exercised. Runtime plugin source, configuration,
 backups and screenshots remain outside Git.
+
+## Orca ADE terminal themes, 2026-10-21
+
+Installed Orca 1.4.230's official terminal documentation, bundled Warp importer
+and terminal theme selector were inspected. Two generated YAML files provide
+background, foreground, cursor and ANSI16 colors. Generator consistency covers
+22 files; all previous 20 rendered outputs are byte-for-byte unchanged. Python
+syntax, YAML field/hex structure, imported-color correspondence, private-path
+filtering and Git whitespace checks passed. No automated test suites were run.
+
+The active SQLite profile was backed up outside Git using SQLite's backup API;
+the older `orca-data.json` was an inactive export. Through the official UI,
+**Settings → Appearance → Terminal → Import from YAML → Choose Folder** found
+and imported both variants. Dark was set to Wave and light to Lotus. Existing
+System mode and the separate light option were retained. The final settings
+delta is limited to `terminalCustomThemes`, `terminalThemeDark` and
+`terminalThemeLight`; no terminal color overrides were present. All 19 imported
+colors per theme match their source palette (the importer normalizes hex case).
+
+Lotus's effective light preview was inspected. A temporary shell tab showed the
+Lotus background; a live Omarchy switch to Wave updated that same terminal's
+background, foreground, cursor and existing ANSI-colored output without restart
+or another theme selection. Switching back restored Lotus. The temporary tab
+was then closed. This exercises the system-mode command path used by Scheduler,
+not a timed scheduler event. No user commands or agent sessions were started in
+that tab beyond the shell's normal startup.
+
+Full-app custom palettes were not exposed by this installed version's appearance
+settings. The app frame follows built-in System dark/light; these YAML files do
+not recolor its buttons, sidebar or Monaco syntax. Selection/derived colors and
+all interaction states were not audited. macOS/Windows runtime application and
+restart persistence remain unverified. No profile, authentication, session data,
+backup or screenshot is committed.
