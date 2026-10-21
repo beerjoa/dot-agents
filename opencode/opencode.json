@@ -134,20 +134,6 @@
             "output": 32000
           }
         },
-        "cursor/composer-2.5": {
-          "name": "composer-2.5 (cursor)",
-          "limit": {
-            "context": 200000,
-            "output": 32000
-          }
-        },
-        "cursor/composer-2.5-fast": {
-          "name": "composer-2.5-fast (cursor)",
-          "limit": {
-            "context": 200000,
-            "output": 32000
-          }
-        },
         "google-antigravity/claude-sonnet-5-5": {
           "name": "claude-sonnet-5-5 (google-antigravity)",
           "limit": {
@@ -250,6 +236,139 @@
           "name": "step-5-preview (opencode-go)",
           "limit": {
             "context": 350000,
+            "output": 32000
+          }
+        },
+        "xai/grok-composer-2.5-fast": {
+          "name": "grok-composer-2.5-fast (xai)",
+          "limit": {
+            "context": 200000,
+            "output": 32000
+          }
+        },
+        "gpt-6-astra": {
+          "name": "gpt-6-astra (native)",
+          "limit": {
+            "context": 350000,
+            "output": 128000
+          }
+        },
+        "gpt-6-astra--fast": {
+          "name": "gpt-6-astra Fast (native)",
+          "limit": {
+            "context": 350000,
+            "output": 128000
+          }
+        },
+        "gpt-6-luna--fast": {
+          "name": "gpt-6-luna Fast (native)",
+          "limit": {
+            "context": 350000,
+            "output": 128000
+          }
+        },
+        "gpt-6.1-sol--fast": {
+          "name": "gpt-6.1-sol Fast (native)",
+          "limit": {
+            "context": 350000,
+            "output": 128000
+          }
+        },
+        "opencode-zen/beam-free": {
+          "name": "beam-free (opencode-zen)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "opencode-zen/big-pickle": {
+          "name": "big-pickle (opencode-zen)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "opencode-zen/deepseek-v4.1-flash-free": {
+          "name": "deepseek-v4.1-flash-free (opencode-zen)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "opencode-zen/glm-5.3-flash-free": {
+          "name": "glm-5.3-flash-free (opencode-zen)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "opencode-zen/jev-1.13-free": {
+          "name": "jev-1.13-free (opencode-zen)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "opencode-zen/longcat-2.5-preview-free": {
+          "name": "longcat-2.5-preview-free (opencode-zen)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "opencode-zen/mimo-v2.6-flash-free": {
+          "name": "mimo-v2.6-flash-free (opencode-zen)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "opencode-zen/minimax-m3.1-flash-free": {
+          "name": "minimax-m3.1-flash-free (opencode-zen)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "opencode-zen/muse-wonder-1.0": {
+          "name": "muse-wonder-1.0 (opencode-zen)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "opencode-zen/nemotron-3.5-lightning-free": {
+          "name": "nemotron-3.5-lightning-free (opencode-zen)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "opencode-zen/nemotron-3.5-super-vl-free": {
+          "name": "nemotron-3.5-super-vl-free (opencode-zen)",
+          "limit": {
+            "context": 350000,
+            "output": 32000
+          }
+        },
+        "xai/grok-4.7": {
+          "name": "grok-4.7 (xai)",
+          "limit": {
+            "context": 256000,
+            "output": 256000
+          }
+        },
+        "xai/grok-4.7--fast": {
+          "name": "grok-4.7 Fast (xai)",
+          "limit": {
+            "context": 256000,
+            "output": 256000
+          }
+        },
+        "xai/grok-composer-2.5-fast--fast": {
+          "name": "grok-composer-2.5-fast Fast (xai)",
+          "limit": {
+            "context": 200000,
             "output": 32000
           }
         }

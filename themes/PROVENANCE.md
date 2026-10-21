@@ -32,3 +32,8 @@
 
 Review upstream changes before rebasing the Dark Reader patch. The extension
 build and its dependencies are deliberately not vendored here.
+
+Orca terminal YAML is authored from the shared palettes for its
+[official Warp-format importer](https://www.onorca.dev/docs/terminal).
+Field mapping and system-mode selection were also checked against the installed
+Orca 1.4.230 implementation. No application assets or private settings are copied.
