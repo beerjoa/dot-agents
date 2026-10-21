@@ -126,10 +126,10 @@
           "modelProfile": "Tier 2B (Low-Hallucination Explorer, II 41.8, LCR 80.0%, Hallucination 27.6%, 6.3k req/5h): High-accuracy search and dependency lookup."
         },
         {
-          "provider": "cursor",
-          "model": "composer-2.5",
+          "provider": "xai",
+          "model": "grok-composer-2.5-fast",
           "weight": 1,
-          "modelProfile": "Tier 3 (Fast Light Lookup): Use for simple file location, path checks, and small read-only lookups."
+          "modelProfile": "Tier 3 (Fast Light Lookup, Grok Composer 2.5 Fast): Use for simple file location, path checks, and small read-only lookups."
         }
       ]
     },
@@ -199,10 +199,10 @@
           "modelProfile": "Tier 4 (Fast Utility Worker, II 40.9, Eng 42.8, SRE 52.5%, E2E 19.4s): Good for config, scripts, and straightforward edits."
         },
         {
-          "provider": "cursor",
-          "model": "composer-2.5",
+          "provider": "xai",
+          "model": "grok-composer-2.5-fast",
           "weight": 1,
-          "modelProfile": "Tier 5 (Simple Boilerplate Edit): Use only for trivial single-file or mechanical edits."
+          "modelProfile": "Tier 5 (Simple Boilerplate Edit, Grok Composer 2.5 Fast): Use only for trivial single-file or mechanical edits."
         }
       ]
     },
@@ -244,10 +244,10 @@
           "modelProfile": "Tier 2B (Low-Hallucination Explorer, II 41.8, LCR 80.0%, Hallucination 27.6%, 6.3k req/5h): High-accuracy search and dependency lookup."
         },
         {
-          "provider": "cursor",
-          "model": "composer-2.5",
+          "provider": "xai",
+          "model": "grok-composer-2.5-fast",
           "weight": 1,
-          "modelProfile": "Tier 3 (Fast Light Lookup): Use for simple file location, path checks, and small read-only lookups."
+          "modelProfile": "Tier 3 (Fast Light Lookup, Grok Composer 2.5 Fast): Use for simple file location, path checks, and small read-only lookups."
         }
       ]
     },
@@ -307,10 +307,10 @@
           "modelProfile": "Tier 3 (Fast SRE/Config Worker, II 40.9, Eng 42.8, SRE 52.5%, E2E 19.4s): Good for straightforward tasks, scripts, and config changes."
         },
         {
-          "provider": "cursor",
-          "model": "composer-2.5",
+          "provider": "xai",
+          "model": "grok-composer-2.5-fast",
           "weight": 1,
-          "modelProfile": "Tier 4 (Simple Mechanical Task): Use only for small, mechanical, single-file tasks."
+          "modelProfile": "Tier 4 (Simple Mechanical Task, Grok Composer 2.5 Fast): Use only for small, mechanical, single-file tasks."
         }
       ]
     },

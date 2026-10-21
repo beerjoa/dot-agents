@@ -252,6 +252,13 @@
             "context": 350000,
             "output": 32000
           }
+        },
+        "xai/grok-composer-2.5-fast": {
+          "name": "grok-composer-2.5-fast (xai)",
+          "limit": {
+            "context": 200000,
+            "output": 32000
+          }
         }
       }
     }
