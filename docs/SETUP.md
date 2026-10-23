@@ -2,7 +2,7 @@
 
 이 문서는 설치를 맡은 에이전트의 시작점이다. 저장소는 **부분 설정과 소스**를
 제공하며, 복제만으로 설치가 끝나지 않는다. 기존 사용자 설정을 통째로 덮어쓰지 않는다.
-OpenCodex 2.88.0, Codex CLI 0.163.0, OpenCode 1.18.33에서 확인한 절차이며,
+OpenCodex 2.91.0, Codex CLI 0.163.0, OpenCode 1.18.33에서 확인한 절차이며,
 다른 버전에서는 해당 기기의 `--help`와 공식 문서로 지원 여부를 먼저 확인한다.
 
 ## 1. 적용 전 확인
@@ -103,6 +103,44 @@ ocx agent injection status --json
 `combo/sp-worker-pro`), injection `combo/default`/high이다.
 Jev의 `modelProfile`과 effort allowlist는 선택의 지침이며 고정 순번을 보장하지 않는다.
 Jev 실패 시에도 fallback으로 응답할 수 있으므로 응답 성공만으로 Jev 동작을 판정하지 않는다.
+
+### 선택: Jev quota 신호와 저-quota 알림 (OpenCodex 2.89+)
+
+둘 다 기본 off이며 공개 JSON에 포함하지 않는다. 대상 PC에서 필요할 때만 켠다.
+
+**Jev quota 신호**는 콤보별 opt-in이다. 켜면 후보 타깃마다 캐시된 quota 관측치를
+healthy/moderate/limited/nearly_exhausted 단계로 Jev 판단 입력에 붙인다.
+적합한 후보들 중에서 잔여가 많은 쪽을 선호하도록 유도할 뿐이며, 타깃·effort
+허용 목록을 바꾸지 않는다. 관측치가 없는 제공업체는 unknown이며 healthy와
+동급 취급이라 불이익이 없다. 기본 임계값은 limited 70%, nearlyExhausted 90%이다.
+
+```sh
+ocx combo set <id> --decision-quota-signals on
+ocx combo show <id>  # decisionQuotaSignals: true 확인
+ocx combo stats <id>  # 실트래픽 결정 요약에서 tier 분포 확인
+```
+
+임계값을 바꾸려면 `--decision-quota-tiers '{"limited":70,"nearlyExhausted":90}'`를
+붙인다. 끄려면 `--decision-quota-signals -`로 되돌린다. 고사용량 콤보 1~2개부터
+켜고 `stats`로 관찰한 뒤 확대한다. 같은 작업도 quota 상태에 따라 라우팅이
+달라질 수 있다.
+
+**저-quota 알림**은 Codex 풀 계정의 5시간/weekly 윈도우에만 반응하며
+Antigravity·Anthropic·opencode-go quota는 대상이 아니다. `codexPool` 키가
+없으면 보호 기능 전체가 꺼진 상태이다. 계정이 하나뿐인 PC에서는 일시정지 없이
+알림 전용으로 설정한다.
+
+```sh
+ocx config set codexPool '{"lowQuotaProtection":{"enabled":true,"threshold":85,"actions":{"pause":false,"notify":true,"desktop":true},"windows":{"short":true,"weekly":true}}}'
+ocx config validate
+ocx service restart  # 파일 변경은 재시작 후 적용된다
+```
+
+Linux 데스크톱 알림에는 `notify-send`가 필요하며 알림에는 가명 계정 라벨만
+들어간다. 테스트 핑 한 번으로 경로를 확인하고, 실제 quota 이벤트와 혼동하지
+않는다. 끄려면 `ocx config unset codexPool.lowQuotaProtection` 후 재시작한다.
+수정 전에는 `~/.opencodex/backups/` 같은 Git 밖 비공개 위치에
+`config.json`을 백업한다.
 
 ### OpenCode native free 모델
 
