@@ -194,3 +194,27 @@ not recolor its buttons, sidebar or Monaco syntax. Selection/derived colors and
 all interaction states were not audited. macOS/Windows runtime application and
 restart persistence remain unverified. No profile, authentication, session data,
 backup or screenshot is committed.
+
+## Chromium frame images on macOS, 2026-10-24
+
+Helium 0.20.1.1 on macOS retained a gray vertical tab-strip background while
+the address bar and tab buttons used Lotus. The cached theme already contained
+the correct frame RGB values; expanding/collapsing the strip did not resolve it.
+Adding solid PNG images for `theme_frame` and `theme_frame_inactive`, followed by
+reloading both themes, changed that surface to Lotus's palette background.
+Switching macOS to dark selected Wave and recolored the strip; restoring Auto
+selected Lotus again. The exact internal reason for the color-only rendering
+difference was not established. Restart/reboot and other-OS runtime behavior
+were not exercised for this fix.
+
+The shared generator now emits the two PNGs and the corresponding 1.0.2
+manifests. Their public identity keys, IDs, colors and switcher permissions are
+preserved. Binary-aware `--check` covers all 24 outputs. Regression checks decode
+both PNGs, validate chunk CRCs and palette RGB, verify stable extension IDs, and
+exercise missing/corrupt PNG detection through the CLI. The existing 20 outputs
+outside the Chromium manifests are byte-for-byte unchanged; generated frame
+PNGs match those used for the Mac verification.
+
+No credentials, private key, browser profile, machine-specific absolute path,
+native-host registration, LaunchAgent, screenshot or local backup is included.
+Each computer must retain its own native-host setup and current-mode source.

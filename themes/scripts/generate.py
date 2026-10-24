@@ -4,7 +4,9 @@ import argparse
 import json
 from pathlib import Path
 import re
+import struct
 import tomllib
+import zlib
 
 ROOT = Path(__file__).resolve().parents[1]
 PALETTES = (('kanagawa-wave', 'Kanagawa Wave', 'dark'), ('kanagawa-lotus', 'Kanagawa Lotus', 'light'))
@@ -19,6 +21,17 @@ def rgb(color):
 
 def json_text(value):
     return json.dumps(value, ensure_ascii=False, indent=2) + '\n'
+
+
+def frame_png(color):
+    def chunk(kind, data):
+        return (struct.pack('>I', len(data)) + kind + data
+                + struct.pack('>I', zlib.crc32(kind + data)))
+
+    return (b'\x89PNG\r\n\x1a\n'
+            + chunk(b'IHDR', struct.pack('>IIBBBBB', 1, 1, 8, 2, 0, 0, 0))
+            + chunk(b'IDAT', zlib.compress(b'\x00' + bytes(rgb(color))))
+            + chunk(b'IEND', b''))
 
 
 def render():
@@ -108,9 +121,13 @@ def render():
                       omnibox_background=rgb(p['dark_background'] if mode == 'dark' else p['lighter_background']),
                       ntp_link=rgb(p['blue']))
         files[f'apps/chromium/themes/{slug}/manifest.json'] = json_text({
-            'manifest_version': 3, 'name': f'Omarchy — {name}', 'version': '1.0.1',
-            'key': keys[mode], 'theme': {'colors': colors},
+            'manifest_version': 3, 'name': f'Omarchy — {name}', 'version': '1.0.2',
+            'key': keys[mode], 'theme': {
+                'colors': colors,
+                'images': {'theme_frame': 'frame.png', 'theme_frame_inactive': 'frame.png'},
+            },
         })
+        files[f'apps/chromium/themes/{slug}/frame.png'] = frame_png(p['background'])
         files[f'platforms/linux-omarchy/chromium/{slug}.theme'] = ','.join(map(str, rgb(p['background']))) + '\n'
         prefix = 'appearanceDarkChromeTheme' if mode == 'dark' else 'appearanceLightChromeTheme'
         codex.extend(['', f'[desktop.{prefix}]', f'accent = "{p["blue"]}"',
@@ -184,15 +201,16 @@ def main():
     files = render()
     for relative, content in files.items():
         target = args.output / relative
+        data = content if isinstance(content, bytes) else content.encode('utf-8')
         if args.check:
-            if not target.exists() or target.read_text() != content:
+            if not target.exists() or target.read_bytes() != data:
                 stale.append(relative)
         else:
             target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_text(content)
+            target.write_bytes(data)
     if stale:
         parser.exit(1, 'Regenerate stale files:\n' + '\n'.join(stale) + '\n')
-    print(f'{"Checked" if args.check else "Generated"} {len(files)} color files')
+    print(f'{"Checked" if args.check else "Generated"} {len(files)} theme files')
 
 
 if __name__ == '__main__':

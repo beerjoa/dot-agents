@@ -3,6 +3,10 @@
 `themes/kanagawa-wave` and `themes/kanagawa-lotus` are generated unpacked themes.
 Their `frame`, `frame_inactive`, `toolbar` and new-tab background use the palette
 background directly. Address fields, buttons and icons use separate palette roles.
+Both themes also include a generated 1×1 solid `frame.png`, referenced by
+`theme_frame` and `theme_frame_inactive`. It uses the same palette background
+and keeps Helium's vertical tab-strip surface from retaining a default gray fill
+where color-only frame settings were insufficient on macOS.
 
 ## Color roles
 
@@ -78,3 +82,26 @@ flags at once: the first can disappear before the service worker starts.
 Manual theme selection is enough if automatic mode switching is not needed.
 Reload updated theme files through the browser; rewriting source files alone is
 not an installation or activation mechanism.
+
+## Updating another computer
+
+Update this checkout with `git pull --ff-only`, then reload both already-loaded
+theme folders through the browser's extension manager. Keep the existing theme
+keys, IDs and switcher; do not remove and reinstall the themes. Version 1.0.2
+adds the frame images without changing the controller mapping or permissions.
+For a new installation, follow the installation order above.
+
+The PNG files are committed and need no machine-specific paths or image tooling.
+To regenerate or verify them, use Python 3.11+:
+
+```sh
+python3 themes/scripts/generate.py
+python3 themes/scripts/generate.py --check
+python3 -m unittest discover -s themes/scripts -p 'test_*.py' -v
+```
+
+Automatic switching still requires the existing native host and an OS-specific
+mode source on each computer. Do not copy another computer's browser profile,
+credentials or generated native registrations to set it up. See
+[`../../platforms/macos/`](../../platforms/macos/) for macOS preparation and
+[`../../platforms/linux-omarchy/`](../../platforms/linux-omarchy/) for Omarchy.
