@@ -57,6 +57,8 @@ No private signing keys are required for unpacked local use.
   reflects the observed desktop schema; check it against the target app version.
 - Terminals: include or import the desired color file using that terminal's
   configuration. Preserve existing fonts, shell commands, keybindings and paths.
+  Ghostty can use native system light/dark selection; see its
+  [installation and update guide](apps/terminals/ghostty/README.md).
 - Neovim: use the snippets only if the existing setup uses LazyVim and kanagawa.nvim.
 - Obsidian: install the two portable theme files in the intended vault and choose
   its base scheme, or use the existing Omarchy theme with the Linux user template.

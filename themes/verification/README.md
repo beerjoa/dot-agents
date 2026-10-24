@@ -218,3 +218,18 @@ PNGs match those used for the Mac verification.
 No credentials, private key, browser profile, machine-specific absolute path,
 native-host registration, LaunchAgent, screenshot or local backup is included.
 Each computer must retain its own native-host setup and current-mode source.
+
+## Ghostty installation guide, 2026-10-24
+
+The two generated Ghostty color files were already present. The added guide
+reuses them under distinct installed theme names and documents native system
+light/dark selection, config precedence, validation, reload, update and rollback.
+No palette, generated theme file or installer code was changed.
+
+On macOS Ghostty 1.3.1, both theme files and the combined user configuration
+passed `+validate-config`. The effective configuration resolved Lotus background
+`#f1e9d2` and foreground `#545464`. Fonts, keybindings and the transparent titlebar
+configuration were preserved. The user confirmed that reloading changed the
+running app's theme. Live light/dark round-trip, restart persistence and Linux
+runtime behavior were not separately confirmed. No account information, private
+configuration, absolute user path or configuration dump is committed.

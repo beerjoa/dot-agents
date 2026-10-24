@@ -8,8 +8,12 @@
 - Apply the Dark Reader color values through its settings. No native host is
   needed for manual color selection.
 - Merge the Codex desktop appearance tables if the target app uses that schema.
-- Include the color snippet for Ghostty, Kitty or Alacritty if that application
-  is already part of the Mac setup. Fonts and commands remain machine-local.
+- For Ghostty, install the existing two color files and merge a native
+  light/dark theme selection as described in the
+  [Ghostty guide](../../apps/terminals/ghostty/README.md). Fonts, keybindings and
+  commands remain machine-local; no background adapter is needed.
+- Include the color snippet for Kitty or Alacritty if that application is
+  already part of the Mac setup. Fonts and commands remain machine-local.
 - Choose a LazyVim snippet only for a compatible existing Neovim setup.
 - Install the [portable Obsidian theme](../../apps/obsidian/README.md) in each
   intended vault and select **Adapt to system** for OS-driven Wave/Lotus switching.
@@ -34,7 +38,9 @@ extensions only after reviewing their permissions and first-install sequence.
 See the official [Native Messaging documentation](https://developer.chrome.com/docs/extensions/develop/concepts/native-messaging)
 for the selected browser's protocol and Chrome/Chromium directory conventions.
 
-**Automatic macOS appearance/sunrise detection is not implemented or verified.**
+**A shared native-host adapter for automatic macOS appearance/sunrise detection
+is not implemented here.** Ghostty's own system appearance support does not
+depend on this adapter; see its guide above for the verified scope.
 The Linux Omarchy Scheduler, `/etc/chromium` policy helper and sudoers grant must
 not be installed on a Mac. Supporting a native macOS mode source is a separate
 adapter task; the palette and app data do not depend on it.
