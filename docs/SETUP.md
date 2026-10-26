@@ -2,7 +2,7 @@
 
 이 문서는 설치를 맡은 에이전트의 시작점이다. 저장소는 **부분 설정과 소스**를
 제공하며, 복제만으로 설치가 끝나지 않는다. 기존 사용자 설정을 통째로 덮어쓰지 않는다.
-OpenCodex 2.91.0, Codex CLI 0.163.0, OpenCode 1.18.33에서 확인한 절차이며,
+OpenCodex 2.91.0, Codex CLI 0.163.0, OpenCode 1.18.33, Magpie 0.1.1603에서 확인한 절차이며,
 다른 버전에서는 해당 기기의 `--help`와 공식 문서로 지원 여부를 먼저 확인한다.
 
 ## 1. 적용 전 확인
@@ -10,7 +10,8 @@ OpenCodex 2.91.0, Codex CLI 0.163.0, OpenCode 1.18.33에서 확인한 절차이�
 1. 사용자가 요청한 앱과 기능, OS, 설치 버전, 실행 중인 세션을 확인한다.
    테마·외부 서비스 연결은 선택 사항이며 전부 설치한다고 가정하지 않는다.
 2. 실제 설정 위치를 확인한다. 기본값은 `~/.codex`, `~/.opencodex`,
-   `~/.config/opencode`지만 `CODEX_HOME`, `OPENCODEX_HOME`, XDG 또는 별도
+   `~/.config/opencode`, `~/.config/magpie`, `~/.claude`지만 `CODEX_HOME`,
+   `OPENCODEX_HOME`, XDG 또는 별도
    실행 설정으로 달라질 수 있다. 실행 중인 서비스와 CLI가 같은 홈을 쓰는지도 확인한다.
 3. 수정할 파일과 키, 유지할 항목을 먼저 설명한다. 대상 파일을 Git 밖의 비공개
    디렉터리에 백업하고 복원 경로를 기록한다. 백업에는 인증정보가 있을 수 있다.
@@ -34,6 +35,15 @@ OpenCodex 2.91.0, Codex CLI 0.163.0, OpenCode 1.18.33에서 확인한 절차이�
   실제 OpenCode 설정 위치에 병합한다. 배열은 중복을 검토하고 기존 항목을 보존한다.
   `tui.json`에는 JSONC 주석이 있으므로 일반 JSON 파서로 재작성하지 않는다.
   `commands/`와 `snippet/`는 사용 중인 명령/스니펫 방식에 맞춰 선택한다.
+- `magpie/providers.public.json`은 `~/.config/magpie/providers.json`의 부분 설정이다.
+  JSON 가져오기가 없으므로 공개 파일의 그룹 정의를 검토한 뒤 `magpie group add`로
+  멤버부터 만들고 `magpie group set`·`magpie group rule add`로 라우팅과 규칙을 재현한다.
+  기존 provider·계정·키 설정을 보존하고 무관한 로컬 그룹을 삭제하지 않는다.
+  그룹 id는 `group/<id>` 참조와 일치해야 한다.
+- `claude/agents/`의 선택한 파일을 `~/.claude/agents/`에 설치한다. 기존 동명 파일은
+  diff를 보고 병합한다. `Explore`·`Plan`은 정확히 그 이름일 때만 내장을 오버라이드하며,
+  `model: group/<id>`는 같은 id의 Magpie 그룹이 있어야 동작한다. `settings.json`은
+  인증정보와 기기별 상태를 포함하므로 공개 대상이 아니다.
 - 포트 `10100`이 충돌하면 OpenCodex listener와 OpenCode의 `baseURL`, Codex의
   로컬 provider URL을 함께 맞춘다. 원격 노출·자동 시작·shim 설치는 개별 검토한다.
   `ocx setup`/`ocx sync`도 클라이언트 설정을 변경하므로 백업과 diff 확인 대상이다.

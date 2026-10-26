@@ -1,0 +1,415 @@
+{
+  "groups": [
+    {
+      "id": "jev-auto",
+      "name": "Jev Auto",
+      "members": [
+        "codex/gpt-6.1-sol",
+        "antigravity/gemini-4-argon",
+        "antigravity/claude-sonnet-5-5",
+        "opencode-go/muse-spark-1.3-contributor",
+        "codex/gpt-6-luna"
+      ],
+      "routing": "order",
+      "affinity": "turn",
+      "rules": [
+        {
+          "use": "codex/gpt-6.1-sol",
+          "tokens": 250000
+        },
+        {
+          "use": "codex/gpt-6.1-sol",
+          "intent": "Nontrivial code implementation, debugging, code correctness review, or difficult technical problem solving. The deliverable is reliable working code, rather than documentation or a plan."
+        },
+        {
+          "use": "antigravity/gemini-4-argon",
+          "intent": "Read and analyze many files, trace architecture or dependencies, compare evidence, or answer fact-sensitive technical questions. Primarily analysis, rather than implementing code."
+        },
+        {
+          "use": "antigravity/claude-sonnet-5-5",
+          "intent": "Design a solution, plan a multi-step project, organize an agent workflow, or weigh architecture tradeoffs before coding. The requested deliverable is a design or plan."
+        },
+        {
+          "use": "opencode-go/muse-spark-1.3-contributor",
+          "intent": "Write or translate documentation, draft prose, summarize supplied material, or general non-coding synthesis. The deliverable is text, rather than code, an engineering plan, or a short factual answer."
+        },
+        {
+          "use": "codex/gpt-6-luna",
+          "intent": "A greeting, a short straightforward factual or syntax question, a small mechanical edit or rename in one location, or another simple routine task needing little analysis."
+        }
+      ],
+      "classifier": "typesafe/jev-latest",
+      "effort": "auto",
+      "context": 350000
+    },
+    {
+      "id": "worker",
+      "name": "Worker",
+      "members": [
+        "codex/gpt-6.1-sol",
+        "opencode-go/mimo-v2.6-pro",
+        "opencode-go/deepseek-v4.1-flash",
+        "opencode-go/glm-5.3-flash",
+        "codex/gpt-6-luna",
+        "antigravity/gemini-3.8-flash"
+      ],
+      "routing": "order",
+      "affinity": "turn",
+      "rules": [
+        {
+          "use": "codex/gpt-6.1-sol",
+          "tokens": 250000
+        },
+        {
+          "use": "codex/gpt-6.1-sol",
+          "intent": "Nontrivial multi-file or stateful implementation, or difficult debugging. The deliverable is reliable working code."
+        },
+        {
+          "use": "opencode-go/mimo-v2.6-pro",
+          "intent": "Complex logic, algorithms, data flow, or long-context edits spanning many files."
+        },
+        {
+          "use": "opencode-go/deepseek-v4.1-flash",
+          "intent": "Well-specified feature implementation with clear requirements, where speed matters."
+        },
+        {
+          "use": "opencode-go/glm-5.3-flash",
+          "intent": "Standard features or test suites: routine implementation needing reliability."
+        },
+        {
+          "use": "codex/gpt-6-luna",
+          "intent": "Standard Codex-native patch workflows: apply_patch edits and patch-and-test loops."
+        },
+        {
+          "use": "antigravity/gemini-3.8-flash",
+          "intent": "Config files, scripts, or other straightforward small edits."
+        }
+      ],
+      "classifier": "typesafe/jev-latest",
+      "effort": "auto"
+    },
+    {
+      "id": "sp-worker",
+      "name": "Sp Worker",
+      "members": [
+        "codex/gpt-6-luna",
+        "opencode-go/mimo-v2.6-pro",
+        "opencode-go/deepseek-v4.1-flash",
+        "opencode-go/glm-5.3-flash",
+        "antigravity/gemini-3.8-flash"
+      ],
+      "routing": "order",
+      "affinity": "turn",
+      "rules": [
+        {
+          "use": "codex/gpt-6-luna",
+          "tokens": 250000
+        },
+        {
+          "use": "codex/gpt-6-luna",
+          "intent": "Native patch-and-test implementation: apply_patch edits and multi-step test workflows."
+        },
+        {
+          "use": "opencode-go/mimo-v2.6-pro",
+          "intent": "Logic-heavy implementation: complex algorithms or intricate code paths with tests."
+        },
+        {
+          "use": "opencode-go/deepseek-v4.1-flash",
+          "intent": "Bounded feature or test implementation with clear scope, where speed matters."
+        },
+        {
+          "use": "opencode-go/glm-5.3-flash",
+          "intent": "Standard TDD steps and test suites: routine red-green implementation."
+        },
+        {
+          "use": "antigravity/gemini-3.8-flash",
+          "intent": "Straightforward tasks, scripts, or config changes."
+        }
+      ],
+      "classifier": "typesafe/jev-latest",
+      "effort": "auto"
+    },
+    {
+      "id": "sp-worker-pro",
+      "name": "Sp Worker Pro",
+      "members": [
+        "codex/gpt-6.1-sol",
+        "opencode-go/mimo-v2.6-pro",
+        "opencode-go/deepseek-v4.1-flash",
+        "codex/gpt-6-luna",
+        "antigravity/gemini-3.8-flash"
+      ],
+      "routing": "order",
+      "affinity": "turn",
+      "rules": [
+        {
+          "use": "codex/gpt-6.1-sol",
+          "tokens": 250000
+        },
+        {
+          "use": "codex/gpt-6.1-sol",
+          "intent": "Hard implementation: architecture, auth, migrations, or concurrency."
+        },
+        {
+          "use": "opencode-go/mimo-v2.6-pro",
+          "intent": "Algorithm-heavy or long-context implementation."
+        },
+        {
+          "use": "opencode-go/deepseek-v4.1-flash",
+          "intent": "Multi-file feature implementation with clear scope, where speed matters."
+        },
+        {
+          "use": "codex/gpt-6-luna",
+          "intent": "Multi-step patch and test workflows, native implementation."
+        },
+        {
+          "use": "antigravity/gemini-3.8-flash",
+          "intent": "Lighter integration or infrastructure tasks."
+        }
+      ],
+      "classifier": "typesafe/jev-latest",
+      "effort": "auto"
+    },
+    {
+      "id": "sp-code-review",
+      "name": "Sp Code Review",
+      "members": [
+        "codex/gpt-6.1-sol",
+        "antigravity/claude-sonnet-5-5",
+        "opencode-go/mimo-v2.6-pro",
+        "opencode-go/deepseek-v4.1-flash",
+        "opencode-go/glm-5.3-flash",
+        "codex/gpt-6-luna",
+        "antigravity/gemini-3.8-flash"
+      ],
+      "routing": "order",
+      "affinity": "turn",
+      "rules": [
+        {
+          "use": "codex/gpt-6.1-sol",
+          "tokens": 250000
+        },
+        {
+          "use": "codex/gpt-6.1-sol",
+          "intent": "Complex or high-risk code review: security, concurrency, or large multi-file diffs."
+        },
+        {
+          "use": "antigravity/claude-sonnet-5-5",
+          "intent": "Thorough code quality, architecture, or bug review."
+        },
+        {
+          "use": "opencode-go/mimo-v2.6-pro",
+          "intent": "Review of complex logic or long-context diffs spanning many files."
+        },
+        {
+          "use": "opencode-go/deepseek-v4.1-flash",
+          "intent": "Review of bounded feature diffs with clear scope, where speed matters."
+        },
+        {
+          "use": "opencode-go/glm-5.3-flash",
+          "intent": "High-precision review where low false-positive rate matters."
+        },
+        {
+          "use": "codex/gpt-6-luna",
+          "intent": "Routine review of standard task diffs."
+        },
+        {
+          "use": "antigravity/gemini-3.8-flash",
+          "intent": "Small diffs or scoped fix re-reviews."
+        }
+      ],
+      "classifier": "typesafe/jev-latest",
+      "effort": "auto"
+    },
+    {
+      "id": "sp-debug",
+      "name": "Sp Debug",
+      "members": [
+        "codex/gpt-6.1-sol",
+        "antigravity/gemini-4-argon",
+        "antigravity/claude-sonnet-5-5",
+        "opencode-go/mimo-v2.6-pro",
+        "antigravity/gemini-3.8-flash",
+        "codex/gpt-6-luna"
+      ],
+      "routing": "order",
+      "affinity": "turn",
+      "rules": [
+        {
+          "use": "codex/gpt-6.1-sol",
+          "tokens": 250000
+        },
+        {
+          "use": "codex/gpt-6.1-sol",
+          "intent": "Root-cause debugging: clear failures through subtle multi-module bugs."
+        },
+        {
+          "use": "antigravity/gemini-4-argon",
+          "intent": "Elusive root-cause analysis requiring high factual precision."
+        },
+        {
+          "use": "antigravity/claude-sonnet-5-5",
+          "intent": "Multi-file call-chain or state-bug analysis."
+        },
+        {
+          "use": "opencode-go/mimo-v2.6-pro",
+          "intent": "Algorithmic, data-flow, or long-trace debugging."
+        },
+        {
+          "use": "antigravity/gemini-3.8-flash",
+          "intent": "Runtime, config, or environment failures."
+        },
+        {
+          "use": "codex/gpt-6-luna",
+          "intent": "Localized unit test failures."
+        }
+      ],
+      "classifier": "typesafe/jev-latest",
+      "effort": "auto"
+    },
+    {
+      "id": "sp-explorer",
+      "name": "Sp Explorer",
+      "members": [
+        "codex/gpt-6-luna",
+        "antigravity/gemini-3.8-flash",
+        "opencode-go/glm-5.3-flash"
+      ],
+      "routing": "order",
+      "affinity": "turn",
+      "rules": [
+        {
+          "use": "codex/gpt-6-luna",
+          "tokens": 250000
+        },
+        {
+          "use": "codex/gpt-6-luna",
+          "intent": "Standard repository exploration: symbol search, file lookup, or tracing references."
+        },
+        {
+          "use": "antigravity/gemini-3.8-flash",
+          "intent": "Broad multi-file architecture discovery, cross-module tracing, or understanding a large unfamiliar codebase."
+        },
+        {
+          "use": "opencode-go/glm-5.3-flash",
+          "intent": "High-accuracy search or dependency lookup where precision matters and false leads are costly."
+        }
+      ],
+      "classifier": "typesafe/jev-latest",
+      "effort": "auto"
+    },
+    {
+      "id": "sp-spec-review",
+      "name": "Sp Spec Review",
+      "members": [
+        "codex/gpt-6.1-sol",
+        "antigravity/gemini-4-argon",
+        "antigravity/claude-sonnet-5-5",
+        "opencode-go/muse-spark-1.3-contributor",
+        "claude/claude-opus-5-5"
+      ],
+      "routing": "order",
+      "affinity": "turn",
+      "rules": [
+        {
+          "use": "codex/gpt-6.1-sol",
+          "tokens": 250000
+        },
+        {
+          "use": "codex/gpt-6.1-sol",
+          "intent": "Standard spec or plan review, through complex architecture."
+        },
+        {
+          "use": "antigravity/gemini-4-argon",
+          "intent": "Broad multi-file interface and requirement consistency checks."
+        },
+        {
+          "use": "antigravity/claude-sonnet-5-5",
+          "intent": "Architectural and requirement review."
+        },
+        {
+          "use": "opencode-go/muse-spark-1.3-contributor",
+          "intent": "Simple, well-bounded plan review."
+        },
+        {
+          "use": "claude/claude-opus-5-5",
+          "intent": "Hardest, highest-risk audits only: system-wide architecture, security, or concurrency specs."
+        }
+      ],
+      "classifier": "typesafe/jev-latest",
+      "effort": "auto"
+    },
+    {
+      "id": "explore",
+      "name": "Explore",
+      "members": [
+        "codex/gpt-6-luna",
+        "antigravity/gemini-3.8-flash",
+        "opencode-go/glm-5.3-flash"
+      ],
+      "routing": "order",
+      "affinity": "turn",
+      "rules": [
+        {
+          "use": "codex/gpt-6-luna",
+          "tokens": 250000
+        },
+        {
+          "use": "codex/gpt-6-luna",
+          "intent": "Standard repository exploration: symbol search, file lookup, or tracing references."
+        },
+        {
+          "use": "antigravity/gemini-3.8-flash",
+          "intent": "Broad multi-file architecture discovery, cross-module tracing, or understanding a large unfamiliar codebase."
+        },
+        {
+          "use": "opencode-go/glm-5.3-flash",
+          "intent": "High-accuracy search or dependency lookup where precision matters and false leads are costly."
+        }
+      ],
+      "classifier": "typesafe/jev-latest",
+      "effort": "auto"
+    },
+    {
+      "id": "plan",
+      "name": "Plan",
+      "members": [
+        "codex/gpt-6.1-sol",
+        "antigravity/gemini-4-argon",
+        "antigravity/claude-sonnet-5-5",
+        "opencode-go/muse-spark-1.3-contributor",
+        "codex/gpt-6-luna"
+      ],
+      "routing": "order",
+      "affinity": "turn",
+      "rules": [
+        {
+          "use": "codex/gpt-6.1-sol",
+          "tokens": 250000
+        },
+        {
+          "use": "codex/gpt-6.1-sol",
+          "intent": "Complex engineering, difficult technical reasoning, or nontrivial implementation. The deliverable is reliable working code or a hard technical answer."
+        },
+        {
+          "use": "antigravity/gemini-4-argon",
+          "intent": "Complex multi-file analysis or fact-critical reasoning, where factual precision matters more than code output."
+        },
+        {
+          "use": "antigravity/claude-sonnet-5-5",
+          "intent": "General reasoning, synthesis, or multi-step planning before acting."
+        },
+        {
+          "use": "opencode-go/muse-spark-1.3-contributor",
+          "intent": "Documentation, prose, summaries, or medium-complexity synthesis. The deliverable is text rather than code."
+        },
+        {
+          "use": "codex/gpt-6-luna",
+          "intent": "A straightforward routine task, simple question, or small mechanical edit needing little analysis."
+        }
+      ],
+      "classifier": "typesafe/jev-latest",
+      "effort": "auto"
+    }
+  ]
+}
