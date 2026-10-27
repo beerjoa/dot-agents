@@ -47,6 +47,23 @@ apply selected fields to an existing configuration after reviewing them.
 Provider connections, authentication modes, credentials, account state, and
 runtime data are excluded.
 
+## [Magpie routing](./magpie/README.md)
+
+The `magpie/` directory contains a reviewed public subset,
+[`providers.public.json`](./magpie/providers.public.json): ten routing groups
+(`jev-auto` plus nine subagent roles) with member models, routing behavior,
+token/intent rules, and the Jev classifier. Provider connections, credentials,
+account state, and runtime data are excluded. Magpie has no JSON import, so
+review the file and recreate selected groups with `magpie group add/set/rule`.
+
+## [Claude Code agents](./claude/README.md)
+
+The `claude/agents/` directory contains nine subagent definitions wired to the
+Magpie groups via `model: group/<id>`, including `Explore` and `Plan` overrides
+of the built-in agents. Copy selected files to `~/.claude/agents/` after
+reviewing them. `settings.json` is excluded: it carries provider credentials
+and machine state.
+
 ## [Shared themes](./themes/README.md)
 
 `themes/` holds the Kanagawa Wave dark and customized Lotus light palettes,

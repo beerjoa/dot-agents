@@ -45,6 +45,21 @@ Codex·OpenCode 에이전트의 OpenCodex combo 연결을 기록했습니다.
 사용 환경에 맞게 검토한 항목만 기존 OpenCodex 설정에 적용하세요.
 제공자 연결과 인증 방식, 인증정보, 계정 상태, 런타임 데이터는 제외했습니다.
 
+## [Magpie 라우팅](./magpie/README.md)
+
+`magpie/`에는 [`providers.public.json`](./magpie/providers.public.json)의 공개 가능한
+부분 설정만 담았습니다. 10개 라우팅 그룹(`jev-auto`와 subagent용 9개 역할)의
+멤버 모델, 라우팅 동작, 토큰·의도 규칙, Jev 분류기 설정이 포함되며, provider 연결과
+인증정보, 계정 상태, 런타임 데이터는 제외했습니다. Magpie에는 JSON 가져오기가
+없으므로 파일을 검토한 뒤 `magpie group add/set/rule` 명령으로 필요한 그룹만 다시 만드세요.
+
+## [Claude Code 에이전트](./claude/README.md)
+
+`claude/agents/`에는 Magpie 그룹에 `model: group/<id>`로 연결된 9개 subagent 정의를
+담았습니다. 내장 에이전트를 오버라이드하는 `Explore`·`Plan`이 포함됩니다.
+검토한 파일만 `~/.claude/agents/`에 복사해 사용하세요. `settings.json`은 provider
+인증정보와 기기별 상태를 포함하므로 제외했습니다.
+
 ## [공통 테마](./themes/README.md)
 
 `themes/`에는 Kanagawa Wave 다크·사용자 지정 Lotus 라이트 팔레트와,
