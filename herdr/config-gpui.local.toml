@@ -1,0 +1,33 @@
+# Merge selected keys into ~/.config/herdr/config-gpui.local.toml.
+# Uses the shared Ghostty themes from themes/apps/terminals/ghostty/.
+layout = "normal"
+theme = "light:dot-agents-kanagawa-lotus,dark:dot-agents-kanagawa-wave"
+contrast = "high"
+
+[backdrop]
+opacity = 0.9
+
+[pane_keys]
+cmd-left = ""
+cmd-right = ""
+alt-left = ""
+alt-right = ""
+
+[keybindings]
+focus_workspace_1 = "cmd-1"
+focus_workspace_2 = "cmd-2"
+focus_workspace_3 = "cmd-3"
+focus_workspace_4 = "cmd-4"
+focus_workspace_5 = "cmd-5"
+focus_workspace_6 = "cmd-6"
+focus_workspace_7 = "cmd-7"
+focus_workspace_8 = "cmd-8"
+focus_workspace_9 = "cmd-9"
+swap_pane_left = "cmd-shift-left"
+swap_pane_right = "cmd-shift-right"
+swap_pane_up = "cmd-shift-up"
+swap_pane_down = "cmd-shift-down"
+next_pane = ["alt-tab", "cmd-alt-]"]
+previous_pane = ["alt-shift-tab", "cmd-alt-["]
+find = "cmd-shift-f"
+toggle_full_screen = ["cmd-f", "ctrl-cmd-f"]
