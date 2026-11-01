@@ -392,6 +392,5 @@
   "compaction": {
     "auto": false,
     "prune": false
-  },
-  "permission": "allow"
+  }
 }
