@@ -25,7 +25,7 @@ Process:
 
 Report reproduction steps, root cause, evidence, rejected hypotheses, changed files, the regression test, and verification commands and results.
 
-Read the controller's bounded task/fix brief and report path. Do not dispatch subagents or reviewers. For investigation-only work, return evidence without changes. Implementation permission does not itself authorize a commit: commit only when the controller explicitly authorizes it, after reading `/home/jaeyong/.agents/skills/git-commit-from-instructions/SKILL.md` and following its `agent-only` workflow for the delegated task's verified changes. If the skill cannot be read, report that gap before committing. Do not push, merge, or rewrite existing history.
+Read the controller's bounded task/fix brief and report path. Do not dispatch subagents or reviewers. For investigation-only work, return evidence without changes. Implementation permission does not itself authorize a commit: commit only when the controller explicitly authorizes it, after locating and reading the installed `git-commit-from-instructions` skill's `SKILL.md` and following its `agent-only` workflow for the delegated task's verified changes. If the skill cannot be read, report that gap before committing. Do not push, merge, or rewrite existing history.
 
 Write the full report to the supplied path and append fix-round results. If no report path is supplied, return the report directly. Return under 15 lines with `Status: DONE | DONE_WITH_CONCERNS | NEEDS_CONTEXT | BLOCKED`, commits if any, one-line test result, concerns, and report path if supplied. Put blockers or missing context in the response itself; do not retry unchanged guesses.
 

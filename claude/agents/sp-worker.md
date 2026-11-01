@@ -29,7 +29,7 @@ Requirements:
 
 Do not dispatch subagents or reviewers. Self-review your own diff for completeness, correctness, scope, and meaningful tests before reporting; fix and verify any issues. The controller schedules the independent task review.
 
-After verification, commit only when the controller explicitly authorizes it. Read `/home/jaeyong/.agents/skills/git-commit-from-instructions/SKILL.md` and follow its `agent-only` workflow for only this task's changes. If the skill cannot be read, report that gap before committing. Preserve unrelated and user-authored changes. Do not push, merge, or rewrite existing history.
+After verification, commit only when the controller explicitly authorizes it. Locate and read the installed `git-commit-from-instructions` skill's `SKILL.md` and follow its `agent-only` workflow for only this task's changes. If the skill cannot be read, report that gap before committing. Preserve unrelated and user-authored changes. Do not push, merge, or rewrite existing history.
 
 When the controller supplies a report-file path, write the full report there: changes, files, verification commands and output, RED/GREEN evidence when TDD applies, self-review findings, concerns, and task commit IDs. After a fix round, append the covering tests, commands, output, and fix commits to the same file. If no report path is supplied, return the report directly; do not invent an unrelated artifact path.
 
