@@ -1,0 +1,32 @@
+{
+  "env": {
+    "CLAUDE_CODE_MODEL_CAPABILITIES": "group/pstack-explore=effort;group/pstack-code=effort;group/pstack-reasoning=effort",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "group/pstack-explore",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "group/pstack-code",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "group/pstack-reasoning",
+    "ANTHROPIC_SMALL_FAST_MODEL": "group/pstack-explore"
+  },
+  "enabledPlugins": {
+    "pstack@cursor-plugins": true,
+    "superpowers@claude-plugins-official": false
+  },
+  "extraKnownMarketplaces": {
+    "cursor-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "cursor/plugins"
+      }
+    }
+  },
+  "modelSettings": {
+    "group/pstack-explore": {
+      "autoCompactWindow": 350000
+    },
+    "group/pstack-code": {
+      "autoCompactWindow": 350000
+    },
+    "group/pstack-reasoning": {
+      "autoCompactWindow": 350000
+    }
+  }
+}

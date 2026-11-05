@@ -1,5 +1,7 @@
 # Merge selected keys into ~/.config/herdr/config-gpui.local.toml.
-# Uses the shared Ghostty themes from themes/apps/terminals/ghostty/.
+# The named themes are the Ghostty files in themes/apps/terminals/ghostty/.
+# herdr-app does not read this file. Its themes are herdr/themes/*.json,
+# copied to ~/.config/herdr-app/themes/ and selected on the layout root.
 layout = "normal"
 theme = "light:dot-agents-kanagawa-lotus,dark:dot-agents-kanagawa-wave"
 contrast = "high"

@@ -40,10 +40,31 @@ OpenCodex 2.91.0, Codex CLI 0.163.0, OpenCode 1.18.33, Magpie 0.1.1603에서 확
   멤버부터 만들고 `magpie group set`·`magpie group rule add`로 라우팅과 규칙을 재현한다.
   기존 provider·계정·키 설정을 보존하고 무관한 로컬 그룹을 삭제하지 않는다.
   그룹 id는 `group/<id>` 참조와 일치해야 한다.
-- `claude/agents/`의 선택한 파일을 `~/.claude/agents/`에 설치한다. 기존 동명 파일은
-  diff를 보고 병합한다. `Explore`·`Plan`은 정확히 그 이름일 때만 내장을 오버라이드하며,
-  `model: group/<id>`는 같은 id의 Magpie 그룹이 있어야 동작한다. `settings.json`은
-  인증정보와 기기별 상태를 포함하므로 공개 대상이 아니다.
+- Claude Code는 [pstack 구성](../claude/README.md)을 사용한다. 먼저
+  `magpie/pstack-groups.public.json`의 그룹 3개를 만들고 `claude/settings.public.json`의
+  선택한 키를 사용자 설정에 병합한다. pstack은 켜고 Claude Code의 Superpowers는 끈다.
+  Magpie CLI에서도 haiku/sonnet/opus를 각각 pstack-explore/code/reasoning 그룹에 연결한다.
+  메인 모델·인증정보·gateway·hooks·다른 플러그인 설정은 보존한다.
+- `claude/rules/pstack-models.md`를 `~/.claude/rules/`에 설치한다. 실제 모델과 reasoning은
+  Jev가 선택한다. 역할 파일의 high는 추론 활성화용이며 실제 effort 고정값이 아니다.
+  Explore·Plan은 동명 파일의 diff를 보고 병합한다. 나머지 worker·sp-* 파일은 기존
+  설치용으로 보존된 정의이며 pstack만 쓸 때는 새로 설치하지 않는다.
+- Grok CLI 자동 갱신이 실행 파일을 찾는지 확인한다. Go의 Extra Usage가 켜져 있으면
+  한도 소진 후에도 종량제 잔액이 쓰일 수 있다. Muse의 학습 사용 동의와 DeepSeek의
+  허용 지역은 계정에서 별도로 확인하며 자동으로 변경하지 않는다.
+- `herdr/config-gpui.local.toml`은 `~/.config/herdr/config-gpui.local.toml`에 키별로
+  병합한다. 테마·배경·기존 단축키를 통째로 덮어쓰지 않는다. 이 파일은 GPUI용이며
+  `herdr-app`은 읽지 않는다.
+- `herdr/themes/`의 `dot-agents-kanagawa-lotus.json`과
+  `dot-agents-kanagawa-wave.json`을 `~/.config/herdr-app/themes/`에 복사한다.
+  색은 `themes/apps/terminals/ghostty/`와 같다. 사용 중인 레이아웃 루트에만
+  `"theme": { "light": "dot-agents-kanagawa-lotus", "dark": "dot-agents-kanagawa-wave" }`를
+  넣는다. 레이아웃의 다른 키는 유지한다. 시스템 라이트/다크를 따른다.
+- `herdr/keys.omarchy.json`은 Herdr 데스크톱 앱(`herdr-app`)용이다. 대상은
+  `~/.config/herdr-app/keys.json`의 `global`이며, 나열된 키만 덮어쓴다.
+  이 파일은 앱 기본 키맵 전체가 아니다. 파일이 없으면 앱이 기본 키맵을 만들 때까지
+  기다린 뒤 병합한다. 없는 파일을 이 내용만으로 만들면 나머지 기본 키가 사라진다.
+  Omarchy/Linux에서만 적용한다. macOS는 `config-gpui.local.toml`의 `cmd` 단축키를 유지한다.
 - 포트 `10100`이 충돌하면 OpenCodex listener와 OpenCode의 `baseURL`, Codex의
   로컬 provider URL을 함께 맞춘다. 원격 노출·자동 시작·shim 설치는 개별 검토한다.
   `ocx setup`/`ocx sync`도 클라이언트 설정을 변경하므로 백업과 diff 확인 대상이다.
