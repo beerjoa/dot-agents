@@ -13,9 +13,23 @@ the source user's routing configuration, not upstream factory defaults:
 - For each group: member models in order, `routing`/`stays` behavior, routing
   rules (token thresholds and intent matchers), the `typesafe/jev-latest`
   classifier, and reasoning effort.
-- `jev-auto` is the interactive main-session route. The other nine back the
-  [Claude Code subagents](../claude/agents/), selected via `model: group/<id>`
-  in each agent's frontmatter.
+- `jev-auto` is the interactive main-session route. The other nine are retained
+  for existing role-based installations. Claude Code's current pstack setup uses
+  the separate groups below.
+
+[`pstack-groups.public.json`](./pstack-groups.public.json) adds three independent
+Jev-routed groups for [Claude Code with pstack](../claude/README.md):
+
+- `pstack-explore`: Codex Luna and Antigravity Gemini Flash only.
+- `pstack-code`: Sol, direct Grok, Claude Sonnet, and economical OpenCode Go coding models.
+- `pstack-reasoning`: Sol as the technical default, Muse for prose, Grok/Sonnet
+  for alternate analysis and synthesis, and selective Opus/Astra escalation.
+
+All three advertise a 350k context and use automatic Jev effort, ordered fallback,
+and affinity within a turn.
+No member effort is pinned. Gemini Argon, Go Grok, and Antigravity Opus are excluded.
+The configuration files are independent partial subsets; merge selected groups
+by ID, never replace the local provider configuration with either file.
 
 Model and provider names in routing targets are included intentionally.
 Provider connections and authentication are excluded.

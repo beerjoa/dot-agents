@@ -1,7 +1,7 @@
 ---
 name: Explore
 description: Fast general codebase exploration without making changes. Use when the task needs searching or understanding unfamiliar code.
-model: group/explore
+model: group/pstack-explore
 effort: high
 permissionMode: default
 tools: [Read, Grep, Glob]
@@ -29,4 +29,4 @@ Rules:
 - Do not spawn subagents.
 - Shell tools are unavailable. Return the exact command for the requester to run when verification requires a shell; do not claim it was executed.
 
-This agent runs on Magpie routing group `group/explore` from its frontmatter. Do not change provider settings or use Codex-only `combo/*` model IDs.
+This agent runs on Magpie routing group `group/pstack-explore` from its frontmatter. Do not change provider settings or use Codex-only `combo/*` model IDs.

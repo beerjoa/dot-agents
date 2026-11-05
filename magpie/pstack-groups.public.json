@@ -1,0 +1,118 @@
+{
+  "groups": [
+    {
+      "id": "pstack-explore",
+      "name": "Pstack Explore",
+      "members": [
+        "codex/gpt-6-luna",
+        "antigravity/gemini-3.8-flash"
+      ],
+      "routing": "order",
+      "affinity": "turn",
+      "rules": [
+        {
+          "use": "codex/gpt-6-luna",
+          "intent": "Read-only file or symbol lookup, locating tests, tracing a bounded call path, or a straightforward factual query. Return concise evidence, not implementation or design decisions."
+        },
+        {
+          "use": "antigravity/gemini-3.8-flash",
+          "intent": "Read-only discovery across many files: map modules and dependencies, gather references in an unfamiliar repository, or inspect images. Gather evidence rather than make hard technical decisions."
+        }
+      ],
+      "classifier": "typesafe/jev-latest",
+      "effort": "auto",
+      "context": 350000
+    },
+    {
+      "id": "pstack-code",
+      "name": "Pstack Code",
+      "members": [
+        "codex/gpt-6.1-sol",
+        "grok/grok-4.7",
+        "claude/claude-sonnet-5-5",
+        "opencode-go/deepseek-v4.1-flash",
+        "opencode-go/glm-5.3-flash",
+        "opencode-go/mimo-v2.6-flash",
+        "opencode-go/mimo-v2.6-pro"
+      ],
+      "routing": "order",
+      "affinity": "turn",
+      "rules": [
+        {
+          "use": "codex/gpt-6.1-sol",
+          "intent": "General-purpose nontrivial implementation or debugging involving state, multiple interfaces, unclear causes, or interacting files. Reliable working code matters more than minimizing cost."
+        },
+        {
+          "use": "grok/grok-4.7",
+          "intent": "Substantive implementation or behavior-preserving refactoring with clear requirements, requesting a fresh independent approach or an alternative to an earlier implementation."
+        },
+        {
+          "use": "claude/claude-sonnet-5-5",
+          "intent": "Tool-heavy implementation and integration: coordinate shell commands, builds, tests, and repairs to deliver a working change. The main challenge is executing and checking the terminal workflow."
+        },
+        {
+          "use": "opencode-go/deepseek-v4.1-flash",
+          "intent": "A bounded feature or bug fix with explicit requirements and a known approach. Implement a focused patch economically without difficult architecture or root-cause analysis."
+        },
+        {
+          "use": "opencode-go/glm-5.3-flash",
+          "intent": "Routine test implementation, standard validation logic, repetitive but precise code changes, or conventional implementation patterns with clear expected results."
+        },
+        {
+          "use": "opencode-go/mimo-v2.6-flash",
+          "intent": "A small straightforward script, configuration edit, rename, or mechanical one-location change requiring little analysis. Optimize for low cost."
+        },
+        {
+          "use": "opencode-go/mimo-v2.6-pro",
+          "intent": "A self-contained coding helper with explicit inputs and outputs where low token and cache cost matter more than latency. No high-risk design, difficult debugging, or final review."
+        }
+      ],
+      "classifier": "typesafe/jev-latest",
+      "effort": "auto",
+      "context": 350000
+    },
+    {
+      "id": "pstack-reasoning",
+      "name": "Pstack Reasoning",
+      "members": [
+        "codex/gpt-6.1-sol",
+        "grok/grok-4.7",
+        "claude/claude-sonnet-5-5",
+        "claude/claude-opus-5-5",
+        "codex/gpt-6-astra",
+        "opencode-go/muse-spark-1.3-contributor"
+      ],
+      "routing": "order",
+      "affinity": "turn",
+      "rules": [
+        {
+          "use": "codex/gpt-6.1-sol",
+          "intent": "Default technical judgment: analyze code, diagnose bugs, compare tradeoffs, plan changes, or review correctness and requirements. Ordinary design and review belong here, without premium escalation."
+        },
+        {
+          "use": "opencode-go/muse-spark-1.3-contributor",
+          "intent": "Write, translate, summarize, or organize prose using supplied evidence. General text synthesis without difficult code reasoning, high-risk technical decisions, or final correctness/security sign-off."
+        },
+        {
+          "use": "grok/grok-4.7",
+          "intent": "An explicitly independent technical perspective, adversarial critique, alternative root-cause hypothesis, or comparison of competing approaches after an earlier analysis."
+        },
+        {
+          "use": "claude/claude-sonnet-5-5",
+          "intent": "Reconcile a detailed design, requirements, interfaces, and a plan, or synthesize an architectural explanation from extensive evidence. Structured consistency checking without exceptional risk."
+        },
+        {
+          "use": "claude/claude-opus-5-5",
+          "intent": "Exceptional risk or unresolved difficulty: subtle security/concurrency flaws, dangerous migrations, conflicting invariants, or failed serious prior analyses. Not routine design, review, or prose."
+        },
+        {
+          "use": "codex/gpt-6-astra",
+          "intent": "Unusually difficult formal, mathematical, or algorithmic reasoning requiring a derivation or proof, or explicit escalation after standard reasoning failed. Not routine planning or review."
+        }
+      ],
+      "classifier": "typesafe/jev-latest",
+      "effort": "auto",
+      "context": 350000
+    }
+  ]
+}

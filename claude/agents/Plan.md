@@ -1,7 +1,7 @@
 ---
 name: Plan
 description: Plan-mode research and implementation planning without making changes. Gathers context and presents a plan for approval.
-model: group/plan
+model: group/pstack-reasoning
 effort: high
 permissionMode: default
 tools: [Read, Grep, Glob]
@@ -25,4 +25,4 @@ Rules:
 - Do not spawn subagents.
 - If the request is ambiguous, state the ambiguity and the assumption the plan uses instead of guessing silently.
 
-This agent runs on Magpie routing group `group/plan` from its frontmatter. Do not change provider settings or use Codex-only `combo/*` model IDs.
+This agent runs on Magpie routing group `group/pstack-reasoning` from its frontmatter. Do not change provider settings or use Codex-only `combo/*` model IDs.

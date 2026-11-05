@@ -58,11 +58,20 @@ review the file and recreate selected groups with `magpie group add/set/rule`.
 
 ## [Claude Code agents](./claude/README.md)
 
-The `claude/agents/` directory contains nine subagent definitions wired to the
-Magpie groups via `model: group/<id>`, including `Explore` and `Plan` overrides
-of the built-in agents. Copy selected files to `~/.claude/agents/` after
-reviewing them. `settings.json` is excluded: it carries provider credentials
-and machine state.
+The `claude/` directory contains partial pstack settings, per-role model rules,
+and `Explore`/`Plan` overrides. Three dedicated Magpie groups let Jev choose the
+actual model and reasoning effort. Superpowers is disabled for Claude Code;
+other existing agent definitions are retained for compatibility. Merge selected
+keys only. Full local settings, credentials, and machine state are excluded.
+
+## [Herdr](./herdr/keys.omarchy.json)
+
+`herdr/` holds a public subset of the desktop app settings.
+[`config-gpui.local.toml`](./herdr/config-gpui.local.toml) is the GPUI theme and macOS shortcuts.
+[`themes/`](./herdr/themes/) holds the desktop app's Kanagawa themes.
+[`keys.omarchy.json`](./herdr/keys.omarchy.json) is the Linux keymap aligned with the Omarchy herdr CLI.
+Both are partial. Merge only the listed keys into an existing `keys.json`.
+Do not create that file from this subset: the app treats the file as the whole keymap.
 
 ## [Shared themes](./themes/README.md)
 

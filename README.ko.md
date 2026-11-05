@@ -55,10 +55,19 @@ Codex·OpenCode 에이전트의 OpenCodex combo 연결을 기록했습니다.
 
 ## [Claude Code 에이전트](./claude/README.md)
 
-`claude/agents/`에는 Magpie 그룹에 `model: group/<id>`로 연결된 9개 subagent 정의를
-담았습니다. 내장 에이전트를 오버라이드하는 `Explore`·`Plan`이 포함됩니다.
-검토한 파일만 `~/.claude/agents/`에 복사해 사용하세요. `settings.json`은 provider
-인증정보와 기기별 상태를 포함하므로 제외했습니다.
+`claude/`에는 pstack 플러그인용 부분 설정, 역할별 모델 규칙과 `Explore`·`Plan`
+정의를 담았습니다. 전용 Magpie 그룹 3개에서 Jev가 실제 모델과 reasoning을 선택합니다.
+Claude Code의 Superpowers는 비활성화하며, 나머지 기존 agent 정의는 호환용으로 보존했습니다.
+공개 설정은 선택한 키만 병합합니다. 인증정보와 기기별 상태가 있는 원본 설정은 제외했습니다.
+
+## [Herdr](./herdr/keys.omarchy.json)
+
+`herdr/`에는 데스크톱 앱 설정의 공개 가능한 일부만 담았습니다.
+[`config-gpui.local.toml`](./herdr/config-gpui.local.toml)은 GPUI용 테마와 macOS 단축키,
+[`themes/`](./herdr/themes/)는 데스크톱 앱용 Kanagawa 테마,
+[`keys.omarchy.json`](./herdr/keys.omarchy.json)은 Omarchy herdr CLI와 맞춘 Linux 키맵입니다.
+둘 다 부분 설정입니다. 기존 `keys.json`이 있을 때만 나열된 키를 병합하고,
+없는 파일을 이 내용으로 새로 만들지 마세요. 앱은 그 파일을 통째로 사용합니다.
 
 ## [공통 테마](./themes/README.md)
 
