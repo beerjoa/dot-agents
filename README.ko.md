@@ -69,6 +69,13 @@ Claude Code의 Superpowers는 비활성화하며, 나머지 기존 agent 정의�
 둘 다 부분 설정입니다. 기존 `keys.json`이 있을 때만 나열된 키를 병합하고,
 없는 파일을 이 내용으로 새로 만들지 마세요. 앱은 그 파일을 통째로 사용합니다.
 
+## [Herdr 데스크톱 앱](./herdr/DESKTOP.md)
+
+`herdr/config-gpui.local.toml`에는 재사용 가능한 데스크톱 화면 설정과 macOS
+단축키를 담았습니다. 공통 Ghostty 색상 파일을 설치한 뒤 대상 앱의 로컬 설정에
+선택적으로 병합하세요. 공개 예제의 원격 제어는 기본 비활성화이며, Tailscale
+주소·인증서·페어링 정보·서비스 상태는 각 기기에서 설정하고 저장소에는 포함하지 않습니다.
+
 ## [공통 테마](./themes/README.md)
 
 `themes/`에는 Kanagawa Wave 다크·사용자 지정 Lotus 라이트 팔레트와,

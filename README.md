@@ -73,6 +73,14 @@ keys only. Full local settings, credentials, and machine state are excluded.
 Both are partial. Merge only the listed keys into an existing `keys.json`.
 Do not create that file from this subset: the app treats the file as the whole keymap.
 
+## [Herdr desktop app](./herdr/DESKTOP.md)
+
+`herdr/config-gpui.local.toml` contains reusable desktop appearance and macOS
+shortcut settings. Install the shared Ghostty color files, then selectively merge
+the sample into the destination app's local override. Remote control is disabled
+in the sample; Tailscale addresses, certificates, pairing data, and service state
+must be configured locally and are excluded from the repository.
+
 ## [Shared themes](./themes/README.md)
 
 `themes/` holds the Kanagawa Wave dark and customized Lotus light palettes,
