@@ -44,6 +44,15 @@ class ChromiumFrameTests(unittest.TestCase):
                     offset += size + 12
                 self.assertEqual(zlib.decompress(compressed), b'\x00' + color)
 
+                self.assertNotIn(f'{root}/toolbar.png', files)
+                colors = manifest['theme']['colors']
+                for role in ('frame', 'frame_inactive', 'background_tab',
+                             'background_tab_inactive', 'toolbar', 'ntp_background'):
+                    self.assertEqual(colors[role], list(color))
+                self.assertEqual(colors['tab_text'],
+                                 [77, 105, 155] if slug == 'kanagawa-lotus' else [126, 156, 216])
+                self.assertNotEqual(colors['tab_text'], colors['tab_background_text'])
+
     def test_check_detects_corrupt_and_missing_binary_asset(self):
         with tempfile.TemporaryDirectory() as directory:
             command = [sys.executable, str(Path(generate.__file__)), '--output', directory]

@@ -112,16 +112,18 @@ def render():
         obsidian.append(re.sub(r'{{ (\w+) }}', lambda match: p[match[1]], obsidian_template)
                         .replace('.theme-dark, .theme-light', f'.theme-{mode}'))
         colors = {k: rgb(p['foreground']) for k in ('toolbar_text', 'bookmark_text', 'toolbar_button_icon', 'ntp_text')}
-        colors.update({k: rgb(p['bright_foreground']) for k in ('tab_text', 'omnibox_text')})
+        colors['tab_text'] = rgb(p['blue'])
+        colors['omnibox_text'] = rgb(p['bright_foreground'])
         inactive_text = p['light_foreground'] if mode == 'dark' else p['foreground']
         colors.update({k: rgb(inactive_text) for k in ('tab_background_text', 'tab_background_text_inactive')})
-        colors.update({k: rgb(p['dark_background']) for k in ('background_tab', 'background_tab_inactive')})
-        colors.update({k: rgb(p['background']) for k in ('frame', 'frame_inactive', 'toolbar', 'ntp_background')})
+        colors.update({k: rgb(p['background']) for k in ('background_tab', 'background_tab_inactive',
+                                                      'frame', 'frame_inactive', 'toolbar', 'ntp_background')})
         colors.update(button_background=rgb(p['lighter_background'] if mode == 'dark' else p['dark_background']),
                       omnibox_background=rgb(p['dark_background'] if mode == 'dark' else p['lighter_background']),
                       ntp_link=rgb(p['blue']))
+        version = '1.0.10' if mode == 'dark' else '1.0.8'
         files[f'apps/chromium/themes/{slug}/manifest.json'] = json_text({
-            'manifest_version': 3, 'name': f'Omarchy — {name}', 'version': '1.0.2',
+            'manifest_version': 3, 'name': f'Omarchy — {name}', 'version': version,
             'key': keys[mode], 'theme': {
                 'colors': colors,
                 'images': {'theme_frame': 'frame.png', 'theme_frame_inactive': 'frame.png'},

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Omarchy — Kanagawa Wave",
-  "version": "1.0.2",
+  "version": "1.0.10",
   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDeBgXUfwq5yNm3/E5+DxHOkGTqslZIM+yblVT2KhTTJw9fVrGI4Tzz7G0mKt6Vy8tfndGUcJewLd70yOQk3fLmtE22kajWKb0KQaTIf8k9wqn1tjPuLUkEuTqzXASFXViXTL1N0LhM6jMhG569JeWCBg8QxEZ7zPQuykZJOkCRKwIDAQAB",
   "theme": {
     "colors": {
@@ -26,9 +26,9 @@
         186
       ],
       "tab_text": [
-        220,
-        215,
-        186
+        126,
+        156,
+        216
       ],
       "omnibox_text": [
         220,
@@ -46,14 +46,14 @@
         147
       ],
       "background_tab": [
-        23,
-        23,
-        30
+        31,
+        31,
+        40
       ],
       "background_tab_inactive": [
-        23,
-        23,
-        30
+        31,
+        31,
+        40
       ],
       "frame": [
         31,
