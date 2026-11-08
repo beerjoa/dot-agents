@@ -57,7 +57,8 @@ Codex·OpenCode 에이전트의 OpenCodex combo 연결을 기록했습니다.
 
 `claude/`에는 pstack 플러그인용 부분 설정, 역할별 모델 규칙과 `Explore`·`Plan`
 정의를 담았습니다. 전용 Magpie 그룹 3개에서 Jev가 실제 모델과 reasoning을 선택합니다.
-Claude Code의 Superpowers는 비활성화하며, 나머지 기존 agent 정의는 호환용으로 보존했습니다.
+Claude Code의 Superpowers와 pstack은 함께 활성화하며, 공식 에이전트 override·`sp-*`·pstack 역할은
+각자의 진입점과 그룹을 유지합니다.
 공개 설정은 선택한 키만 병합합니다. 인증정보와 기기별 상태가 있는 원본 설정은 제외했습니다.
 
 ## [Herdr](./herdr/keys.omarchy.json)

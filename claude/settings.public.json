@@ -8,7 +8,7 @@
   },
   "enabledPlugins": {
     "pstack@cursor-plugins": true,
-    "superpowers@claude-plugins-official": false
+    "superpowers@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "cursor-plugins": {

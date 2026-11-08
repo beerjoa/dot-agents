@@ -60,9 +60,10 @@ review the file and recreate selected groups with `magpie group add/set/rule`.
 
 The `claude/` directory contains partial pstack settings, per-role model rules,
 and `Explore`/`Plan` overrides. Three dedicated Magpie groups let Jev choose the
-actual model and reasoning effort. Superpowers is disabled for Claude Code;
-other existing agent definitions are retained for compatibility. Merge selected
-keys only. Full local settings, credentials, and machine state are excluded.
+actual model and reasoning effort. Superpowers is enabled alongside pstack;
+the built-in overrides, `sp-*` roles, and pstack delegates keep separate entry
+points. Merge selected keys only. Full local settings, credentials, and machine
+state are excluded.
 
 ## [Herdr](./herdr/keys.omarchy.json)
 
