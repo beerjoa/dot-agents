@@ -5,17 +5,30 @@
       "name": "Pstack Explore",
       "members": [
         "codex/gpt-6-luna",
-        "antigravity/gemini-3.8-flash"
+        "codex/gpt-6.1-terra",
+        "grok/grok-4.7",
+        "opencode-go/gemini-4-argon"
       ],
       "routing": "order",
       "affinity": "turn",
       "rules": [
         {
+          "use": "codex/gpt-6.1-terra",
+          "more": [
+            "opencode-go/gemini-4-argon"
+          ],
+          "tokens": 250000
+        },
+        {
           "use": "codex/gpt-6-luna",
           "intent": "Read-only file or symbol lookup, locating tests, tracing a bounded call path, or a straightforward factual query. Return concise evidence, not implementation or design decisions."
         },
         {
-          "use": "antigravity/gemini-3.8-flash",
+          "use": "grok/grok-4.7",
+          "more": [
+            "codex/gpt-6.1-terra",
+            "codex/gpt-6-luna"
+          ],
           "intent": "Read-only discovery across many files: map modules and dependencies, gather references in an unfamiliar repository, or inspect images. Gather evidence rather than make hard technical decisions."
         }
       ],
@@ -28,10 +41,14 @@
       "name": "Pstack Code",
       "members": [
         "codex/gpt-6.1-sol",
-        "grok/grok-4.7",
         "claude/claude-sonnet-5-5",
+        "grok/grok-4.7",
+        "claude/claude-haiku-5-5",
         "opencode-go/deepseek-v4.1-flash",
+        "mistral/deepseek-v4-1-flash-1017",
+        "mistral/zai-glm-5-3",
         "opencode-go/glm-5.3-flash",
+        "mistral/zai-glm-5-3-flash",
         "opencode-go/mimo-v2.6-flash",
         "opencode-go/mimo-v2.6-pro"
       ],
@@ -40,23 +57,62 @@
       "rules": [
         {
           "use": "codex/gpt-6.1-sol",
+          "more": [
+            "claude/claude-sonnet-5-5"
+          ],
+          "tokens": 250000
+        },
+        {
+          "use": "claude/claude-sonnet-5-5",
+          "more": [
+            "codex/gpt-6.1-sol"
+          ],
+          "images": true
+        },
+        {
+          "use": "codex/gpt-6.1-sol",
           "intent": "General-purpose nontrivial implementation or debugging involving state, multiple interfaces, unclear causes, or interacting files. Reliable working code matters more than minimizing cost."
         },
         {
           "use": "grok/grok-4.7",
-          "intent": "Substantive implementation or behavior-preserving refactoring with clear requirements, requesting a fresh independent approach or an alternative to an earlier implementation."
+          "more": [
+            "codex/gpt-6.1-sol",
+            "claude/claude-sonnet-5-5"
+          ],
+          "intent": "An explicitly independent second implementation or alternative refactor for a bounded problem with clear requirements and a known approach. No difficult root-cause analysis, architecture, or security-sensitive design."
         },
         {
           "use": "claude/claude-sonnet-5-5",
-          "intent": "Tool-heavy implementation and integration: coordinate shell commands, builds, tests, and repairs to deliver a working change. The main challenge is executing and checking the terminal workflow."
+          "intent": "Complex tool-heavy implementation and integration: coordinate builds, tests, and repeated repairs across interacting components. The main challenge is executing and checking a difficult terminal workflow, beyond a well-specified bounded patch."
         },
         {
           "use": "opencode-go/deepseek-v4.1-flash",
+          "more": [
+            "mistral/deepseek-v4-1-flash-1017"
+          ],
           "intent": "A bounded feature or bug fix with explicit requirements and a known approach. Implement a focused patch economically without difficult architecture or root-cause analysis."
         },
         {
+          "use": "mistral/zai-glm-5-3",
+          "more": [
+            "opencode-go/glm-5.3-flash"
+          ],
+          "intent": "A well-specified implementation whose main work is running shell commands, tests, inspecting failures, and repairing a bounded patch. Conventional terminal execution with clear acceptance criteria, without difficult architecture or root-cause analysis."
+        },
+        {
+          "use": "claude/claude-haiku-5-5",
+          "more": [
+            "mistral/zai-glm-5-3"
+          ],
+          "intent": "Routine test implementation or conventional validation logic requiring correct behavior and meaningful assertions. Clear requirements with some reasoning, beyond mechanical repetitive edits."
+        },
+        {
           "use": "opencode-go/glm-5.3-flash",
-          "intent": "Routine test implementation, standard validation logic, repetitive but precise code changes, or conventional implementation patterns with clear expected results."
+          "more": [
+            "mistral/zai-glm-5-3-flash",
+            "mistral/zai-glm-5-3"
+          ],
+          "intent": "Repetitive precise code changes following an explicit template, enumerated validation rules, or an existing test pattern. Mechanical conventional implementation with fully specified expected results."
         },
         {
           "use": "opencode-go/mimo-v2.6-flash",
@@ -80,11 +136,27 @@
         "claude/claude-sonnet-5-5",
         "claude/claude-opus-5-5",
         "codex/gpt-6-astra",
+        "opencode-go/gemini-4-argon",
         "opencode-go/muse-spark-1.3-contributor"
       ],
       "routing": "order",
       "affinity": "turn",
       "rules": [
+        {
+          "use": "claude/claude-opus-5-5",
+          "more": [
+            "claude/claude-sonnet-5-5",
+            "codex/gpt-6.1-sol"
+          ],
+          "intent": "Exceptional risk or unresolved difficulty: subtle security/concurrency flaws, dangerous migrations, conflicting invariants, or failed serious prior analyses. Not routine design, review, or prose."
+        },
+        {
+          "use": "codex/gpt-6.1-sol",
+          "more": [
+            "claude/claude-sonnet-5-5"
+          ],
+          "tokens": 250000
+        },
         {
           "use": "codex/gpt-6.1-sol",
           "intent": "Default technical judgment: analyze code, diagnose bugs, compare tradeoffs, plan changes, or review correctness and requirements. Ordinary design and review belong here, without premium escalation."
@@ -102,11 +174,19 @@
           "intent": "Reconcile a detailed design, requirements, interfaces, and a plan, or synthesize an architectural explanation from extensive evidence. Structured consistency checking without exceptional risk."
         },
         {
-          "use": "claude/claude-opus-5-5",
-          "intent": "Exceptional risk or unresolved difficulty: subtle security/concurrency flaws, dangerous migrations, conflicting invariants, or failed serious prior analyses. Not routine design, review, or prose."
+          "use": "opencode-go/gemini-4-argon",
+          "more": [
+            "grok/grok-4.7",
+            "claude/claude-sonnet-5-5"
+          ],
+          "intent": "Verify factual claims against supplied documents or repository evidence, reconcile citations, or answer evidence-sensitive questions conservatively. No final code-correctness or security sign-off."
         },
         {
           "use": "codex/gpt-6-astra",
+          "more": [
+            "codex/gpt-6.1-sol",
+            "claude/claude-opus-5-5"
+          ],
           "intent": "Unusually difficult formal, mathematical, or algorithmic reasoning requiring a derivation or proof, or explicit escalation after standard reasoning failed. Not routine planning or review."
         }
       ],

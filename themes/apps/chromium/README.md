@@ -1,20 +1,25 @@
 # Explicit Chromium themes
 
 `themes/kanagawa-wave` and `themes/kanagawa-lotus` are generated unpacked themes.
-Their `frame`, `frame_inactive`, `toolbar` and new-tab background use the palette
-background directly. Address fields, buttons and icons use separate palette roles.
+Their frame, toolbar, selected/unselected-tab and new-tab backgrounds all use
+the palette background. Only the selected tab label uses the palette blue.
+Address fields, buttons and icons use separate roles.
 Both themes also include a generated 1×1 solid `frame.png`, referenced by
 `theme_frame` and `theme_frame_inactive`. It uses the same palette background
 and keeps Helium's vertical tab-strip surface from retaining a default gray fill
 where color-only frame settings were insufficient on macOS.
 
+There is deliberately no `theme_toolbar` image. Toolbar images are shared with
+active tabs and can leak tab colors into macOS window controls. Coordinate-based
+images cannot provide independent active-tab colors across window sizes/layouts.
+
 ## Color roles
 
 | Role | Lotus | Wave |
 | --- | --- | --- |
-| Frame, toolbar and new-tab page | `#f1e9d2` | `#1f1f28` |
-| Inactive tab surface | `#e6dcc0` | `#17171e` |
-| Active tab and address text | `#43436c` | `#dcd7ba` |
+| Frame, toolbar, all tabs and new-tab page | `#f1e9d2` | `#1f1f28` |
+| Selected tab text | `#4d699b` | `#7e9cd8` |
+| Address text | `#43436c` | `#dcd7ba` |
 | Inactive tab text, including unfocused windows | `#545464` | `#c8c093` |
 | Toolbar labels, bookmarks and enabled icons | `#545464` | `#dcd7ba` |
 | Address field background | `#faf4df` | `#17171e` |
@@ -87,8 +92,12 @@ not an installation or activation mechanism.
 
 Update this checkout with `git pull --ff-only`, then reload both already-loaded
 theme folders through the browser's extension manager. Keep the existing theme
-keys, IDs and switcher; do not remove and reinstall the themes. Version 1.0.2
-adds the frame images without changing the controller mapping or permissions.
+keys, IDs and switcher; do not remove and reinstall the themes. Wave 1.0.10 and
+Lotus 1.0.8 restore matching toolbar, tab-strip and frame backgrounds and use
+blue text to distinguish the selected tab. There is no selected-tab fill highlight. A uniform 1×1
+frame resource keeps the macOS vertical strip from falling back to gray. No
+position-dependent tab image or custom toolbar image is used.
+The controller mapping and permissions are unchanged.
 For a new installation, follow the installation order above.
 
 The PNG files are committed and need no machine-specific paths or image tooling.
@@ -105,3 +114,58 @@ mode source on each computer. Do not copy another computer's browser profile,
 credentials or generated native registrations to set it up. See
 [`../../platforms/macos/`](../../platforms/macos/) for macOS preparation and
 [`../../platforms/linux-omarchy/`](../../platforms/linux-omarchy/) for Omarchy.
+
+## Active-tab configuration limits (Helium 0.20.3.1)
+
+Checked against Chromium 156.0.8078.79 and Helium tag 0.20.3:
+
+- `colors.toolbar` also supplies the active-tab background. There is no separate
+  active-tab fill in `kOverwritableColorTable`.
+- `colors.background_tab` and `tints.background_tab` target inactive tabs;
+  `tab_text` targets the active tab's text, not its background.
+- RGBA is accepted by the parser, but frame, toolbar and tab-background colors
+  are forced opaque in `BrowserThemePack::GetColor`. Alpha cannot separate them.
+- The tint table supports buttons, frame variants and background tabs, but no
+  active-tab-only tint. The property table only contains new-tab-page settings.
+- Helium's built-in Material tab colors use the omnibox background, but the
+  Material override function skips extension themes. Setting
+  `colors.omnibox_background` does not enable that route for these themes.
+- The experimental `helium-native-frame-materials` flag exposes a native-material
+  appearance option. It replaces frame surfaces with macOS materials rather
+  than providing an independent theme fill, changing the rendered palette with
+  the background and focus state. It was tested and restored to its original
+  disabled/default state; it is not enabled by these portable themes.
+
+The selected tab uses `toolbar`; unselected tabs use `background_tab` (or the
+uniform frame image in vertical layout). These are tab selection states, not
+application-process states. The `_inactive` suffix on `background_tab_inactive`
+means the window has lost focus. The current configuration deliberately matches
+all tab backgrounds and the toolbar to the frame, and highlights only the
+selected label through `tab_text`. Selected-label contrast is 4.55:1 in Lotus
+and 5.94:1 in Wave. Pinned or collapsed tabs that show only icons do not gain a
+text highlight. These color roles require no size-specific coordinates.
+
+### Built-in color alternative
+
+Helium's **Customize Helium → Appearance → Custom color** keeps its Material
+selection rendering: inactive tabs are transparent and active tabs use the
+location-bar background, independently of the toolbar. This was checked in the
+installed browser in light and dark modes. It does not load these extension
+themes.
+
+The built-in picker accepts a hue, converts it to a seed color and generates a
+Tonal Spot palette. It does not accept separate Wave/Lotus surface, foreground
+or active-tab colors. Changing the seed changes the whole generated palette;
+it is not a way to apply the original Kanagawa HEX palette while retaining
+Material rendering. The stored user color is shared by light and dark modes.
+The current extension switcher enables the two manifest themes and must be
+turned off when testing this alternative, or it will restore an extension theme.
+
+Sources: [picker seed handling](https://github.com/chromium/chromium/blob/156.0.8078.79/chrome/browser/ui/webui/cr_components/theme_color_picker/theme_color_picker_handler.cc),
+[generated palette](https://github.com/chromium/chromium/blob/156.0.8078.79/ui/color/ref_color_mixer.cc),
+[user color and scheme preferences](https://github.com/chromium/chromium/blob/156.0.8078.79/chrome/browser/themes/theme_service.cc).
+
+References: [official theme documentation](https://developer.chrome.com/docs/extensions/develop/ui/themes),
+[theme parser and opacity enforcement](https://github.com/chromium/chromium/blob/156.0.8078.79/chrome/browser/themes/browser_theme_pack.cc),
+[tab color mapping](https://github.com/chromium/chromium/blob/156.0.8078.79/chrome/browser/ui/color/tab_strip_color_mixer.cc),
+[Helium native materials implementation](https://github.com/imputnet/helium/blob/0.20.3/patches/helium/ui/native-frame-materials.patch).

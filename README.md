@@ -60,9 +60,10 @@ review the file and recreate selected groups with `magpie group add/set/rule`.
 
 The `claude/` directory contains partial pstack settings, per-role model rules,
 and `Explore`/`Plan` overrides. Three dedicated Magpie groups let Jev choose the
-actual model and reasoning effort. Superpowers is disabled for Claude Code;
-other existing agent definitions are retained for compatibility. Merge selected
-keys only. Full local settings, credentials, and machine state are excluded.
+actual model and reasoning effort. Superpowers is enabled alongside pstack;
+the built-in overrides, `sp-*` roles, and pstack delegates keep separate entry
+points. Merge selected keys only. Full local settings, credentials, and machine
+state are excluded.
 
 ## [Herdr](./herdr/keys.omarchy.json)
 
@@ -72,6 +73,14 @@ keys only. Full local settings, credentials, and machine state are excluded.
 [`keys.omarchy.json`](./herdr/keys.omarchy.json) is the Linux keymap aligned with the Omarchy herdr CLI.
 Both are partial. Merge only the listed keys into an existing `keys.json`.
 Do not create that file from this subset: the app treats the file as the whole keymap.
+
+## [Herdr desktop app](./herdr/DESKTOP.md)
+
+`herdr/config-gpui.local.toml` contains reusable desktop appearance and macOS
+shortcut settings. Install the shared Ghostty color files, then selectively merge
+the sample into the destination app's local override. Remote control is disabled
+in the sample; Tailscale addresses, certificates, pairing data, and service state
+must be configured locally and are excluded from the repository.
 
 ## [Shared themes](./themes/README.md)
 

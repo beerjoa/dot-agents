@@ -27,7 +27,7 @@ interrogate reviewers: opus high, sonnet high
 ## Routing constraints
 
 - Use pstack's Claude Code adapter. Do not pass group IDs directly as the Agent tool's model argument.
-- Explore contains only Codex Luna and Antigravity Gemini Flash. Escalate difficult causal analysis to the reasoning role.
+- Explore uses Codex Luna for bounded lookups, Grok 4.7 for broad evidence gathering, and Codex Terra at or above 250k tokens. OpenCode Go Gemini 4 Argon is the final fallback for long requests; reserve its smaller Go allowance for that role. Escalate difficult causal analysis to the reasoning role.
 - Sol is the default technical reasoner; Muse handles prose and ordinary synthesis. Opus and Astra are exceptional escalations, not defaults.
 - Model-family diversity is not guaranteed by different aliases: two groups can select the same model, and each group contains multiple families.
 - Do not claim a cross-family judge ran unless the actual served models and their families are known. Skip that judge when its family requirement cannot be established.

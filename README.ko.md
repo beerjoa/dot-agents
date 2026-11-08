@@ -57,7 +57,8 @@ Codex·OpenCode 에이전트의 OpenCodex combo 연결을 기록했습니다.
 
 `claude/`에는 pstack 플러그인용 부분 설정, 역할별 모델 규칙과 `Explore`·`Plan`
 정의를 담았습니다. 전용 Magpie 그룹 3개에서 Jev가 실제 모델과 reasoning을 선택합니다.
-Claude Code의 Superpowers는 비활성화하며, 나머지 기존 agent 정의는 호환용으로 보존했습니다.
+Claude Code의 Superpowers와 pstack은 함께 활성화하며, 공식 에이전트 override·`sp-*`·pstack 역할은
+각자의 진입점과 그룹을 유지합니다.
 공개 설정은 선택한 키만 병합합니다. 인증정보와 기기별 상태가 있는 원본 설정은 제외했습니다.
 
 ## [Herdr](./herdr/keys.omarchy.json)
@@ -68,6 +69,13 @@ Claude Code의 Superpowers는 비활성화하며, 나머지 기존 agent 정의�
 [`keys.omarchy.json`](./herdr/keys.omarchy.json)은 Omarchy herdr CLI와 맞춘 Linux 키맵입니다.
 둘 다 부분 설정입니다. 기존 `keys.json`이 있을 때만 나열된 키를 병합하고,
 없는 파일을 이 내용으로 새로 만들지 마세요. 앱은 그 파일을 통째로 사용합니다.
+
+## [Herdr 데스크톱 앱](./herdr/DESKTOP.md)
+
+`herdr/config-gpui.local.toml`에는 재사용 가능한 데스크톱 화면 설정과 macOS
+단축키를 담았습니다. 공통 Ghostty 색상 파일을 설치한 뒤 대상 앱의 로컬 설정에
+선택적으로 병합하세요. 공개 예제의 원격 제어는 기본 비활성화이며, Tailscale
+주소·인증서·페어링 정보·서비스 상태는 각 기기에서 설정하고 저장소에는 포함하지 않습니다.
 
 ## [공통 테마](./themes/README.md)
 

@@ -42,13 +42,14 @@ OpenCodex 2.91.0, Codex CLI 0.163.0, OpenCode 1.18.33, Magpie 0.1.1603에서 확
   그룹 id는 `group/<id>` 참조와 일치해야 한다.
 - Claude Code는 [pstack 구성](../claude/README.md)을 사용한다. 먼저
   `magpie/pstack-groups.public.json`의 그룹 3개를 만들고 `claude/settings.public.json`의
-  선택한 키를 사용자 설정에 병합한다. pstack은 켜고 Claude Code의 Superpowers는 끈다.
+  선택한 키를 사용자 설정에 병합한다. pstack과 Claude Code의 Superpowers를 함께 켠다.
   Magpie CLI에서도 haiku/sonnet/opus를 각각 pstack-explore/code/reasoning 그룹에 연결한다.
   메인 모델·인증정보·gateway·hooks·다른 플러그인 설정은 보존한다.
 - `claude/rules/pstack-models.md`를 `~/.claude/rules/`에 설치한다. 실제 모델과 reasoning은
   Jev가 선택한다. 역할 파일의 high는 추론 활성화용이며 실제 effort 고정값이 아니다.
-  Explore·Plan은 동명 파일의 diff를 보고 병합한다. 나머지 worker·sp-* 파일은 기존
-  설치용으로 보존된 정의이며 pstack만 쓸 때는 새로 설치하지 않는다.
+  Explore·Plan은 동명 파일의 diff를 보고 병합한다. worker·sp-*는 별도의 에이전트
+  진입점이므로 pstack 역할과 합치거나 그룹을 삭제하지 않는다. 사용할 워크플로에
+  해당하는 에이전트와 그룹을 함께 설치한다.
 - Grok CLI 자동 갱신이 실행 파일을 찾는지 확인한다. Go의 Extra Usage가 켜져 있으면
   한도 소진 후에도 종량제 잔액이 쓰일 수 있다. Muse의 학습 사용 동의와 DeepSeek의
   허용 지역은 계정에서 별도로 확인하며 자동으로 변경하지 않는다.

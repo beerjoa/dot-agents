@@ -2,7 +2,7 @@
 
 Claude Code uses [pstack](https://github.com/cursor/plugins/tree/main/harness/pstack)
 with three dedicated [Magpie groups](../magpie/pstack-groups.public.json).
-Superpowers is disabled in this Claude Code configuration.
+Superpowers is enabled alongside pstack; each keeps its own agent entry points.
 
 ## Included settings
 
@@ -12,14 +12,14 @@ Superpowers is disabled in this Claude Code configuration.
   a Claude Code alias. Magpie chooses the actual model and reasoning effort.
 - [`agents/Explore.md`](./agents/Explore.md) and [`agents/Plan.md`](./agents/Plan.md)
   override the built-in agents and use the dedicated exploration and reasoning groups.
-- The other seven definitions in [`agents/`](./agents/) are retained for existing
-  installations. They are not required by pstack and should not be installed for
-  the pstack-only setup. Pstack supplies its own `pstack:poteto-agent` delegate.
+- The other seven definitions in [`agents/`](./agents/) preserve the general worker
+  and Superpowers `sp-*` roles with their own Magpie groups. Keep them separate
+  from the built-in overrides and pstack's `pstack:poteto-agent` delegate.
 
 | Claude Code alias | Magpie group | Purpose |
 | --- | --- | --- |
-| `haiku` | `group/pstack-explore` | Codex Luna and Antigravity Gemini Flash only; no Sol or OpenCode Go |
-| `sonnet` | `group/pstack-code` | Sol, direct Grok, Claude Sonnet, and economical Go coding models |
+| `haiku` | `group/pstack-explore` | Luna for bounded lookup, Grok for broad evidence, Terra for long requests, Go Argon as final long-request fallback |
+| `sonnet` | `group/pstack-code` | Sol, Claude Sonnet/Haiku, direct Grok, and complementary Go/Mistral coding routes |
 | `opus` | `group/pstack-reasoning` | Sol for ordinary technical judgment, Muse for prose, selective premium escalation |
 
 These aliases select groups, not actual Claude model families. The main session's
@@ -35,11 +35,12 @@ Group members must be exposed before adding rules. In particular,
 `opencode-go/mimo-v2.6-flash` may need to be enabled in the provider's model list.
 Preserve all unrelated groups and provider settings.
 
-Install pstack in Claude Code:
+Install pstack and Superpowers in Claude Code:
 
 ```text
 /plugin marketplace add cursor/plugins
 /plugin install pstack@cursor-plugins
+/plugin install superpowers@claude-plugins-official
 ```
 
 Merge selected keys from `settings.public.json` into `~/.claude/settings.json`.
@@ -58,7 +59,8 @@ magpie claude opus group/pstack-reasoning
 Copy `rules/pstack-models.md` to `~/.claude/rules/pstack-models.md`, and merge the
 selected Explore and Plan definitions into `~/.claude/agents/`. Keep their names
 unchanged to override the built-ins. Start a new Claude Code session to load the
-role rule and disabled Superpowers setting, then use `/pstack:poteto-mode` for a task.
+role rule and plugin settings, then use `/pstack:poteto-mode` for a pstack task
+or the separate Superpowers entry point for that workflow.
 
 If rerunning `/pstack:setup-pstack`, preserve the alias mapping and Jev policy.
 The standard setup command offers fixed starting budgets; this configuration
@@ -75,10 +77,15 @@ or `use-effort` override. Jev selects actual effort within the model's support;
 
 Sol is the default technical reasoner. Muse handles supplied-evidence prose and
 ordinary synthesis. Opus and Astra are reserved for exceptional risk or demonstrated
-difficulty. Direct Grok is included; Go Grok, Gemini Argon, Antigravity Opus,
-expensive Go alternatives, and promotional free endpoints are excluded.
+difficulty. Direct Grok is included. Argon is reserved for factual verification
+and a final long-request exploration fallback; Go Grok, Antigravity, Zen, and
+MiniMax M3.1 Flash are excluded from the groups.
 
 Go candidates favor DeepSeek Flash, GLM Flash, MiMo Flash/Pro, and Muse.
+Mistral covers Go DeepSeek and GLM Flash failures; Mistral GLM-5.3 terminal
+workflows fall back to Go GLM Flash. The latter is a lower-capability alternative,
+not an identical model. Ordered fallback covers unavailable quota and errors,
+not a configured proactive low-quota threshold.
 Check the current [Go prices, allowances, and Extra Usage setting](https://opencode.ai/v2/docs/console/go/).
 Extra Usage can charge Console credits after a Go allowance is exhausted, so a
 quota-based fallback is not a spending cap. DeepSeek requires an allowed Global
