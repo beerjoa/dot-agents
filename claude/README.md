@@ -18,9 +18,9 @@ Superpowers is enabled alongside pstack; each keeps its own agent entry points.
 
 | Claude Code alias | Magpie group | Purpose |
 | --- | --- | --- |
-| `haiku` | `group/pstack-explore` | Luna for bounded lookup, Grok for broad evidence, Terra for long requests, Go Argon as final long-request fallback |
-| `sonnet` | `group/pstack-code` | Sol, Claude Sonnet/Haiku, direct Grok, and complementary Go/Mistral coding routes |
-| `opus` | `group/pstack-reasoning` | Sol for ordinary technical judgment, Muse for prose, selective premium escalation |
+| `haiku` | `group/pstack-explore` | Luna for bounded lookup, Go Argon then Grok for broad evidence, Terra then Argon for long requests |
+| `sonnet` | `group/pstack-code` | Sol, Claude Sonnet/Haiku, direct Grok, Mistral DeepSeek, and complementary Go/Mistral coding routes |
+| `opus` | `group/pstack-reasoning` | Sol for analysis/diagnosis, Sonnet for ordinary design/review, Muse for prose, selective premium escalation |
 
 These aliases select groups, not actual Claude model families. The main session's
 model is a separate choice and is not changed by the public subset.
@@ -75,15 +75,21 @@ other members remain fallback candidates. No member has a fixed effort suffix
 or `use-effort` override. Jev selects actual effort within the model's support;
 `max` is not automatically selected by the documented auto-effort ladder.
 
-Sol is the default technical reasoner. Muse handles supplied-evidence prose and
-ordinary synthesis. Opus and Astra are reserved for exceptional risk or demonstrated
-difficulty. Direct Grok is included. Argon is reserved for factual verification
-and a final long-request exploration fallback; Go Grok, Antigravity, Zen, and
-MiniMax M3.1 Flash are excluded from the groups.
+Sol handles code analysis, diagnosis, implementation, and high-risk code review.
+Sonnet handles ordinary design and correctness review in `pstack-reasoning`,
+standard spec/plan review, planning/synthesis, and thorough code quality review.
+Muse handles supplied-evidence prose and ordinary synthesis, including longer
+`jev-auto` documents; short `jev-auto` transformations still use Mistral Large.
+Opus and Astra are reserved for exceptional risk or demonstrated difficulty.
+Direct Grok retains its independent-analysis roles and is the next alternative
+to Argon for broad discovery. Argon handles broad discovery in `pstack-explore`,
+`explore`, and `sp-explorer`, factual verification, and long-request exploration
+fallback. Go Grok, Antigravity, Zen, and MiniMax M3.1 Flash are excluded.
 
-Go candidates favor DeepSeek Flash, GLM Flash, MiMo Flash/Pro, and Muse.
-Mistral covers Go DeepSeek and GLM Flash failures; Mistral GLM-5.3 terminal
-workflows fall back to Go GLM Flash. The latter is a lower-capability alternative,
+DeepSeek Flash runs through Mistral in every exported group; the Go DeepSeek
+route is deselected locally. Other Go candidates include GLM Flash, MiMo
+Flash/Pro, Argon, and Muse. Mistral covers Go GLM Flash failures; Mistral GLM-5.3
+terminal workflows fall back to Go GLM Flash. The latter is a lower-capability alternative,
 not an identical model. Ordered fallback covers unavailable quota and errors,
 not a configured proactive low-quota threshold.
 Check the current [Go prices, allowances, and Extra Usage setting](https://opencode.ai/v2/docs/console/go/).
@@ -91,6 +97,9 @@ Extra Usage can charge Console credits after a Go allowance is exhausted, so a
 quota-based fallback is not a spending cap. DeepSeek requires an allowed Global
 region; Muse Contributor requires consent to endpoints that can train on requests.
 This repository does not change those account settings or grant that consent.
+Argon/Muse priority is intended to consume remaining Go allowance. Before Go
+expires, replace its primary routes and remove unavailable members and rule
+alternatives; see the [Magpie routing notes](../magpie/README.md).
 
 Different aliases do not guarantee different model families. A strict cross-family
 Arena judge requires checking the actual served routes, not just their alias names.

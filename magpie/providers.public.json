@@ -12,7 +12,8 @@
         "grok/grok-4.7",
         "opencode-go/claude-haiku-5-5",
         "opencode-go/gpt-6-luna",
-        "mistral/mistral-large-4"
+        "mistral/mistral-large-4",
+        "opencode-go/muse-spark-1.3-contributor"
       ],
       "routing": "order",
       "affinity": "turn",
@@ -41,7 +42,10 @@
           "intent": "A brief low-risk transformation of supplied text: summarize a short passage, translate a short text, or extract literal information from a supplied screenshot. No code implementation, engineering plan, external research, or fact-critical judgment."
         },
         {
-          "use": "claude/claude-haiku-5-5",
+          "use": "opencode-go/muse-spark-1.3-contributor",
+          "more": [
+            "claude/claude-haiku-5-5"
+          ],
           "intent": "Write longer documentation, draft prose, summarize extensive supplied material, or general non-coding synthesis beyond a short text transformation. The deliverable is text, rather than code, an engineering plan, or a short factual answer."
         },
         {
@@ -59,7 +63,6 @@
       "members": [
         "codex/gpt-6.1-sol",
         "codex/gpt-6.1-terra",
-        "opencode-go/deepseek-v4.1-flash",
         "mistral/deepseek-v4-1-flash-1017",
         "mistral/zai-glm-5-3",
         "opencode-go/glm-5.3-flash",
@@ -92,10 +95,7 @@
           "intent": "Standard Codex-native patch workflows: apply_patch edits and multi-step patch-and-test loops."
         },
         {
-          "use": "opencode-go/deepseek-v4.1-flash",
-          "more": [
-            "mistral/deepseek-v4-1-flash-1017"
-          ],
+          "use": "mistral/deepseek-v4-1-flash-1017",
           "intent": "Well-specified feature implementation with clear requirements, where speed matters."
         },
         {
@@ -127,7 +127,6 @@
       "name": "Sp Worker",
       "members": [
         "codex/gpt-6.1-terra",
-        "opencode-go/deepseek-v4.1-flash",
         "mistral/deepseek-v4-1-flash-1017",
         "mistral/zai-glm-5-3",
         "opencode-go/glm-5.3-flash",
@@ -161,10 +160,7 @@
           "intent": "A self-contained low-risk coding helper with explicit inputs and outputs and a known approach. Favor low token cost, without complex algorithms or architecture decisions."
         },
         {
-          "use": "opencode-go/deepseek-v4.1-flash",
-          "more": [
-            "mistral/deepseek-v4-1-flash-1017"
-          ],
+          "use": "mistral/deepseek-v4-1-flash-1017",
           "intent": "Bounded feature or test implementation with clear scope, where speed matters."
         },
         {
@@ -194,7 +190,6 @@
         "codex/gpt-6.1-sol",
         "claude/claude-sonnet-5-5",
         "codex/gpt-6.1-terra",
-        "opencode-go/deepseek-v4.1-flash",
         "mistral/deepseek-v4-1-flash-1017",
         "claude/claude-haiku-5-5",
         "grok/grok-4.7"
@@ -215,11 +210,8 @@
           "intent": "Algorithm-heavy or long-context implementation."
         },
         {
-          "use": "opencode-go/deepseek-v4.1-flash",
-          "intent": "Multi-file feature implementation with clear scope, where speed matters.",
-          "more": [
-            "mistral/deepseek-v4-1-flash-1017"
-          ]
+          "use": "mistral/deepseek-v4-1-flash-1017",
+          "intent": "Multi-file feature implementation with clear scope, where speed matters."
         },
         {
           "use": "claude/claude-sonnet-5-5",
@@ -245,7 +237,6 @@
         "claude/claude-sonnet-5-5",
         "codex/gpt-6.1-terra",
         "claude/claude-haiku-5-5",
-        "opencode-go/deepseek-v4.1-flash",
         "mistral/deepseek-v4-1-flash-1017",
         "grok/grok-4.7"
       ],
@@ -262,18 +253,18 @@
         },
         {
           "use": "claude/claude-sonnet-5-5",
-          "intent": "Thorough code quality, architecture, or bug review."
+          "intent": "Standard thorough code review: code quality, architecture, or bug review of typical task diffs. Default reviewer, separate model family from the implementer.",
+          "more": [
+            "codex/gpt-6.1-sol"
+          ]
         },
         {
           "use": "codex/gpt-6.1-terra",
           "intent": "Review of complex logic or long-context diffs spanning many files."
         },
         {
-          "use": "opencode-go/deepseek-v4.1-flash",
-          "intent": "Review of bounded feature diffs with clear scope, where speed matters.",
-          "more": [
-            "mistral/deepseek-v4-1-flash-1017"
-          ]
+          "use": "mistral/deepseek-v4-1-flash-1017",
+          "intent": "Review of bounded feature diffs with clear scope, where speed matters."
         },
         {
           "use": "claude/claude-haiku-5-5",
@@ -294,7 +285,6 @@
         "codex/gpt-6.1-sol",
         "claude/claude-sonnet-5-5",
         "codex/gpt-6.1-terra",
-        "opencode-go/deepseek-v4.1-flash",
         "mistral/deepseek-v4-1-flash-1017",
         "claude/claude-haiku-5-5",
         "grok/grok-4.7"
@@ -319,11 +309,8 @@
           "intent": "Multi-file call-chain or state-bug analysis."
         },
         {
-          "use": "opencode-go/deepseek-v4.1-flash",
-          "intent": "A bounded reproducible failure with a supplied trace and a known investigation approach. Local data-flow debugging, without speculative root-cause claims across a large unfamiliar system.",
-          "more": [
-            "mistral/deepseek-v4-1-flash-1017"
-          ]
+          "use": "mistral/deepseek-v4-1-flash-1017",
+          "intent": "A bounded reproducible failure with a supplied trace and a known investigation approach. Local data-flow debugging, without speculative root-cause claims across a large unfamiliar system."
         },
         {
           "use": "claude/claude-haiku-5-5",
@@ -342,13 +329,13 @@
       "name": "Sp Explorer",
       "members": [
         "claude/claude-haiku-5-5",
-        "opencode-go/deepseek-v4.1-flash",
         "mistral/deepseek-v4-1-flash-1017",
         "codex/gpt-6.1-terra",
         "opencode-go/mimo-v2.6-pro",
         "codex/gpt-6-luna",
         "grok/grok-4.7",
-        "mistral/mistral-large-4"
+        "mistral/mistral-large-4",
+        "opencode-go/gemini-4-argon"
       ],
       "routing": "order",
       "affinity": "turn",
@@ -369,10 +356,10 @@
           "intent": "Standard repository exploration: symbol search, file lookup, or tracing references."
         },
         {
-          "use": "grok/grok-4.7",
+          "use": "opencode-go/gemini-4-argon",
           "more": [
+            "grok/grok-4.7",
             "codex/gpt-6.1-terra",
-            "opencode-go/deepseek-v4.1-flash",
             "mistral/deepseek-v4-1-flash-1017"
           ],
           "intent": "Broad read-only architecture discovery across many files: map modules and dependencies, compare supplied evidence, inspect images, or gather references in an unfamiliar repository. Avoid unsupported factual claims."
@@ -416,16 +403,23 @@
           "tokens": 250000
         },
         {
-          "use": "codex/gpt-6.1-sol",
-          "intent": "Standard spec or plan review, through complex architecture."
+          "use": "claude/claude-sonnet-5-5",
+          "intent": "Standard spec or plan review, through complex architecture.",
+          "more": [
+            "codex/gpt-6.1-sol",
+            "codex/gpt-6.1-terra"
+          ]
         },
         {
           "use": "claude/claude-sonnet-5-5",
           "intent": "Broad multi-file interface and requirement consistency checks."
         },
         {
-          "use": "codex/gpt-6.1-terra",
-          "intent": "Architectural and requirement review."
+          "use": "claude/claude-sonnet-5-5",
+          "intent": "Architectural and requirement review.",
+          "more": [
+            "codex/gpt-6.1-terra"
+          ]
         },
         {
           "use": "claude/claude-haiku-5-5",
@@ -440,13 +434,13 @@
       "name": "Explore",
       "members": [
         "claude/claude-haiku-5-5",
-        "opencode-go/deepseek-v4.1-flash",
         "mistral/deepseek-v4-1-flash-1017",
         "codex/gpt-6.1-terra",
         "opencode-go/mimo-v2.6-pro",
         "codex/gpt-6-luna",
         "grok/grok-4.7",
-        "mistral/mistral-large-4"
+        "mistral/mistral-large-4",
+        "opencode-go/gemini-4-argon"
       ],
       "routing": "order",
       "affinity": "turn",
@@ -467,10 +461,10 @@
           "intent": "Standard repository exploration: symbol search, file lookup, or tracing references."
         },
         {
-          "use": "grok/grok-4.7",
+          "use": "opencode-go/gemini-4-argon",
           "more": [
+            "grok/grok-4.7",
             "codex/gpt-6.1-terra",
-            "opencode-go/deepseek-v4.1-flash",
             "mistral/deepseek-v4-1-flash-1017"
           ],
           "intent": "Broad read-only architecture discovery across many files: map modules and dependencies, compare supplied evidence, inspect images, or gather references in an unfamiliar repository. Avoid unsupported factual claims."
@@ -515,8 +509,11 @@
           "intent": "Complex multi-file analysis or fact-critical reasoning, where factual precision matters more than code output."
         },
         {
-          "use": "codex/gpt-6.1-terra",
-          "intent": "General reasoning, synthesis, or multi-step planning before acting."
+          "use": "claude/claude-sonnet-5-5",
+          "intent": "General reasoning, synthesis, or multi-step planning before acting.",
+          "more": [
+            "codex/gpt-6.1-terra"
+          ]
         },
         {
           "use": "claude/claude-haiku-5-5",

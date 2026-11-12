@@ -21,24 +21,31 @@ the source user's routing configuration, not upstream factory defaults:
 [`pstack-groups.public.json`](./pstack-groups.public.json) adds three independent
 Jev-routed groups for [Claude Code with pstack](../claude/README.md):
 
-- `pstack-explore`: Codex Luna for bounded lookup, direct Grok for broad evidence
-  gathering, Codex Terra at 250k tokens or more, and Go Gemini Argon as the final
-  long-request fallback.
-- `pstack-code`: Sol, Claude Sonnet/Haiku, direct Grok, and complementary
-  OpenCode Go/Mistral coding routes.
-- `pstack-reasoning`: Sol as the technical default, Muse for prose, Grok/Sonnet
-  for alternate analysis and synthesis, Argon for evidence-sensitive factual
-  checking, and selective Opus/Astra escalation.
+- `pstack-explore`: Codex Luna for bounded lookup, Go Gemini Argon for broad
+  evidence gathering with direct Grok as the next alternative, and Codex Terra
+  at 250k tokens or more with Argon as its next alternative.
+- `pstack-code`: Sol, Claude Sonnet/Haiku, direct Grok, Mistral DeepSeek Flash,
+  and complementary Go/Mistral GLM and MiMo coding routes.
+- `pstack-reasoning`: Sol for code analysis and diagnosis, Sonnet for ordinary
+  design, planning and correctness review, Muse for prose, Grok for independent
+  analysis, Argon for factual checking, and selective Opus/Astra escalation.
 
 All three advertise a 350k context and use automatic Jev effort, ordered fallback,
 and affinity within a turn.
 No member effort is pinned. Antigravity, OpenCode Zen, Go Grok, and MiniMax
-M3.1 Flash are excluded from the exported groups. Argon is restricted to
-`pstack-explore` and `pstack-reasoning`.
+M3.1 Flash are excluded from the exported groups. Argon also handles broad
+read-only discovery in `explore` and `sp-explorer`, with Grok as an alternative.
 
-Go DeepSeek Flash rules use Mistral's dated DeepSeek Flash as their next fallback.
-Go GLM Flash uses Mistral GLM Flash and GLM-5.3; Mistral GLM-5.3 terminal-workflow
-rules use Go GLM Flash as their next fallback. These ordered alternatives provide
+Sonnet handles standard spec/plan reviews, ordinary planning, and thorough code
+review. Sol remains the primary for high-risk code review, diagnosis, long-context
+work, and implementation. Opus remains an exceptional escalation. `jev-auto`
+keeps Muse first for longer prose and summaries, with Haiku as an alternative;
+short text transformations still use Mistral Large.
+
+All DeepSeek Flash group members and rules use Mistral's dated DeepSeek Flash;
+no group references the Go DeepSeek route. Go GLM Flash uses Mistral GLM Flash
+and GLM-5.3; Mistral GLM-5.3 terminal-workflow rules use Go GLM Flash as their
+next fallback. These ordered alternatives provide
 coverage when a provider has no ready quota or fails; they do not configure a
 proactive low-quota threshold. GLM Flash is a lower-capability alternative to
 GLM-5.3, not the same model.
@@ -71,10 +78,14 @@ by the Claude Code agents must match (`group/jev-auto`, `group/worker`, and so o
 see [claude](../claude/README.md)).
 
 For the Go $10 plan, check current [model prices and allowances](https://opencode.ai/docs/console/go/).
-Estimated request counts are workload examples, not fixed request quotas. Prefer
-Go's larger DeepSeek/GLM Flash allowances for routine coding and reserve Argon
-for its explicit roles. Keep provider selections local: deselect Go MiniMax M3.1
-Flash and leave unused Zen routes off when following this configuration.
+Estimated request counts are workload examples, not fixed request quotas.
+DeepSeek Flash runs through Mistral; Go's remaining allowance is directed toward
+Argon discovery and Muse prose while retaining existing GLM/MiMo routes.
+These Go priorities are temporary: before ending a Go subscription, replace its
+explicit primary routes (for example, Argon discovery with Grok and Muse prose
+with Claude) and remove unavailable members and rule alternatives. Provider
+selection remains local: deselect Go DeepSeek Flash and MiniMax M3.1 Flash and
+leave unused Zen routes off when following this configuration.
 
 To exclude Go from automatically discovered groups while retaining it in all
 explicitly configured groups:

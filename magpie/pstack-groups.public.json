@@ -24,8 +24,9 @@
           "intent": "Read-only file or symbol lookup, locating tests, tracing a bounded call path, or a straightforward factual query. Return concise evidence, not implementation or design decisions."
         },
         {
-          "use": "grok/grok-4.7",
+          "use": "opencode-go/gemini-4-argon",
           "more": [
+            "grok/grok-4.7",
             "codex/gpt-6.1-terra",
             "codex/gpt-6-luna"
           ],
@@ -44,7 +45,6 @@
         "claude/claude-sonnet-5-5",
         "grok/grok-4.7",
         "claude/claude-haiku-5-5",
-        "opencode-go/deepseek-v4.1-flash",
         "mistral/deepseek-v4-1-flash-1017",
         "mistral/zai-glm-5-3",
         "opencode-go/glm-5.3-flash",
@@ -86,10 +86,7 @@
           "intent": "Complex tool-heavy implementation and integration: coordinate builds, tests, and repeated repairs across interacting components. The main challenge is executing and checking a difficult terminal workflow, beyond a well-specified bounded patch."
         },
         {
-          "use": "opencode-go/deepseek-v4.1-flash",
-          "more": [
-            "mistral/deepseek-v4-1-flash-1017"
-          ],
+          "use": "mistral/deepseek-v4-1-flash-1017",
           "intent": "A bounded feature or bug fix with explicit requirements and a known approach. Implement a focused patch economically without difficult architecture or root-cause analysis."
         },
         {
@@ -159,7 +156,14 @@
         },
         {
           "use": "codex/gpt-6.1-sol",
-          "intent": "Default technical judgment: analyze code, diagnose bugs, compare tradeoffs, plan changes, or review correctness and requirements. Ordinary design and review belong here, without premium escalation."
+          "intent": "Default technical judgment: analyze code, diagnose bugs, or compare tradeoffs. Ordinary analysis belongs here, without premium escalation."
+        },
+        {
+          "use": "claude/claude-sonnet-5-5",
+          "more": [
+            "codex/gpt-6.1-sol"
+          ],
+          "intent": "Ordinary design, change planning, or review of correctness and requirements, without exceptional risk or premium escalation."
         },
         {
           "use": "opencode-go/muse-spark-1.3-contributor",
