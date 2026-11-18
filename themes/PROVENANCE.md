@@ -30,6 +30,13 @@
   The Linux automatic adapter uses the same API and the official plugin reload
   command; no Paseo package files or private client settings are copied.
 
+DBDelve color data is authored from the shared palettes, matching the locally
+installed Zed `Dot Agents Kanagawa` family. The native color schema and translucent
+selection/edited-cell roles follow the official
+[theme guide](https://github.com/ShayanAbbas1/dbdelve/blob/364fc969366750d8c4c0754d3369e92d1c47cfec/docs/themes.md)
+and matching `src/theme/zed.rs` / `src/theme/mod.rs` at that revision. No local
+Zed settings, DBDelve connection data or third-party implementation is copied.
+
 Review upstream changes before rebasing the Dark Reader patch. The extension
 build and its dependencies are deliberately not vendored here.
 
