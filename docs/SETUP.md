@@ -50,7 +50,7 @@ OpenCodex 2.91.0, Codex CLI 0.163.0, OpenCode 1.18.33, Magpie 0.1.1603에서 확
   Explore·Plan은 동명 파일의 diff를 보고 병합한다. worker·sp-*는 별도의 에이전트
   진입점이므로 pstack 역할과 합치거나 그룹을 삭제하지 않는다. 사용할 워크플로에
   해당하는 에이전트와 그룹을 함께 설치한다.
-- Grok CLI 자동 갱신이 실행 파일을 찾는지 확인한다. Go의 Extra Usage가 켜져 있으면
+- GPT-6.2 Sol과 Astra가 연결한 Codex 계정에서 사용 가능한지 확인한다. Go의 Extra Usage가 켜져 있으면
   한도 소진 후에도 종량제 잔액이 쓰일 수 있다. Muse의 학습 사용 동의와 DeepSeek의
   허용 지역은 계정에서 별도로 확인하며 자동으로 변경하지 않는다.
 - `herdr/config-gpui.local.toml`은 `~/.config/herdr/config-gpui.local.toml`에 키별로

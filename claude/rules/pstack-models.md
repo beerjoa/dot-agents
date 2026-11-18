@@ -27,8 +27,8 @@ interrogate reviewers: opus high, sonnet high
 ## Routing constraints
 
 - Use pstack's Claude Code adapter. Do not pass group IDs directly as the Agent tool's model argument.
-- Explore uses Codex Luna for bounded lookups, Grok 4.7 for broad evidence gathering, and Codex Terra at or above 250k tokens. OpenCode Go Gemini 4 Argon is the final fallback for long requests; reserve its smaller Go allowance for that role. Escalate difficult causal analysis to the reasoning role.
-- Sol is the default technical reasoner; Muse handles prose and ordinary synthesis. Opus and Astra are exceptional escalations, not defaults.
+- Explore uses Codex Luna for bounded lookups, OpenCode Go Gemini 4 Argon then Codex Terra for broad evidence gathering, and Terra then Argon at or above 250k tokens. Escalate difficult causal analysis to the reasoning role. Replace Go primary routes before the subscription expires.
+- GPT-6.2 Sol handles code analysis, diagnosis, technical planning, and requirements synthesis. Sonnet handles second opinions, alternative implementations, tool-heavy integration, and standard code review. Muse handles prose and ordinary synthesis. GPT-6.2 Astra and Opus are reserved for exceptional cases. Terra handles standard patch-and-test work.
 - Model-family diversity is not guaranteed by different aliases: two groups can select the same model, and each group contains multiple families.
 - Do not claim a cross-family judge ran unless the actual served models and their families are known. Skip that judge when its family requirement cannot be established.
 - Mixed-group fallback may reach any ready member, including Muse after technical members fail. A successful response is not proof that the required technical capability was available; check the served route before accepting a high-risk review.

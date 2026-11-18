@@ -21,24 +21,32 @@ the source user's routing configuration, not upstream factory defaults:
 [`pstack-groups.public.json`](./pstack-groups.public.json) adds three independent
 Jev-routed groups for [Claude Code with pstack](../claude/README.md):
 
-- `pstack-explore`: Codex Luna for bounded lookup, direct Grok for broad evidence
-  gathering, Codex Terra at 250k tokens or more, and Go Gemini Argon as the final
-  long-request fallback.
-- `pstack-code`: Sol, Claude Sonnet/Haiku, direct Grok, and complementary
-  OpenCode Go/Mistral coding routes.
-- `pstack-reasoning`: Sol as the technical default, Muse for prose, Grok/Sonnet
-  for alternate analysis and synthesis, Argon for evidence-sensitive factual
-  checking, and selective Opus/Astra escalation.
+- `pstack-explore`: Codex Luna for bounded lookup, Go Gemini Argon then Codex
+  Terra for broad evidence gathering, and Terra then Argon at 250k tokens or more.
+- `pstack-code`: GPT-6.2 Sol for general implementation, Claude Sonnet for
+  tool-heavy integration and alternative implementations, plus focused routes
+  through Haiku, Mistral DeepSeek Flash, GLM, and MiMo.
+- `pstack-reasoning`: GPT-6.2 Sol for technical analysis, diagnosis, and ordinary
+  planning, Sonnet for a second technical perspective, Muse for prose, and
+  Argon for factual checking. Exceptional cases use GPT-6.2 Astra, with Opus
+  among the alternatives.
 
 All three advertise a 350k context and use automatic Jev effort, ordered fallback,
 and affinity within a turn.
-No member effort is pinned. Antigravity, OpenCode Zen, Go Grok, and MiniMax
-M3.1 Flash are excluded from the exported groups. Argon is restricted to
-`pstack-explore` and `pstack-reasoning`.
+No member effort is pinned. The exported groups exclude Grok, Antigravity,
+OpenCode Zen, and MiniMax M3.1 Flash. Argon also handles broad read-only discovery
+in `explore` and `sp-explorer`, with Terra as its first alternative.
 
-Go DeepSeek Flash rules use Mistral's dated DeepSeek Flash as their next fallback.
-Go GLM Flash uses Mistral GLM Flash and GLM-5.3; Mistral GLM-5.3 terminal-workflow
-rules use Go GLM Flash as their next fallback. These ordered alternatives provide
+Sol 6.2 handles standard spec/plan reviews, technical planning, high-risk code
+review, diagnosis, and implementation. Sonnet handles thorough standard code
+review. Astra 6.2 handles exceptional implementation, debugging, and reasoning
+cases. `jev-auto` uses Muse for longer prose and summaries, with Haiku as an
+alternative. Short text transformations use Mistral Large.
+
+All DeepSeek Flash group members and rules use Mistral's dated DeepSeek Flash;
+no group references the Go DeepSeek route. Go GLM Flash uses Mistral GLM Flash
+and GLM-5.3; Mistral GLM-5.3 terminal-workflow rules use Go GLM Flash as their
+next fallback. These ordered alternatives provide
 coverage when a provider has no ready quota or fails; they do not configure a
 proactive low-quota threshold. GLM Flash is a lower-capability alternative to
 GLM-5.3, not the same model.
@@ -71,10 +79,14 @@ by the Claude Code agents must match (`group/jev-auto`, `group/worker`, and so o
 see [claude](../claude/README.md)).
 
 For the Go $10 plan, check current [model prices and allowances](https://opencode.ai/docs/console/go/).
-Estimated request counts are workload examples, not fixed request quotas. Prefer
-Go's larger DeepSeek/GLM Flash allowances for routine coding and reserve Argon
-for its explicit roles. Keep provider selections local: deselect Go MiniMax M3.1
-Flash and leave unused Zen routes off when following this configuration.
+Estimated request counts are workload examples, not fixed request quotas.
+DeepSeek Flash runs through Mistral; Go's remaining allowance is directed toward
+Argon discovery and Muse prose while retaining existing GLM/MiMo routes.
+These Go priorities are temporary: before ending a Go subscription, replace its
+explicit primary routes (for example, Argon discovery with Terra and Muse prose
+with Claude) and remove unavailable members and rule alternatives. Provider
+selection remains local: deselect Go DeepSeek Flash and MiniMax M3.1 Flash and
+leave unused Zen routes off when following this configuration.
 
 To exclude Go from automatically discovered groups while retaining it in all
 explicitly configured groups:

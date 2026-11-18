@@ -18,9 +18,9 @@ Superpowers is enabled alongside pstack; each keeps its own agent entry points.
 
 | Claude Code alias | Magpie group | Purpose |
 | --- | --- | --- |
-| `haiku` | `group/pstack-explore` | Luna for bounded lookup, Grok for broad evidence, Terra for long requests, Go Argon as final long-request fallback |
-| `sonnet` | `group/pstack-code` | Sol, Claude Sonnet/Haiku, direct Grok, and complementary Go/Mistral coding routes |
-| `opus` | `group/pstack-reasoning` | Sol for ordinary technical judgment, Muse for prose, selective premium escalation |
+| `haiku` | `group/pstack-explore` | Luna for bounded lookup, Go Argon then Terra for broad evidence, Terra then Argon for long requests |
+| `sonnet` | `group/pstack-code` | GPT-6.2 Sol for general implementation, Sonnet for tool-heavy integration and alternative implementations |
+| `opus` | `group/pstack-reasoning` | GPT-6.2 Sol for analysis and planning, Sonnet for second opinions, Muse for prose, Astra for exceptional cases |
 
 These aliases select groups, not actual Claude model families. The main session's
 model is a separate choice and is not changed by the public subset.
@@ -75,15 +75,22 @@ other members remain fallback candidates. No member has a fixed effort suffix
 or `use-effort` override. Jev selects actual effort within the model's support;
 `max` is not automatically selected by the documented auto-effort ladder.
 
-Sol is the default technical reasoner. Muse handles supplied-evidence prose and
-ordinary synthesis. Opus and Astra are reserved for exceptional risk or demonstrated
-difficulty. Direct Grok is included. Argon is reserved for factual verification
-and a final long-request exploration fallback; Go Grok, Antigravity, Zen, and
-MiniMax M3.1 Flash are excluded from the groups.
+GPT-6.2 Sol handles code analysis, diagnosis, implementation, technical planning,
+standard spec/plan reviews, and high-risk code review. Sonnet handles thorough
+standard code review, tool-heavy integration, and second technical opinions.
+Terra handles standard patch-and-test work. Muse handles supplied-evidence prose
+and ordinary synthesis, including longer `jev-auto` documents. Short `jev-auto`
+transformations use Mistral Large. GPT-6.2 Astra and Opus are reserved for
+exceptional risk or demonstrated difficulty.
+Argon handles broad discovery in `pstack-explore`, `explore`, and `sp-explorer`,
+with Terra as its first alternative. Argon also handles factual verification and
+long-request exploration fallback. The groups exclude Grok, Antigravity, Zen,
+and MiniMax M3.1 Flash.
 
-Go candidates favor DeepSeek Flash, GLM Flash, MiMo Flash/Pro, and Muse.
-Mistral covers Go DeepSeek and GLM Flash failures; Mistral GLM-5.3 terminal
-workflows fall back to Go GLM Flash. The latter is a lower-capability alternative,
+DeepSeek Flash runs through Mistral in every exported group; the Go DeepSeek
+route is deselected locally. Other Go candidates include GLM Flash, MiMo
+Flash/Pro, Argon, and Muse. Mistral covers Go GLM Flash failures; Mistral GLM-5.3
+terminal workflows fall back to Go GLM Flash. The latter is a lower-capability alternative,
 not an identical model. Ordered fallback covers unavailable quota and errors,
 not a configured proactive low-quota threshold.
 Check the current [Go prices, allowances, and Extra Usage setting](https://opencode.ai/v2/docs/console/go/).
@@ -91,6 +98,9 @@ Extra Usage can charge Console credits after a Go allowance is exhausted, so a
 quota-based fallback is not a spending cap. DeepSeek requires an allowed Global
 region; Muse Contributor requires consent to endpoints that can train on requests.
 This repository does not change those account settings or grant that consent.
+Argon/Muse priority is intended to consume remaining Go allowance. Before Go
+expires, replace its primary routes and remove unavailable members and rule
+alternatives; see the [Magpie routing notes](../magpie/README.md).
 
 Different aliases do not guarantee different model families. A strict cross-family
 Arena judge requires checking the actual served routes, not just their alias names.
@@ -100,10 +110,8 @@ the route and report unavailable capability when appropriate.
 
 ## Local dependencies and verification
 
-Grok uses a Grok Build sign-in. Its auth plugin must also find the executable to
-renew credentials. For a mise installation, one local option is a symlink from
-`~/.grok/bin/grok` to the installed binary; keep it current after upgrades, or use
-`GROK_BIN_DIR` in Magpie's launch environment. Never copy account tokens into Git.
+Enable GPT-6.2 Sol and Astra in the connected Codex account before applying the
+groups.
 
 Check saved groups with `magpie group <id>` and plugin activation with
 `claude plugin list`. Short gateway requests should verify both the requested
