@@ -18,9 +18,9 @@ Superpowers is enabled alongside pstack; each keeps its own agent entry points.
 
 | Claude Code alias | Magpie group | Purpose |
 | --- | --- | --- |
-| `haiku` | `group/pstack-explore` | Luna for bounded lookup, Go Argon then Grok for broad evidence, Terra then Argon for long requests |
-| `sonnet` | `group/pstack-code` | Sol, Claude Sonnet/Haiku, direct Grok, Mistral DeepSeek, and complementary Go/Mistral coding routes |
-| `opus` | `group/pstack-reasoning` | Sol for analysis/diagnosis, Sonnet for ordinary design/review, Muse for prose, selective premium escalation |
+| `haiku` | `group/pstack-explore` | Luna for bounded lookup, Go Argon then Terra for broad evidence, Terra then Argon for long requests |
+| `sonnet` | `group/pstack-code` | GPT-6.2 Sol for general implementation, Sonnet for tool-heavy integration and alternative implementations |
+| `opus` | `group/pstack-reasoning` | GPT-6.2 Sol for analysis and planning, Sonnet for second opinions, Muse for prose, Astra for exceptional cases |
 
 These aliases select groups, not actual Claude model families. The main session's
 model is a separate choice and is not changed by the public subset.
@@ -75,16 +75,17 @@ other members remain fallback candidates. No member has a fixed effort suffix
 or `use-effort` override. Jev selects actual effort within the model's support;
 `max` is not automatically selected by the documented auto-effort ladder.
 
-Sol handles code analysis, diagnosis, implementation, and high-risk code review.
-Sonnet handles ordinary design and correctness review in `pstack-reasoning`,
-standard spec/plan review, planning/synthesis, and thorough code quality review.
-Muse handles supplied-evidence prose and ordinary synthesis, including longer
-`jev-auto` documents; short `jev-auto` transformations still use Mistral Large.
-Opus and Astra are reserved for exceptional risk or demonstrated difficulty.
-Direct Grok retains its independent-analysis roles and is the next alternative
-to Argon for broad discovery. Argon handles broad discovery in `pstack-explore`,
-`explore`, and `sp-explorer`, factual verification, and long-request exploration
-fallback. Go Grok, Antigravity, Zen, and MiniMax M3.1 Flash are excluded.
+GPT-6.2 Sol handles code analysis, diagnosis, implementation, technical planning,
+standard spec/plan reviews, and high-risk code review. Sonnet handles thorough
+standard code review, tool-heavy integration, and second technical opinions.
+Terra handles standard patch-and-test work. Muse handles supplied-evidence prose
+and ordinary synthesis, including longer `jev-auto` documents. Short `jev-auto`
+transformations use Mistral Large. GPT-6.2 Astra and Opus are reserved for
+exceptional risk or demonstrated difficulty.
+Argon handles broad discovery in `pstack-explore`, `explore`, and `sp-explorer`,
+with Terra as its first alternative. Argon also handles factual verification and
+long-request exploration fallback. The groups exclude Grok, Antigravity, Zen,
+and MiniMax M3.1 Flash.
 
 DeepSeek Flash runs through Mistral in every exported group; the Go DeepSeek
 route is deselected locally. Other Go candidates include GLM Flash, MiMo
@@ -109,10 +110,8 @@ the route and report unavailable capability when appropriate.
 
 ## Local dependencies and verification
 
-Grok uses a Grok Build sign-in. Its auth plugin must also find the executable to
-renew credentials. For a mise installation, one local option is a symlink from
-`~/.grok/bin/grok` to the installed binary; keep it current after upgrades, or use
-`GROK_BIN_DIR` in Magpie's launch environment. Never copy account tokens into Git.
+Enable GPT-6.2 Sol and Astra in the connected Codex account before applying the
+groups.
 
 Check saved groups with `magpie group <id>` and plugin activation with
 `claude plugin list`. Short gateway requests should verify both the requested

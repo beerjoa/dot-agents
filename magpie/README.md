@@ -21,26 +21,27 @@ the source user's routing configuration, not upstream factory defaults:
 [`pstack-groups.public.json`](./pstack-groups.public.json) adds three independent
 Jev-routed groups for [Claude Code with pstack](../claude/README.md):
 
-- `pstack-explore`: Codex Luna for bounded lookup, Go Gemini Argon for broad
-  evidence gathering with direct Grok as the next alternative, and Codex Terra
-  at 250k tokens or more with Argon as its next alternative.
-- `pstack-code`: Sol, Claude Sonnet/Haiku, direct Grok, Mistral DeepSeek Flash,
-  and complementary Go/Mistral GLM and MiMo coding routes.
-- `pstack-reasoning`: Sol for code analysis and diagnosis, Sonnet for ordinary
-  design, planning and correctness review, Muse for prose, Grok for independent
-  analysis, Argon for factual checking, and selective Opus/Astra escalation.
+- `pstack-explore`: Codex Luna for bounded lookup, Go Gemini Argon then Codex
+  Terra for broad evidence gathering, and Terra then Argon at 250k tokens or more.
+- `pstack-code`: GPT-6.2 Sol for general implementation, Claude Sonnet for
+  tool-heavy integration and alternative implementations, plus focused routes
+  through Haiku, Mistral DeepSeek Flash, GLM, and MiMo.
+- `pstack-reasoning`: GPT-6.2 Sol for technical analysis, diagnosis, and ordinary
+  planning, Sonnet for a second technical perspective, Muse for prose, and
+  Argon for factual checking. Exceptional cases use GPT-6.2 Astra, with Opus
+  among the alternatives.
 
 All three advertise a 350k context and use automatic Jev effort, ordered fallback,
 and affinity within a turn.
-No member effort is pinned. Antigravity, OpenCode Zen, Go Grok, and MiniMax
-M3.1 Flash are excluded from the exported groups. Argon also handles broad
-read-only discovery in `explore` and `sp-explorer`, with Grok as an alternative.
+No member effort is pinned. The exported groups exclude Grok, Antigravity,
+OpenCode Zen, and MiniMax M3.1 Flash. Argon also handles broad read-only discovery
+in `explore` and `sp-explorer`, with Terra as its first alternative.
 
-Sonnet handles standard spec/plan reviews, ordinary planning, and thorough code
-review. Sol remains the primary for high-risk code review, diagnosis, long-context
-work, and implementation. Opus remains an exceptional escalation. `jev-auto`
-keeps Muse first for longer prose and summaries, with Haiku as an alternative;
-short text transformations still use Mistral Large.
+Sol 6.2 handles standard spec/plan reviews, technical planning, high-risk code
+review, diagnosis, and implementation. Sonnet handles thorough standard code
+review. Astra 6.2 handles exceptional implementation, debugging, and reasoning
+cases. `jev-auto` uses Muse for longer prose and summaries, with Haiku as an
+alternative. Short text transformations use Mistral Large.
 
 All DeepSeek Flash group members and rules use Mistral's dated DeepSeek Flash;
 no group references the Go DeepSeek route. Go GLM Flash uses Mistral GLM Flash
@@ -82,7 +83,7 @@ Estimated request counts are workload examples, not fixed request quotas.
 DeepSeek Flash runs through Mistral; Go's remaining allowance is directed toward
 Argon discovery and Muse prose while retaining existing GLM/MiMo routes.
 These Go priorities are temporary: before ending a Go subscription, replace its
-explicit primary routes (for example, Argon discovery with Grok and Muse prose
+explicit primary routes (for example, Argon discovery with Terra and Muse prose
 with Claude) and remove unavailable members and rule alternatives. Provider
 selection remains local: deselect Go DeepSeek Flash and MiniMax M3.1 Flash and
 leave unused Zen routes off when following this configuration.

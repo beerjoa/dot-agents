@@ -4,12 +4,11 @@
       "id": "jev-auto",
       "name": "Jev Auto",
       "members": [
-        "codex/gpt-6.1-sol",
+        "codex/gpt-6.2-sol",
         "claude/claude-sonnet-5-5",
         "codex/gpt-6.1-terra",
         "claude/claude-haiku-5-5",
         "codex/gpt-6-luna",
-        "grok/grok-4.7",
         "opencode-go/claude-haiku-5-5",
         "opencode-go/gpt-6-luna",
         "mistral/mistral-large-4",
@@ -19,20 +18,28 @@
       "affinity": "turn",
       "rules": [
         {
-          "use": "codex/gpt-6.1-sol",
+          "use": "codex/gpt-6.2-sol",
           "tokens": 250000
         },
         {
-          "use": "codex/gpt-6.1-sol",
+          "use": "codex/gpt-6.2-sol",
           "intent": "Nontrivial code implementation, debugging, code correctness review, or difficult technical problem solving. The deliverable is reliable working code, rather than documentation or a plan."
         },
         {
-          "use": "claude/claude-sonnet-5-5",
-          "intent": "Read and analyze many files, trace architecture or dependencies, compare evidence, or answer fact-sensitive technical questions. Primarily analysis, rather than implementing code."
+          "use": "codex/gpt-6.2-sol",
+          "intent": "Read and analyze many files, trace architecture or dependencies, compare evidence, or answer fact-sensitive technical questions. Primarily analysis, rather than implementing code.",
+          "more": [
+            "claude/claude-sonnet-5-5",
+            "codex/gpt-6.1-terra"
+          ]
         },
         {
-          "use": "claude/claude-sonnet-5-5",
-          "intent": "Design a solution, plan a multi-step project, organize an agent workflow, or weigh architecture tradeoffs before coding. The requested deliverable is a design or plan."
+          "use": "codex/gpt-6.2-sol",
+          "intent": "Design a solution, plan a multi-step project, organize an agent workflow, or weigh architecture tradeoffs before coding. The requested deliverable is a design or plan.",
+          "more": [
+            "claude/claude-sonnet-5-5",
+            "codex/gpt-6.1-terra"
+          ]
         },
         {
           "use": "mistral/mistral-large-4",
@@ -61,29 +68,28 @@
       "id": "worker",
       "name": "Worker",
       "members": [
-        "codex/gpt-6.1-sol",
+        "codex/gpt-6.2-sol",
         "codex/gpt-6.1-terra",
         "mistral/deepseek-v4-1-flash-1017",
         "mistral/zai-glm-5-3",
         "opencode-go/glm-5.3-flash",
         "opencode-go/mimo-v2.6-pro",
         "claude/claude-haiku-5-5",
-        "codex/gpt-6-luna",
-        "grok/grok-4.7"
+        "codex/gpt-6-luna"
       ],
       "routing": "order",
       "affinity": "turn",
       "rules": [
         {
-          "use": "codex/gpt-6.1-sol",
+          "use": "codex/gpt-6.2-sol",
           "tokens": 250000
         },
         {
-          "use": "codex/gpt-6.1-sol",
+          "use": "codex/gpt-6.2-sol",
           "images": true
         },
         {
-          "use": "codex/gpt-6.1-sol",
+          "use": "codex/gpt-6.2-sol",
           "intent": "Nontrivial multi-file or stateful implementation, or difficult debugging. The deliverable is reliable working code."
         },
         {
@@ -127,14 +133,14 @@
       "name": "Sp Worker",
       "members": [
         "codex/gpt-6.1-terra",
+        "codex/gpt-6.2-sol",
         "mistral/deepseek-v4-1-flash-1017",
         "mistral/zai-glm-5-3",
         "opencode-go/glm-5.3-flash",
         "opencode-go/mimo-v2.6-pro",
         "claude/claude-haiku-5-5",
         "codex/gpt-6-luna",
-        "opencode-go/mimo-v2.6-flash",
-        "grok/grok-4.7"
+        "opencode-go/mimo-v2.6-flash"
       ],
       "routing": "order",
       "affinity": "turn",
@@ -152,8 +158,11 @@
           "intent": "Native patch-and-test implementation: apply_patch edits and multi-step test workflows."
         },
         {
-          "use": "codex/gpt-6.1-terra",
-          "intent": "Logic-heavy implementation: complex algorithms or intricate code paths with tests."
+          "use": "codex/gpt-6.2-sol",
+          "intent": "Logic-heavy implementation: complex algorithms or intricate code paths with tests.",
+          "more": [
+            "codex/gpt-6.1-terra"
+          ]
         },
         {
           "use": "opencode-go/mimo-v2.6-pro",
@@ -187,22 +196,30 @@
       "id": "sp-worker-pro",
       "name": "Sp Worker Pro",
       "members": [
-        "codex/gpt-6.1-sol",
+        "codex/gpt-6.2-sol",
         "claude/claude-sonnet-5-5",
         "codex/gpt-6.1-terra",
         "mistral/deepseek-v4-1-flash-1017",
         "claude/claude-haiku-5-5",
-        "grok/grok-4.7"
+        "codex/gpt-6.2-astra"
       ],
       "routing": "order",
       "affinity": "turn",
       "rules": [
         {
-          "use": "codex/gpt-6.1-sol",
+          "use": "codex/gpt-6.2-astra",
+          "more": [
+            "codex/gpt-6.2-sol",
+            "claude/claude-sonnet-5-5"
+          ],
+          "intent": "Exceptional implementation risk: subtle security or concurrency invariants, dangerous migrations, or a hard implementation that already defeated serious attempts. Not ordinary auth, integration, or routine debugging."
+        },
+        {
+          "use": "codex/gpt-6.2-sol",
           "tokens": 250000
         },
         {
-          "use": "codex/gpt-6.1-sol",
+          "use": "codex/gpt-6.2-sol",
           "intent": "Hard implementation: architecture, auth, migrations, or concurrency."
         },
         {
@@ -216,7 +233,7 @@
         {
           "use": "claude/claude-sonnet-5-5",
           "more": [
-            "codex/gpt-6.1-sol",
+            "codex/gpt-6.2-sol",
             "codex/gpt-6.1-terra"
           ],
           "intent": "Multi-step patch, build, and test workflows with repeated tool execution and integration repairs."
@@ -233,30 +250,29 @@
       "id": "sp-code-review",
       "name": "Sp Code Review",
       "members": [
-        "codex/gpt-6.1-sol",
+        "codex/gpt-6.2-sol",
         "claude/claude-sonnet-5-5",
         "codex/gpt-6.1-terra",
         "claude/claude-haiku-5-5",
-        "mistral/deepseek-v4-1-flash-1017",
-        "grok/grok-4.7"
+        "mistral/deepseek-v4-1-flash-1017"
       ],
       "routing": "order",
       "affinity": "turn",
       "rules": [
         {
-          "use": "codex/gpt-6.1-sol",
+          "use": "codex/gpt-6.2-sol",
           "tokens": 250000
         },
         {
-          "use": "codex/gpt-6.1-sol",
+          "use": "codex/gpt-6.2-sol",
           "intent": "Complex or high-risk code review: security, concurrency, or large multi-file diffs."
         },
         {
           "use": "claude/claude-sonnet-5-5",
-          "intent": "Standard thorough code review: code quality, architecture, or bug review of typical task diffs. Default reviewer, separate model family from the implementer.",
           "more": [
-            "codex/gpt-6.1-sol"
-          ]
+            "codex/gpt-6.2-sol"
+          ],
+          "intent": "Standard thorough code review: code quality, architecture, or bug review of typical task diffs. Default reviewer, separate model family from the implementer."
         },
         {
           "use": "codex/gpt-6.1-terra",
@@ -271,7 +287,7 @@
           "intent": "Routine review of standard task diffs."
         },
         {
-          "use": "grok/grok-4.7",
+          "use": "claude/claude-haiku-5-5",
           "intent": "Small diffs or scoped fix re-reviews."
         }
       ],
@@ -282,22 +298,30 @@
       "id": "sp-debug",
       "name": "Sp Debug",
       "members": [
-        "codex/gpt-6.1-sol",
+        "codex/gpt-6.2-sol",
         "claude/claude-sonnet-5-5",
         "codex/gpt-6.1-terra",
         "mistral/deepseek-v4-1-flash-1017",
         "claude/claude-haiku-5-5",
-        "grok/grok-4.7"
+        "codex/gpt-6.2-astra"
       ],
       "routing": "order",
       "affinity": "turn",
       "rules": [
         {
-          "use": "codex/gpt-6.1-sol",
+          "use": "codex/gpt-6.2-astra",
+          "more": [
+            "codex/gpt-6.2-sol",
+            "claude/claude-sonnet-5-5"
+          ],
+          "intent": "Exceptional root-cause difficulty: conflicting security or concurrency invariants, or a subtle failure unresolved after serious prior analyses. Not ordinary debugging."
+        },
+        {
+          "use": "codex/gpt-6.2-sol",
           "tokens": 250000
         },
         {
-          "use": "codex/gpt-6.1-sol",
+          "use": "codex/gpt-6.2-sol",
           "intent": "Root-cause debugging: clear failures through subtle multi-module bugs."
         },
         {
@@ -317,7 +341,7 @@
           "intent": "Runtime, config, or environment failures."
         },
         {
-          "use": "grok/grok-4.7",
+          "use": "claude/claude-haiku-5-5",
           "intent": "Localized unit test failures."
         }
       ],
@@ -333,7 +357,6 @@
         "codex/gpt-6.1-terra",
         "opencode-go/mimo-v2.6-pro",
         "codex/gpt-6-luna",
-        "grok/grok-4.7",
         "mistral/mistral-large-4",
         "opencode-go/gemini-4-argon"
       ],
@@ -358,7 +381,6 @@
         {
           "use": "opencode-go/gemini-4-argon",
           "more": [
-            "grok/grok-4.7",
             "codex/gpt-6.1-terra",
             "mistral/deepseek-v4-1-flash-1017"
           ],
@@ -376,26 +398,27 @@
       "id": "sp-spec-review",
       "name": "Sp Spec Review",
       "members": [
-        "codex/gpt-6.1-sol",
+        "codex/gpt-6.2-sol",
         "claude/claude-sonnet-5-5",
         "codex/gpt-6.1-terra",
         "claude/claude-opus-5-5",
         "claude/claude-haiku-5-5",
-        "grok/grok-4.7"
+        "codex/gpt-6.2-astra"
       ],
       "routing": "order",
       "affinity": "turn",
       "rules": [
         {
-          "use": "claude/claude-opus-5-5",
+          "use": "codex/gpt-6.2-astra",
           "more": [
-            "claude/claude-sonnet-5-5",
-            "codex/gpt-6.1-sol"
+            "claude/claude-opus-5-5",
+            "codex/gpt-6.2-sol",
+            "claude/claude-sonnet-5-5"
           ],
           "intent": "Hardest, highest-risk audits only: system-wide architecture, security, or concurrency specs."
         },
         {
-          "use": "codex/gpt-6.1-sol",
+          "use": "codex/gpt-6.2-sol",
           "more": [
             "claude/claude-sonnet-5-5",
             "codex/gpt-6.1-terra"
@@ -403,12 +426,12 @@
           "tokens": 250000
         },
         {
-          "use": "claude/claude-sonnet-5-5",
-          "intent": "Standard spec or plan review, through complex architecture.",
+          "use": "codex/gpt-6.2-sol",
           "more": [
-            "codex/gpt-6.1-sol",
+            "claude/claude-sonnet-5-5",
             "codex/gpt-6.1-terra"
-          ]
+          ],
+          "intent": "Standard spec or plan review, through complex architecture."
         },
         {
           "use": "claude/claude-sonnet-5-5",
@@ -416,10 +439,10 @@
         },
         {
           "use": "claude/claude-sonnet-5-5",
-          "intent": "Architectural and requirement review.",
           "more": [
             "codex/gpt-6.1-terra"
-          ]
+          ],
+          "intent": "Architectural and requirement review."
         },
         {
           "use": "claude/claude-haiku-5-5",
@@ -438,7 +461,6 @@
         "codex/gpt-6.1-terra",
         "opencode-go/mimo-v2.6-pro",
         "codex/gpt-6-luna",
-        "grok/grok-4.7",
         "mistral/mistral-large-4",
         "opencode-go/gemini-4-argon"
       ],
@@ -463,7 +485,6 @@
         {
           "use": "opencode-go/gemini-4-argon",
           "more": [
-            "grok/grok-4.7",
             "codex/gpt-6.1-terra",
             "mistral/deepseek-v4-1-flash-1017"
           ],
@@ -481,39 +502,49 @@
       "id": "plan",
       "name": "Plan",
       "members": [
-        "codex/gpt-6.1-sol",
+        "codex/gpt-6.2-sol",
         "claude/claude-opus-5-5",
         "claude/claude-sonnet-5-5",
         "codex/gpt-6.1-terra",
         "claude/claude-haiku-5-5",
         "codex/gpt-6-luna",
-        "grok/grok-4.7"
+        "codex/gpt-6.2-astra"
       ],
       "routing": "order",
       "affinity": "turn",
       "rules": [
         {
-          "use": "codex/gpt-6.1-sol",
+          "use": "codex/gpt-6.2-sol",
           "tokens": 250000
         },
         {
-          "use": "codex/gpt-6.1-sol",
+          "use": "codex/gpt-6.2-sol",
           "intent": "Complex engineering, difficult technical reasoning, or nontrivial implementation. The deliverable is reliable working code or a hard technical answer."
         },
         {
-          "use": "claude/claude-opus-5-5",
-          "intent": "Highest-stakes architecture or system design decisions with major irreversible consequences."
-        },
-        {
-          "use": "claude/claude-sonnet-5-5",
-          "intent": "Complex multi-file analysis or fact-critical reasoning, where factual precision matters more than code output."
-        },
-        {
-          "use": "claude/claude-sonnet-5-5",
-          "intent": "General reasoning, synthesis, or multi-step planning before acting.",
+          "use": "codex/gpt-6.2-astra",
+          "intent": "Highest-stakes architecture or system design decisions with major irreversible consequences.",
           "more": [
+            "claude/claude-opus-5-5",
+            "codex/gpt-6.2-sol",
+            "claude/claude-sonnet-5-5"
+          ]
+        },
+        {
+          "use": "codex/gpt-6.2-sol",
+          "intent": "Complex multi-file analysis or fact-critical reasoning, where factual precision matters more than code output.",
+          "more": [
+            "claude/claude-sonnet-5-5",
             "codex/gpt-6.1-terra"
           ]
+        },
+        {
+          "use": "codex/gpt-6.2-sol",
+          "more": [
+            "claude/claude-sonnet-5-5",
+            "codex/gpt-6.1-terra"
+          ],
+          "intent": "General reasoning, synthesis, or multi-step planning before acting."
         },
         {
           "use": "claude/claude-haiku-5-5",
