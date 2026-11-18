@@ -48,6 +48,28 @@ def render():
         if p['mode'] != mode or any(not re.fullmatch(r'#[0-9a-fA-F]{6}', v) for k, v in p.items() if k != 'mode'):
             raise ValueError(f'Invalid palette: {slug}')
         palettes[mode] = p
+        dbdelve_colors = {
+            token: p[role] for token, role in {
+                'surface': 'dark_background', 'bg': 'background', 'panel': 'background',
+                'overlay': 'lighter_background', 'control': 'dark_background',
+                'text': 'foreground', 'text_muted': 'light_foreground', 'text_faint': 'muted',
+                'accent': 'accent', 'on_accent': 'background', 'cursor': 'bright_foreground',
+                'danger': 'red', 'success': 'green',
+                'syntax_comment': 'light_foreground', 'syntax_keyword': 'magenta',
+                'syntax_string': 'green', 'syntax_number': 'orange', 'syntax_function': 'blue',
+                'syntax_type': 'yellow', 'syntax_variable': 'foreground', 'syntax_operator': 'cyan',
+                'element_hover': 'selection', 'element_active': 'selection',
+                'border': 'darker_background', 'border_strong': 'darker_background',
+            }.items()
+        }
+        # A blue wash distinguishes selected text and rows from the neutral hover surfaces.
+        dbdelve_colors.update(selection=p['blue'] + '60', edited=p['yellow'] + '24')
+        for glass in (False, True):
+            suffix = '-glass' if glass else ''
+            files[f'apps/dbdelve/{slug}{suffix}.json'] = json_text({
+                'name': f'Dot Agents {name}' + (' Glass' if glass else ''),
+                'appearance': mode, 'glass': glass, 'colors': dbdelve_colors,
+            })
         orca = [f'name: "{name}"', f'details: "{"darker" if mode == "dark" else "lighter"}"',
                 f'background: "{p["background"]}"', f'foreground: "{p["foreground"]}"',
                 f'cursor: "{p["bright_foreground"]}"', 'terminal_colors:']

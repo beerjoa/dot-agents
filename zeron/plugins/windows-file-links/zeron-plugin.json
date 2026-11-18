@@ -1,0 +1,11 @@
+{
+  "id": "windows-file-links",
+  "name": "Windows File Links",
+  "version": "0.1.0",
+  "description": "Open Windows file links inside the current session workspace using Zeron's existing file viewer.",
+  "entry": "init.luau",
+  "permissions": ["ui.replace"],
+  "ui": {
+    "replace": ["@app/screens/chat/file_links"]
+  }
+}

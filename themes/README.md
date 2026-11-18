@@ -21,6 +21,7 @@ from Omarchy and from the browser automation.
 - [`apps/zeron/`](apps/zeron/): Wave/Lotus package for Zeron's built-in theme importer.
 - [`apps/paseo/`](apps/paseo/): local color plugin for Paseo's official theme API.
 - [`apps/orca/`](apps/orca/): terminal Wave/Lotus YAML imports for Orca ADE.
+- [`apps/dbdelve/`](apps/dbdelve/): native Wave/Lotus database-client themes matching Zed.
 - [`bridge/`](bridge/): native host source and machine-local registration preparation.
 - [`platforms/`](platforms/): OS-specific application, hooks and policy handling.
 - [`assets/`](assets/): image inventory, kept separate from color configuration.
@@ -68,6 +69,9 @@ No private signing keys are required for unpacked local use.
 - Orca ADE: import both terminal themes, choose separate dark/light variants,
   and keep app mode on System. Full-app palette customization is not supported
   by the observed 1.4.230 appearance controls.
+- DBDelve: copy the desired native JSON themes into its data folder, restart, and
+  choose Wave/Lotus or their Glass variants for the dark/light sides of Match
+  system appearance. See its [installation guide](apps/dbdelve/README.md).
 
 ## Platform status
 
