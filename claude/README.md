@@ -59,8 +59,19 @@ magpie claude opus group/pstack-reasoning
 Copy `rules/pstack-models.md` to `~/.claude/rules/pstack-models.md`, and merge the
 selected Explore and Plan definitions into `~/.claude/agents/`. Keep their names
 unchanged to override the built-ins. Start a new Claude Code session to load the
-role rule and plugin settings, then use `/pstack:poteto-mode` for a pstack task
-or the separate Superpowers entry point for that workflow.
+role rule and plugin settings, then use `/pstack:poteto-mode` for a pstack task.
+
+For Superpowers, install the corresponding `sp-*` definitions in `~/.claude/agents/`
+and copy the three files from [`commands/`](./commands/) into `~/.claude/commands/`.
+Compare any same-name files before replacing them; leave unrelated commands in place.
+In a new Claude Code session, use:
+
+- `/start-plan <spec path>` — write, self-review, and commit a plan from an approved design.
+- `/start-build <plan path>` — execute an approved plan with task workers and independent reviews.
+- `/start-build-native <plan path>` — execute an approved plan in the current session with a final review.
+
+A path may contain spaces. If omitted, the command uses the last approved input
+only when it can identify it unambiguously.
 
 If rerunning `/pstack:setup-pstack`, preserve the alias mapping and Jev policy.
 The standard setup command offers fixed starting budgets; this configuration
